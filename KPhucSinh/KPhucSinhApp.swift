@@ -11,7 +11,7 @@ import SwiftUI
 struct KPhucSinhApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            KPhucSinhTabView()
         }
     }
 }
