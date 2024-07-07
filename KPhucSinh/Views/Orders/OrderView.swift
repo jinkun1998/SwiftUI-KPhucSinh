@@ -25,7 +25,7 @@ struct OrderView: View {
                     KPS_ImageBannerView(imageURL: ImageModel.flashSale.url)
                     
                     // flashsale items
-                    KPS_HorizonalProductListView(products: ProductModel.products)
+                    KPS_HorizonalProductListView(products: ProductModel.products, isFlashSale: true)
                 }
                 .blur(radius: !searchText.isEmpty ? 5 : 0)
             }

@@ -10,12 +10,18 @@ import SwiftUI
 struct KPS_HorizonalProductListView: View {
     
     @State var products: [ProductModel]
+    @State var isFlashSale: Bool
     
     var body: some View {
         ScrollView(.horizontal){
             HStack(spacing: 0) {
                 ForEach(ProductModel.products) { product in
-                    KPS_ProductView(product: product)
+                    if (isFlashSale && products.firstIndex{$0.id == product.id} == 0) {
+                        KPS_FlashSaleProductView(product: product)
+                    }
+                    else{
+                        KPS_ProductView(product: product)
+                    }
                     
                     Divider()
                 }
@@ -23,10 +29,10 @@ struct KPS_HorizonalProductListView: View {
         }
         .contentMargins(10, for: .scrollContent)
         .scrollTargetBehavior(.viewAligned)
-        .frame(height: 250)
+        .frame(height: isFlashSale ? 350 : 250)
     }
 }
 
 #Preview {
-    KPS_HorizonalProductListView(products: ProductModel.products)
+    KPS_HorizonalProductListView(products: ProductModel.products, isFlashSale: true)
 }
