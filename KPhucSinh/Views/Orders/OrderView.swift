@@ -9,12 +9,12 @@ import SwiftUI
 
 struct OrderView: View {
     
-    
+    @State var searchText: String = ""
     
     var body: some View {
         VStack{
             // search bar
-            KPS_SearchBarView(searchText: .constant(""))
+            KPS_SearchBarView(searchText: $searchText)
                 .padding(10)
             
             ScrollView{

@@ -10,20 +10,51 @@ import SwiftUI
 struct KPS_SearchBarView: View {
     
     @Binding var searchText: String
+    @FocusState var searchBarFocusState: SearchBarFocusState?
+    
+    enum SearchBarFocusState{
+        case active
+    }
     
     var body: some View {
-        HStack(spacing: 15){
-            Image(systemName: "magnifyingglass")
+        VStack {
+            HStack(spacing: 15){
+                Image(systemName: "magnifyingglass")
+                
+                TextField(text: $searchText) {
+                    Text("Tìm kiếm sản phẩm...")
+                        .font(.callout)
+                        .foregroundColor(.accentColor)
+                        .italic()
+                }
+                .focused($searchBarFocusState, equals: .active)
+                
+                if (searchBarFocusState == .active){
+                    Button("Tìm", action: {
+                        print("searching")
+                    })
+                }
+            }
+            .padding(10)
+            .frame(height: 50)
             
-            TextField(text: $searchText) {
-                Text("Tìm kiếm sản phẩm...")
-                    .font(.callout)
-                    .foregroundColor(Color.secondary)
-                    .italic()
+ 
+            
+            if (searchBarFocusState == .active){
+                Divider()
+                
+                List{
+                    ForEach(ProductModel.products){product in
+                        Text(product.name)
+                            .lineLimit(1)
+                            .foregroundColor(.accentColor)
+                    }
+                    
+                }
+                .frame(height: 300)
+                .listStyle(.plain)
             }
         }
-        .padding(10)
-        .frame(height: 50)
         .background(
             RoundedRectangle(cornerRadius: 5)
                 .fill(.background)
