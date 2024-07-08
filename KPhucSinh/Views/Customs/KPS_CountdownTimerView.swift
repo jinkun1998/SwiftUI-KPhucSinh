@@ -10,35 +10,33 @@ import SwiftUI
 struct KPS_CountdownTimerView: View {
     
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    private let calendar = Calendar.current
-    private let fromToday = Date().addingTimeInterval(84600)
-    @State private var date: Date = Date()
-//    @State private var date: Date = Date(timeIntervalSinceNow: 426599)
-    @State var component: Calendar.Component
-    @State var componentName: String
+    
+    @State var date: Date
+    var component: Calendar.Component
+    var componentName: String
     
     var body: some View {
         VStack(spacing: 10) {
             // countdown
-            Text("\(calendar.component(component, from: fromToday))")
+            Text("\(date.getComponent(component: component))")
                 .foregroundColor(.accentColor)
-                .font(.headline)
+                .font(Font.system(size: 12))
                 .bold()
                 .background(
                     Circle()
                         .fill(.placeholder)
-                        .frame(width: 30, height: 30)
+                        .frame(width: 23, height: 23)
                 )
             
             // description
             Text(componentName)
                 .foregroundColor(.gray)
-                .font(.caption)
+                .font(Font.system(size: 12))
                 .italic()
         }
         .onReceive(timer) { _ in
             withAnimation {
-                date = fromToday.addingTimeInterval(-1)
+                date = date.addingTimeInterval(-1)
             }
         }
     }
@@ -46,9 +44,12 @@ struct KPS_CountdownTimerView: View {
 
 #Preview {
     HStack{
-        KPS_CountdownTimerView(component: .day, componentName: "Ngày")
-        KPS_CountdownTimerView(component: .hour, componentName: "Ngày")
-        KPS_CountdownTimerView(component: .minute, componentName: "Ngày")
-        KPS_CountdownTimerView(component: .second, componentName: "Ngày")
+        let date = Date(timeIntervalSinceNow: Date.getTimeInterval(component: .day))
+        
+        KPS_CountdownTimerView(date: date, component: .year, componentName: "Ngày")
+        KPS_CountdownTimerView(date: date,component: .hour, componentName: "Giờ")
+        KPS_CountdownTimerView(date: date,component: .minute, componentName: "Phút")
+        KPS_CountdownTimerView(date: date,component: .second, componentName: "Giây")
     }
+    .padding(15)
 }

@@ -23,4 +23,12 @@ struct ImageModel : Identifiable{
     ]
     
     static let flashSale = ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/Banner%20Flash%20Sale/Flash%20Sale%20Banner.jpg")
+    static let coffee = ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/Banner/Banner%20Coffee.jpg")
+    static let pepper = ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/Banner/Banner%20Tieu.jpg")
+    static let giftSet = ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/07.2024/Giftset-1920x386.jpg")
+    static let cascaraTea = ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/07.2024/Cascara-1920x386.jpg")
+    static let accessories = ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/Banner/Banner%20Phu%20Kien.jpg")
+    static let book = ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/Banner/Banner-Sach-TA-PMT.png")
+    static let equipment = ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/Banner/Banner%20May%20Moc.jpg")
+    static let material = ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/Banner/Banner%20May%20Moc.jpg")
 }

@@ -16,16 +16,31 @@ struct OrderView: View {
             VStack{
                 // search bar
                 KPS_SearchBarView(searchText: $searchText)
-                   
+                
                 ScrollView{
                     // slider
                     KPS_ImageSliderView(sliders: ImageModel.sliders)
+                    
+                    // category
+                    KPS_CategoryGridView(categories: CategoryModel.categories)
                     
                     // flashsale image
                     KPS_ImageBannerView(imageURL: ImageModel.flashSale.url)
                     
                     // flashsale items
                     KPS_HorizonalProductListView(products: ProductModel.products, isFlashSale: true)
+                    
+                    ForEach(SectionModel.sections) { section in
+                        if (!section.products.isEmpty){
+                            KPS_CategoryScrollView(name: section.name, categories: section.categories)
+                            
+                            if (!section.imageURL.isEmpty){
+                                KPS_ImageBannerView(imageURL: section.imageURL)
+                            }
+                            
+                            KPS_HorizonalProductListView(products: ProductModel.products)
+                        }
+                    }
                 }
                 .blur(radius: !searchText.isEmpty ? 5 : 0)
             }

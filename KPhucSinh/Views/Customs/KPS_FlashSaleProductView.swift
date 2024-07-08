@@ -9,6 +9,7 @@ import SwiftUI
 
 struct KPS_FlashSaleProductView: View {
     
+    private let date = Date.fromTimeInterval(Date.getTimeInterval(component: .day) * 3)
     @State var product: ProductModel
     
     var body: some View {
@@ -23,32 +24,25 @@ struct KPS_FlashSaleProductView: View {
                 } label: {
                     Image(systemName: "cart")
                         .resizable()
-                        .frame(width: 30, height: 30)
+                        .frame(width: 20, height: 20)
                 }
             }
-            .offset(x: -15)
+            .offset(x: -20, y: -5)
             
             // MARK: Thumbnail image
-            AsyncImage(url: URL(string: product.images.first!.url)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } placeholder: {
-                ProgressView()
-                    .tint(.accentColor)
-            }
-            .frame(height: 150)
+            KPS_ImageView(url: product.images.first!.url)
+                .frame(height: 130)
             
             // MARK: Time countdown
-            HStack(spacing: 20) {
+            HStack(spacing: 10) {
                 // date
-                KPS_CountdownTimerView(component: .day, componentName: "Ngày")
+                KPS_CountdownTimerView(date: date, component: .day, componentName: "Ngày")
                 // hour
-                KPS_CountdownTimerView(component: .hour, componentName: "Giờ")
+                KPS_CountdownTimerView(date: date, component: .hour, componentName: "Giờ")
                 // minute
-                KPS_CountdownTimerView(component: .minute, componentName: "Phút")
+                KPS_CountdownTimerView(date: date, component: .minute, componentName: "Phút")
                 // second
-                KPS_CountdownTimerView(component: .second, componentName: "Giây")
+                KPS_CountdownTimerView(date: date, component: .second, componentName: "Giây")
             }
             .frame(height: 50)
             
@@ -82,6 +76,11 @@ struct KPS_FlashSaleProductView: View {
         }
         .frame(width: 200)
         .containerRelativeFrame(.horizontal, count: 2, spacing: 10)
+        .overlay(alignment: .center) {
+            // badges
+            KPS_ProductBadgeView(badges: BadgeModel.badges)
+                .offset(y: -10)
+        }
     }
 }
 

@@ -12,15 +12,8 @@ struct KPS_ImageBannerView: View {
     @State var imageURL: String
     
     var body: some View {
-        AsyncImage(url: URL(string: imageURL)) { image in
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-        } placeholder: {
-            ProgressView()
-                .tint(.accentColor)
-        }
-        .frame(height: 75)
+        KPS_ImageView(url: imageURL)
+            .frame(height: 90)
     }
 }
 

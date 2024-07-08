@@ -9,9 +9,9 @@ import SwiftUI
 
 struct KPS_PriceView: View {
     
-    @State var price: Double
-    @State var priceAfterDevide100: Double
-    @State var isOldPrice: Bool = false
+    var price: Double
+    var priceAfterDevide100: Double
+    var isOldPrice: Bool = false
     
     var body: some View {
         HStack {

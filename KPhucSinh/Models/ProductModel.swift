@@ -16,12 +16,12 @@ struct ProductModel: Identifiable{
     let description: String
     let images: [ImageModel]
     
-    static let product = ProductModel(
+    static let flashSaleProduct = ProductModel(
         id: 1,
-        name: "HỘP TRÀ CASCARA BLUE SƠN LA CAO CẤP - 112.5G (CÓ HỘP QUÀ ĐI KÈM)",
-        weight: "112,5 Gram",
-        price: 219,
-        priceAfterDevide100: 999,
+        name: "CÀ PHÊ K DELIGHT 3 IN 1 - 612 G",
+        weight: "612 Gram",
+        price: 158,
+        priceAfterDevide100: 000,
         description: """
 TRÀ CASCARA cao cấp Blue Sơn La Specialty được mệnh danh là “cherry” của vùng đồi núi Tây Bắc Việt Nam.
 Bộ sản phẩm bao gồm: Hộp đựng cao cấp, sang trọng & Hộp thiếc trà túi lọc Cascara 112,5g
@@ -50,6 +50,44 @@ Gọi trực tiếp vào số hotline: 0911 197 705
 Chat tư vấn trực tiếp trên FANPAGE K COFFEE https://www.facebook.com/KcoffeePhucSinh
 """,
         images: [
+            ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/Anh-SP-06.2024/FINAL-DELIGHT-612.jpg"),
+            ImageModel(id: 2, url: "https://cdn.kphucsinh.vn/Media/CTKM-07.2024/Website-2000x2000px-DELIGHT612.jpg"),
+            ImageModel(id: 3, url: "https://cdn.kphucsinh.vn/Media/CTKM-07.2024/Website-2000x2000px-DELIGHT612-X3.jpg"),
+            ImageModel(id: 4, url: "https://cdn.kphucsinh.vn/Media/anh%20logo%20kcoffee/2022-SP-HOA-TAN-DELIGHT-612-1-min.png"),
+            ImageModel(id: 5, url: "https://cdn.kphucsinh.vn/Media/anh%20logo%20kcoffee/2022-SP-HOA-TAN-DELIGHT-612-4-min.png"),
+            ImageModel(id: 6, url: "https://cdn.kphucsinh.vn/Media/anh%20logo%20kcoffee/2022-SP-HOA-TAN-DELIGHT-85-3-min.png"),
+            ImageModel(id: 7, url: "https://cdn.kphucsinh.vn/Media/C%C3%A0%20ph%C3%AA/WEB-Mockup-612-Carton.png"),
+            ImageModel(id: 8, url: "https://cdn.kphucsinh.vn/Media/anh%20logo%20kcoffee/2022-SP-HOA-TAN-HDSD.png"),
+            ImageModel(id: 9, url: "https://cdn.kphucsinh.vn/Media/SP-Nen-Trang/kdelight612.jpg")
+        ]
+    )
+    
+    static let product = ProductModel(
+        id: 2,
+        name: "HỘP TRÀ CASCARA BLUE SƠN LA CAO CẤP - 112.5G (CÓ HỘP QUÀ ĐI KÈM)",
+        weight: "112,5 Gram",
+        price: 219,
+        priceAfterDevide100: 999,
+        description: """
+CÀ PHÊ HÒA TAN K DELIGHT 3 IN 1 - VỊ ÊM NHẸ THƠM NGON - CÀ PHÊ NGUYÊN CHẤT 100% VỊ TỰ NHIÊN
+
+Cà phê sữa hòa tan KCoffee Delight 3in1 được làm từ nguồn nguyên liệu chất lượng với những hạt cà phê sạch, thuần khiết phối hợp hoàn hảo cùng đường sữa đem đến một hương vị ngọt ngào, thơm béo hòa quyện cùng vị đắng đặc trưng giúp đánh thức vị giác, khơi dậy hứng khởi cho ngày làm việc tỉnh táo, tràn đầy năng lượng.
+
+CAM KẾT 3 KHÔNG:
+√ KHÔNG MÀU HÓA HỌC
+√ KHÔNG MÙI GÂY HẠI
+√ KHÔNG TRỘN ĐẬU BẮP, ĐẬU NÀNH
+
+CHỨNG NHẬN
+√ Là thương hiệu duy nhất tại Việt Nam đạt chứng nhận  UTZ & BRC toàn cầu
+√ Sản phẩm được sản xuất theo quy tình khép kín đạt tiêu chuẩn quốc tế - FROM FARM TO CUP
+
+
+K COFFEE là thương hiệu thuộc Tập đoàn K PHÚC SINH - Tập đoàn sản xuất, xuất khẩu Cà phê và Hồ tiêu hàng đầu Việt Nam với doanh thu 6.000 tỷ mỗi năm. K PHÚC SINH có quy trình sản xuất khép kín từ vườn, nhà máy đến người tiêu dùng trong nước và quốc tế một chất lượng duy nhất - ONE QUALITY
+Sản phẩm của Tập đoàn K PHÚC SINH đạt tiêu chuẩn quốc tế UTZ, Rainforest, BRC
+K COFFEE - CÀ PHÊ CHẤT LƯỢNG QUỐC TẾ
+""",
+        images: [
             ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/Anh-SP-06.2024/FINAL-Cascara-GB-1125.jpg"),
             ImageModel(id: 2, url: "https://cdn.kphucsinh.vn/Media/CTKM-06.2024/Artboard-1-copy-25-100.jpg"),
             ImageModel(id: 3, url: "https://cdn.kphucsinh.vn/Media/12.2023/z5219008971093-f8be9a9fe8a2bc3d7f794c686fdaabf1.jpg"),
@@ -63,6 +101,7 @@ Chat tư vấn trực tiếp trên FANPAGE K COFFEE https://www.facebook.com/Kco
     )
     
     static let products: [ProductModel] = [
+        ProductModel.flashSaleProduct,
         ProductModel.product,
         ProductModel.product,
         ProductModel.product,

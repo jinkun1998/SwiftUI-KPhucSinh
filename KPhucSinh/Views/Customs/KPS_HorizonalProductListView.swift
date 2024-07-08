@@ -9,30 +9,46 @@ import SwiftUI
 
 struct KPS_HorizonalProductListView: View {
     
-    @State var products: [ProductModel]
-    @State var isFlashSale: Bool
+    var products: [ProductModel]
+    var isFlashSale: Bool = false
     
     var body: some View {
-        ScrollView(.horizontal){
-            HStack(spacing: 0) {
-                ForEach(ProductModel.products) { product in
-                    if (isFlashSale && products.firstIndex{$0.id == product.id} == 0) {
-                        KPS_FlashSaleProductView(product: product)
-                    }
-                    else{
-                        KPS_ProductView(product: product)
+        VStack {
+            ScrollView(.horizontal){
+                HStack(spacing: 0) {
+                    
+                    if (isFlashSale) {
+                        KPS_FlashSaleProductView(product: products.first!)
                     }
                     
-                    Divider()
+                    HStack(alignment: .bottom) {
+                        ForEach(ProductModel.products) { product in
+                            
+                            if (ProductModel.products.firstIndex{$0.id == product.id} != 0){
+                                KPS_ProductView(product: product)
+                            }
+                            
+                            Divider()
+                        }
+                    }
+                    .overlay(alignment: .topLeading) {
+                        if (isFlashSale){
+                            Text("FLASH SALES")
+                                .font(.title)
+                                .bold()
+                                .foregroundColor(Color("ProductBadgeColor"))
+                                .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 0))
+                        }
+                    }
                 }
             }
+            .contentMargins(10, for: .scrollContent)
+            .scrollTargetBehavior(.viewAligned)
+            .frame(height: isFlashSale ? 310 : 250)
         }
-        .contentMargins(10, for: .scrollContent)
-        .scrollTargetBehavior(.viewAligned)
-        .frame(height: isFlashSale ? 350 : 250)
     }
 }
 
 #Preview {
-    KPS_HorizonalProductListView(products: ProductModel.products, isFlashSale: true)
+    KPS_HorizonalProductListView(products: ProductModel.products, isFlashSale: false)
 }

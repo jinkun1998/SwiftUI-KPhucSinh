@@ -11,7 +11,7 @@ struct KPS_ImageSliderView: View {
     
     private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     @State private var index: Int = 0
-    @State var sliders: [ImageModel] = []
+    var sliders: [ImageModel] = []
     
     var body: some View {
         TabView(selection: $index){

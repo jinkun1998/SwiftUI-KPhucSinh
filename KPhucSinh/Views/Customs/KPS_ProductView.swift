@@ -15,15 +15,8 @@ struct KPS_ProductView: View {
         VStack(alignment: .center){
             
             // thumbnail image
-            AsyncImage(url: URL(string: product.images.first!.url)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } placeholder: {
-                ProgressView()
-                    .tint(.accentColor)
-            }
-            .frame(height: 150)
+            KPS_ImageView(url: product.images.first!.url)
+                .frame(height: 130)
             
             VStack(alignment: .leading) {
                 
@@ -49,6 +42,7 @@ struct KPS_ProductView: View {
                     print("added to cart")
                 } label: {
                     Image(systemName: "cart")
+                        .resizable()
                         .frame(width: 20, height: 20)
                 }
                 
@@ -56,17 +50,8 @@ struct KPS_ProductView: View {
                 
                 // price
                 HStack{
-                    Text("\(product.price, specifier: "%.0f")")
-                        .font(.system(size: 25))
-                        .bold()
-                    
                     VStack(alignment: .leading){
-                        Text(".\(product.priceAfterDevide100, specifier: "%.0f")")
-                            .font(.system(size: 9))
-                            .fontWeight(.semibold)
-                        Text("VND")
-                            .font(.system(size: 9))
-                            .fontWeight(.semibold)
+                        KPS_PriceView(price: product.price, priceAfterDevide100: product.priceAfterDevide100)
                     }
                     .offset(x: -5)
                 }
