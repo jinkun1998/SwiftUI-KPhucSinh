@@ -12,8 +12,8 @@ struct KPS_ImageBannerView: View {
     @State var imageURL: String
     
     var body: some View {
-        KPS_ImageView(url: imageURL)
-            .frame(height: 90)
+        KPS_ImageView(url: imageURL, aspectRatio: .fill)
+            .frame(height: UIDevice.current.userInterfaceIdiom == .phone ? 90 : 210)
     }
 }
 

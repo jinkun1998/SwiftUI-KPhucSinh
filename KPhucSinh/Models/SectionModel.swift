@@ -15,7 +15,7 @@ struct SectionModel: Identifiable{
     var products: [ProductModel] = []
     
     static let sections = [
-        SectionModel(name: "sản phẩm nổi bật"),
+        SectionModel(name: "sản phẩm nổi bật", products: ProductModel.products),
         SectionModel(name: "cà phê", imageURL: ImageModel.coffee.url, categories: CategoryModel.categories, products: ProductModel.products),
         SectionModel(name: "tiêu", imageURL: ImageModel.pepper.url, categories: CategoryModel.categories, products: ProductModel.products),
         SectionModel(name: "gift set", imageURL: ImageModel.giftSet.url, categories: CategoryModel.categories, products: ProductModel.products),

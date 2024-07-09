@@ -58,10 +58,11 @@ struct KPS_ProductView: View {
                 .foregroundColor(.accentColor)
             }
             .frame(height: 40)
-            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
         }
         .frame(width: 160)
-        .containerRelativeFrame(.horizontal, count: 2, spacing: 10)
+        .containerRelativeFrame(.horizontal, 
+                                count: UIDevice.current.userInterfaceIdiom == .phone ? 2 : 5,
+                                spacing: 10)
         .overlay(alignment: .center) {
             // badges
             KPS_ProductBadgeView(badges: BadgeModel.badges)

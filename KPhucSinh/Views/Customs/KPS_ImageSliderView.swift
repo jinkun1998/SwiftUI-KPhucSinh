@@ -28,7 +28,7 @@ struct KPS_ImageSliderView: View {
             }
         }
         .tabViewStyle(.page)
-        .frame(height: 185)
+        .frame(height: UIDevice.current.userInterfaceIdiom == .phone ? 185 : 285)
         .onReceive(timer) { _ in
             withAnimation {
                 index = index < ImageModel.sliders.count ? index + 1 : 0

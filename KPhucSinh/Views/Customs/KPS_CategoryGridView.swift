@@ -33,7 +33,10 @@ struct KPS_CategoryGridView: View {
                             .foregroundColor(category.isNew ? Color("ProductBadgeColor") : .accentColor)
                             .lineLimit(1)
                     }
-                    .frame(width: 90, height: 60)
+                    .frame(height: 60)
+                    .containerRelativeFrame(.horizontal,
+                                            count: UIDevice.current.userInterfaceIdiom == .phone ? 4 : 5,
+                                            spacing: 10)
                 }
             }
         }

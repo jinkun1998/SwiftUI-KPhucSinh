@@ -17,7 +17,7 @@ struct OrderView: View {
                 // search bar
                 KPS_SearchBarView(searchText: $searchText)
                 
-                ScrollView{
+                ScrollView {
                     // slider
                     KPS_ImageSliderView(sliders: ImageModel.sliders)
                     

@@ -14,7 +14,7 @@ struct KPS_HorizonalProductListView: View {
     
     var body: some View {
         VStack {
-            ScrollView(.horizontal){
+            ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 0) {
                     
                     if (isFlashSale) {
@@ -26,9 +26,9 @@ struct KPS_HorizonalProductListView: View {
                             
                             if (ProductModel.products.firstIndex{$0.id == product.id} != 0){
                                 KPS_ProductView(product: product)
+                                
+                                Divider()
                             }
-                            
-                            Divider()
                         }
                     }
                     .overlay(alignment: .topLeading) {
@@ -46,6 +46,7 @@ struct KPS_HorizonalProductListView: View {
             .scrollTargetBehavior(.viewAligned)
             .frame(height: isFlashSale ? 310 : 250)
         }
+        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
     }
 }
 
