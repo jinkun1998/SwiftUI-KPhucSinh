@@ -41,6 +41,7 @@ struct KPS_CategoryGridView: View {
             }
         }
         .padding(EdgeInsets(top: 20, leading: 5, bottom: 20, trailing: 5))
+        .scrollTargetBehavior(.viewAligned)
     }
 }
 

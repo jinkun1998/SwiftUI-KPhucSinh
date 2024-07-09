@@ -42,11 +42,10 @@ struct KPS_HorizonalProductListView: View {
                     }
                 }
             }
-            .contentMargins(10, for: .scrollContent)
-            .scrollTargetBehavior(.viewAligned)
             .frame(height: isFlashSale ? 310 : 250)
         }
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+        .scrollTargetBehavior(.viewAligned)
     }
 }
 

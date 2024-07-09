@@ -72,15 +72,14 @@ struct KPS_FlashSaleProductView: View {
                 KPS_PriceView(price: product.price, priceAfterDevide100: product.priceAfterDevide100)
             }
             .frame(height: 40)
-            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
         }
         .frame(width: 200)
-//        .containerRelativeFrame(.horizontal, count: 2, spacing: 10)
         .overlay(alignment: .center) {
             // badges
             KPS_ProductBadgeView(badges: BadgeModel.badges)
                 .offset(y: -10)
         }
+        .padding()
     }
 }
 
