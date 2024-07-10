@@ -19,16 +19,22 @@ struct OrderView: View {
                 
                 ScrollView {
                     // slider
-                    KPS_ImageSliderView(sliders: ImageModel.sliders)
+                    KPS_ImageSliderView(
+                        sliders: ImageModel.sliders,
+                        aspectRatio: .fill,
+                        indexDisplayMode: .automatic,
+                        height: UIDevice.current.userInterfaceIdiom == .phone ? 185 : 285,
+                        index: .constant(0)
+                    )
                     
                     // category
-                    KPS_CategoryGridView(categories: CategoryModel.categories)
+                    CategoryGridView(categories: CategoryModel.categories)
                     
                     // flashsale image
                     KPS_ImageBannerView(imageURL: ImageModel.flashSale.url)
                     
                     // flashsale items
-                    KPS_HorizonalProductListView(products: ProductModel.products, isFlashSale: true)
+                    HorizonalProductListView(products: ProductModel.products, isFlashSale: true)
                     
                     ForEach(SectionModel.sections) { section in
                         if (!section.products.isEmpty){
@@ -38,7 +44,7 @@ struct OrderView: View {
                                 KPS_ImageBannerView(imageURL: section.imageURL)
                             }
                             
-                            KPS_HorizonalProductListView(products: ProductModel.products)
+                            HorizonalProductListView(products: ProductModel.products)
                         }
                     }
                 }

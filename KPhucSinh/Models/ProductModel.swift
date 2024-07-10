@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ProductModel: Identifiable{
+struct ProductModel: Identifiable {
     let id: Int
     let name: String
     let weight: String
     let price: Double
-    let priceAfterDevide100: Double
+    let priceAfterDevide1000: Double
     let description: String
     let images: [ImageModel]
     
@@ -21,7 +21,7 @@ struct ProductModel: Identifiable{
         name: "CÀ PHÊ K DELIGHT 3 IN 1 - 612 G",
         weight: "612 Gram",
         price: 158,
-        priceAfterDevide100: 000,
+        priceAfterDevide1000: 000,
         description: """
 TRÀ CASCARA cao cấp Blue Sơn La Specialty được mệnh danh là “cherry” của vùng đồi núi Tây Bắc Việt Nam.
 Bộ sản phẩm bao gồm: Hộp đựng cao cấp, sang trọng & Hộp thiếc trà túi lọc Cascara 112,5g
@@ -67,7 +67,7 @@ Chat tư vấn trực tiếp trên FANPAGE K COFFEE https://www.facebook.com/Kco
         name: "HỘP TRÀ CASCARA BLUE SƠN LA CAO CẤP - 112.5G (CÓ HỘP QUÀ ĐI KÈM)",
         weight: "112,5 Gram",
         price: 219,
-        priceAfterDevide100: 999,
+        priceAfterDevide1000: 999,
         description: """
 CÀ PHÊ HÒA TAN K DELIGHT 3 IN 1 - VỊ ÊM NHẸ THƠM NGON - CÀ PHÊ NGUYÊN CHẤT 100% VỊ TỰ NHIÊN
 

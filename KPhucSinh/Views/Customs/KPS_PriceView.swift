@@ -21,7 +21,7 @@ struct KPS_PriceView: View {
             
             if (price > 0){
                 VStack(alignment: .leading){
-                    Text(".\(priceAfterDevide100, specifier: "%.0f")")
+                    Text(".\(priceAfterDevide100, specifier: priceAfterDevide100 > 0 ? "%.0f" : "000")")
                         .font(.system(size: 9))
                         .fontWeight(.semibold)
                     Text("VND")
@@ -37,5 +37,5 @@ struct KPS_PriceView: View {
 }
 
 #Preview {
-    KPS_PriceView(price: 999, priceAfterDevide100: 999)
+    KPS_PriceView(price: 999, priceAfterDevide100: 000)
 }

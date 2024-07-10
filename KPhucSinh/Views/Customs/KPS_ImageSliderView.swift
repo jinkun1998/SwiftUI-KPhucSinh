@@ -10,25 +10,21 @@ import SwiftUI
 struct KPS_ImageSliderView: View {
     
     private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
-    @State private var index: Int = 0
     var sliders: [ImageModel] = []
+    var aspectRatio: ContentMode
+    var indexDisplayMode: PageTabViewStyle.IndexDisplayMode
+    var width: CGFloat = .infinity
+    var height: CGFloat = .infinity
+    @Binding var index: Int
     
     var body: some View {
         TabView(selection: $index){
             ForEach(sliders) { sliderImage in
-                AsyncImage(url: URL(string: sliderImage.url)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                } placeholder: {
-                    ProgressView()
-                        .tint(.accentColor)
-                }
-                
+                KPS_ImageView(url: sliderImage.url, aspectRatio: aspectRatio)
             }
         }
-        .tabViewStyle(.page)
-        .frame(height: UIDevice.current.userInterfaceIdiom == .phone ? 185 : 285)
+        .tabViewStyle(.page(indexDisplayMode: indexDisplayMode))
+        .frame(width: width, height: height)
         .onReceive(timer) { _ in
             withAnimation {
                 index = index < ImageModel.sliders.count ? index + 1 : 0
@@ -38,5 +34,11 @@ struct KPS_ImageSliderView: View {
 }
 
 #Preview {
-    KPS_ImageSliderView(sliders: ImageModel.sliders)
+    KPS_ImageSliderView(
+        sliders: ImageModel.sliders,
+        aspectRatio: .fill,
+        indexDisplayMode: .automatic,
+        height: UIDevice.current.userInterfaceIdiom == .phone ? 185 : 285,
+        index: .constant(0)
+    )
 }

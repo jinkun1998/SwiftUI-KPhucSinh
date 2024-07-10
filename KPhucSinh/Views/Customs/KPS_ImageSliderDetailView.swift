@@ -9,7 +9,6 @@ import SwiftUI
 
 struct KPS_ImageSliderDetailView: View {
     
-    private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     @State private var index: Int = 0
     var sliders: [ImageModel] = []
     
@@ -27,7 +26,7 @@ struct KPS_ImageSliderDetailView: View {
                 HStack {
                     ForEach(sliders) { slider in
                         KPS_ImageView(url: slider.url, aspectRatio: .fill)
-                            .frame(width: 80, height: 80)
+                            .frame(width: 70, height: 70)
                             .overlay(alignment: .center, content: {
                                 if (index == sliders.firstIndex(where: {$0.id == slider.id})!) {
                                     Rectangle()
@@ -36,7 +35,7 @@ struct KPS_ImageSliderDetailView: View {
                                 }
                             })
                             .onTapGesture {
-                                withAnimation(.linear(duration: 5)) {
+                                withAnimation(.default) {
                                     index = sliders.firstIndex(where: {$0.id == slider.id})!
                                 }
                             }

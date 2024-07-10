@@ -15,30 +15,12 @@ struct ProductBadgeView: View {
         VStack{
             ForEach(badges, id: \.name) { badge in
                 if (badge.isSale){
-                    Text(badge.name)
-                        .font(Font.system(size: 13))
-                        .fontWeight(.heavy)
-                        .frame(height: 13)
-                        .foregroundColor(.white)
-                        .padding(5)
-                        .background(
-                            RoundedRectangle(cornerRadius: 5)
-                                .foregroundColor(Color("ProductBadgeColor"))
-                        )
+                    KPS_BadgeView(badge: badge)
                         .rotationEffect(Angle(degrees: 90))
                         .offset(x: 55, y: -100)
                 }
                 else{
-                    Text(badge.name)
-                        .font(Font.system(size: 13))
-                        .fontWeight(.heavy)
-                        .frame(height: 13)
-                        .foregroundColor(.white)
-                        .padding(5)
-                        .background(
-                            RoundedRectangle(cornerRadius: 5)
-                                .foregroundColor(Color("ProductBadgeColor"))
-                        )
+                    KPS_BadgeView(badge: badge)
                         .offset(x:-25, y: -90)
                 }
             }

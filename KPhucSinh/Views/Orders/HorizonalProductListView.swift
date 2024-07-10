@@ -8,48 +8,54 @@
 import SwiftUI
 
 struct HorizonalProductListView: View {
-
+    
     var products: [ProductModel]
     var isFlashSale: Bool = false
     
     var body: some View {
-        VStack {
-            ScrollView(.horizontal, showsIndicators: false){
-                HStack(spacing: 0) {
-                    
-                    if (isFlashSale) {
-                        KPS_FlashSaleProductView(product: products.first!)
-                    }
-                    
-                    HStack(alignment: .bottom) {
-                        ForEach(ProductModel.products) { product in
-                            
-                            if (ProductModel.products.firstIndex{$0.id == product.id} != 0){
-                                KPS_ProductView(product: product)
-                                    .containerRelativeFrame(.horizontal,
-                                                            count: UIDevice.current.userInterfaceIdiom == .phone ? 2 : 4,
-                                                            spacing: 0)
+        NavigationView {
+            VStack {
+                ScrollView(.horizontal, showsIndicators: false){
+                    HStack(spacing: 0) {
+                        
+                        if (isFlashSale) {
+                            KPS_FlashSaleProductView(product: products.first!)
+                        }
+                        
+                        HStack(alignment: .bottom) {
+                            ForEach(ProductModel.products) { product in
                                 
-                                Divider()
+                                if (ProductModel.products.firstIndex{$0.id == product.id} != 0){
+                                    NavigationLink {
+                                        OrderDetailView(product: product)
+                                    } label: {
+                                        KPS_ProductView(product: product)
+                                            .containerRelativeFrame(.horizontal,
+                                                                    count: UIDevice.current.userInterfaceIdiom == .phone ? 2 : 4,
+                                                                    spacing: 0)
+                                        
+                                        Divider()
+                                    }
+                                }
                             }
                         }
-                    }
-                    .overlay(alignment: .topLeading) {
-                        if (isFlashSale){
-                            Text("FLASH SALES")
-                                .font(.title)
-                                .bold()
-                                .foregroundColor(Color("ProductBadgeColor"))
-                                .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 0))
+                        .overlay(alignment: .topLeading) {
+                            if (isFlashSale){
+                                Text("FLASH SALES")
+                                    .font(.title)
+                                    .bold()
+                                    .foregroundColor(Color("ProductBadgeColor"))
+                                    .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 0))
+                            }
                         }
+                        .scrollTargetLayout()
                     }
-                    .scrollTargetLayout()
                 }
+                .frame(height: isFlashSale ? 310 : 250)
             }
-            .frame(height: isFlashSale ? 310 : 250)
+            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+            .scrollTargetBehavior(.viewAligned)
         }
-        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-        .scrollTargetBehavior(.viewAligned)
     }
 }
 

@@ -69,14 +69,14 @@ struct KPS_FlashSaleProductView: View {
                 //old price
                 KPS_PriceView(price: 0, priceAfterDevide100: 0, isOldPrice: true)
                 // new price
-                KPS_PriceView(price: product.price, priceAfterDevide100: product.priceAfterDevide100)
+                KPS_PriceView(price: product.price, priceAfterDevide100: product.priceAfterDevide1000)
             }
             .frame(height: 40)
         }
         .frame(width: 200)
         .overlay(alignment: .center) {
             // badges
-            KPS_ProductBadgeView(badges: BadgeModel.badges)
+            ProductBadgeView(badges: BadgeModel.badges)
                 .offset(y: -10)
         }
         .padding()

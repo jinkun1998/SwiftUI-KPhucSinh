@@ -51,7 +51,7 @@ struct KPS_ProductView: View {
                 // price
                 HStack{
                     VStack(alignment: .leading){
-                        KPS_PriceView(price: product.price, priceAfterDevide100: product.priceAfterDevide100)
+                        KPS_PriceView(price: product.price, priceAfterDevide100: product.priceAfterDevide1000)
                     }
                     .offset(x: -5)
                 }
@@ -65,7 +65,7 @@ struct KPS_ProductView: View {
                                 spacing: 10)
         .overlay(alignment: .center) {
             // badges
-            KPS_ProductBadgeView(badges: BadgeModel.badges)
+            ProductBadgeView(badges: BadgeModel.badges)
         }
     }
 }
