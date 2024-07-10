@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct KPS_HorizonalProductListView: View {
-    
+struct HorizonalProductListView: View {
+
     var products: [ProductModel]
     var isFlashSale: Bool = false
     
@@ -26,6 +26,9 @@ struct KPS_HorizonalProductListView: View {
                             
                             if (ProductModel.products.firstIndex{$0.id == product.id} != 0){
                                 KPS_ProductView(product: product)
+                                    .containerRelativeFrame(.horizontal,
+                                                            count: UIDevice.current.userInterfaceIdiom == .phone ? 2 : 4,
+                                                            spacing: 0)
                                 
                                 Divider()
                             }
@@ -40,6 +43,7 @@ struct KPS_HorizonalProductListView: View {
                                 .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 0))
                         }
                     }
+                    .scrollTargetLayout()
                 }
             }
             .frame(height: isFlashSale ? 310 : 250)
@@ -50,5 +54,5 @@ struct KPS_HorizonalProductListView: View {
 }
 
 #Preview {
-    KPS_HorizonalProductListView(products: ProductModel.products, isFlashSale: false)
+    HorizonalProductListView(products: ProductModel.products, isFlashSale: false)
 }

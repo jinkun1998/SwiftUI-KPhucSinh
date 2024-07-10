@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct KPS_ProductBadgeView: View {
+struct ProductBadgeView: View {
     
     var badges: [BadgeModel]
     
@@ -47,5 +47,5 @@ struct KPS_ProductBadgeView: View {
 }
 
 #Preview {
-    KPS_ProductBadgeView(badges: BadgeModel.badges)
+    ProductBadgeView(badges: BadgeModel.badges)
 }
