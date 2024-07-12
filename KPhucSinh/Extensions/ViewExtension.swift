@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
+
+extension View {
+    
+    func useStandardToolBarStyle() -> some View {
+        self
+            .modifier(StandardToolbarStyle())
+    }
+}

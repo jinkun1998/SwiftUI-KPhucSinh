@@ -44,7 +44,7 @@ struct KPS_FlashSaleProductView: View {
                 // second
                 KPS_CountdownTimerView(date: date, component: .second, componentName: "Giây")
             }
-            .frame(height: 50)
+            .frame(height: 35)
             
             // MARK: Name + unit
             VStack(alignment: .leading) {
@@ -62,7 +62,7 @@ struct KPS_FlashSaleProductView: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
             }
-            .frame(height: 30)
+            .frame(height: 25)
             
             // MARK: Price
             HStack(alignment: .center){
@@ -71,13 +71,12 @@ struct KPS_FlashSaleProductView: View {
                 // new price
                 KPS_PriceView(price: product.price, priceAfterDevide100: product.priceAfterDevide1000)
             }
-            .frame(height: 40)
+            .frame(height: 35)
         }
         .frame(width: 200)
         .overlay(alignment: .center) {
             // badges
             ProductBadgeView(badges: BadgeModel.badges)
-                .offset(y: -10)
         }
         .padding()
     }

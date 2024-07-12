@@ -33,7 +33,7 @@ struct KPS_ProductView: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
             }
-            .frame(height: 30)
+            .frame(height: 35)
             
             HStack(alignment: .center){
                 
@@ -60,9 +60,6 @@ struct KPS_ProductView: View {
             .frame(height: 40)
         }
         .frame(width: 160)
-        .containerRelativeFrame(.horizontal, 
-                                count: UIDevice.current.userInterfaceIdiom == .phone ? 2 : 5,
-                                spacing: 10)
         .overlay(alignment: .center) {
             // badges
             ProductBadgeView(badges: BadgeModel.badges)

@@ -21,6 +21,7 @@ struct KPS_ImageSliderView: View {
         TabView(selection: $index){
             ForEach(sliders) { sliderImage in
                 KPS_ImageView(url: sliderImage.url, aspectRatio: aspectRatio)
+                    .tag(sliderImage.id - 1)
             }
         }
         .tabViewStyle(.page(indexDisplayMode: indexDisplayMode))

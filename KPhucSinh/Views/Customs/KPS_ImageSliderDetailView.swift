@@ -23,27 +23,39 @@ struct KPS_ImageSliderDetailView: View {
             )
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(sliders) { slider in
-                        KPS_ImageView(url: slider.url, aspectRatio: .fill)
-                            .frame(width: 70, height: 70)
-                            .overlay(alignment: .center, content: {
-                                if (index == sliders.firstIndex(where: {$0.id == slider.id})!) {
-                                    Rectangle()
-                                        .stroke(style: StrokeStyle(lineWidth: 3.5))
-                                        .foregroundColor(.gray)
+                ScrollViewReader { proxy in
+                    HStack {
+                        ForEach(sliders) { slider in
+                            KPS_ImageView(url: slider.url, aspectRatio: .fill)
+                                .frame(width: 50, height: 50)
+                                .padding(7)
+                                .overlay(alignment: .center, content: {
+                                    if (index == sliders.firstIndex(where: {$0.id == slider.id})!) {
+                                        Rectangle()
+                                            .stroke(style: StrokeStyle(lineWidth: 4))
+                                            .foregroundColor(.gray)
+                                            .onAppear {
+                                                withAnimation {
+                                                    proxy.scrollTo(index, anchor: .center)
+                                                }
+                                            }
+                                    }
+                                })
+                                .onTapGesture {
+                                    withAnimation(.default) {
+                                        index = sliders.firstIndex(where: {$0.id == slider.id})!
+                                    }
                                 }
-                            })
-                            .onTapGesture {
-                                withAnimation(.default) {
-                                    index = sliders.firstIndex(where: {$0.id == slider.id})!
-                                }
-                            }
+                                .containerRelativeFrame(.horizontal, count: 6, spacing: 0)
+                                .id(slider.id)
+                        }
                     }
+                    .padding(0)
+                    .scrollTargetLayout()
                 }
-                .padding(5)
             }
         }
+        .scrollTargetBehavior(ViewAlignedScrollTargetBehavior())
     }
 }
 

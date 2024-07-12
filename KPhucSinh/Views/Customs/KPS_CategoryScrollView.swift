@@ -36,11 +36,8 @@ struct KPS_CategoryScrollView: View {
             Button {
                 print("see all")
             } label: {
-                Text("»")
-                    .font(.title)
-                    .bold()
+                Image(systemName: "chevron.forward.2")
                     .frame(width: 30)
-                    .offset(y: 5)
             }
         }
         .frame(height: 20)
