@@ -10,20 +10,33 @@ import SwiftUI
 struct KPS_Button: View {
     
     var title: String
+    var style: ButtonStyle = .normal
+    var width: CGFloat = .infinity
+    var height: CGFloat = .infinity
+    
+    enum ButtonStyle {
+        case normal
+        case full
+    }
     
     var body: some View {
         HStack {
             
-            Spacer()
+            if style == .full {
+                Spacer()
+            }
             
             Text(title)
                 .font(.title3)
                 .foregroundColor(.white)
                 .bold()
             
-            Spacer()
+            if style == .full {
+                Spacer()
+            }
         }
-        .frame(height: 60)
+        .padding()
+        .frame(width: width, height: height)
         .background(content: {
             Rectangle()
                 .fill(Color.accentColor)

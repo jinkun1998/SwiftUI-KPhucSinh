@@ -14,6 +14,7 @@ struct ProductModel: Identifiable {
     let price: Double
     let priceAfterDevide1000: Double
     let description: String
+    let specification: String
     let images: [ImageModel]
     
     static let flashSaleProduct = ProductModel(
@@ -49,6 +50,23 @@ THÔNG TIN MUA HÀNG
 Gọi trực tiếp vào số hotline: 0911 197 705
 Chat tư vấn trực tiếp trên FANPAGE K COFFEE https://www.facebook.com/KcoffeePhucSinh
 """,
+        specification: """
+        ĐÓNG GÓI
+        √ Túi 36 gói x 17g 
+        √ Thùng 12 túi  
+        
+        THÀNH PHẦN: 100% Cà phê nguyên chất Arabica & Robusta.
+        THƯƠNG HIỆU: K Coffee
+        XUẤT XỨ: Việt Nam
+        ĐÓNG GÓI: Túi 36 gói x 17g 
+        HSD: 18 tháng kể từ ngày sản xuất
+        
+        HƯỚNG DẪN SỬ DỤNG:
+        ▪️ Bước 1: Cho 2 gói cà phê vào ly
+        ▪️ Bước 2: Đổ 70 ml nước sôi vào 
+        ▪️ Bước 3: Khuấy đều 
+        ▪️ Bước 4: Thêm đá tùy sở thích
+        """,
         images: [
             ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/Anh-SP-06.2024/FINAL-DELIGHT-612.jpg"),
             ImageModel(id: 2, url: "https://cdn.kphucsinh.vn/Media/CTKM-07.2024/Website-2000x2000px-DELIGHT612.jpg"),
@@ -86,6 +104,26 @@ CHỨNG NHẬN
 K COFFEE là thương hiệu thuộc Tập đoàn K PHÚC SINH - Tập đoàn sản xuất, xuất khẩu Cà phê và Hồ tiêu hàng đầu Việt Nam với doanh thu 6.000 tỷ mỗi năm. K PHÚC SINH có quy trình sản xuất khép kín từ vườn, nhà máy đến người tiêu dùng trong nước và quốc tế một chất lượng duy nhất - ONE QUALITY
 Sản phẩm của Tập đoàn K PHÚC SINH đạt tiêu chuẩn quốc tế UTZ, Rainforest, BRC
 K COFFEE - CÀ PHÊ CHẤT LƯỢNG QUỐC TẾ
+""",
+        specification: """
+ĐÓNG GÓI
+√ Hộp 25 túi x 4,5g  
+√ Thùng 20 hộp  
+
+THÀNH PHẦN:  100% vỏ quả cà phê Arabica chín đỏ
+THƯƠNG HIỆU: K Coffee
+XUẤT XỨ: Việt Nam 
+HƯỚNG DẪN SỬ DỤNG:
+
+Bước 1: Nhiệt độ nước sôi dùng để pha chuẩn nhất là 56 - 62 độ C
+
+Bước 2: Tráng ấm, đây là bước rất cần thiết để đảm bảo pha trà túi lọc chuẩn ngon. 
+
+Bước 3: Lấy một gói trà túi lọc cho vào ấm pha trà, châm nước nóng 56 – 62 độ C. 
+
+Bước 4: Chờ trà ngấm và thưởng thức. Trà Cascara thì cần khoảng 5 – 6 phút.
+
+Bước 5: Chờ trà nguội một chút rồi khuấy nhẹ và thưởng thức có thể cho thêm đường, kết hợp với những hương vị, nguyên liệu khác theo sở thích như đá, cham, cam, quế, hồi.
 """,
         images: [
             ImageModel(id: 1, url: "https://cdn.kphucsinh.vn/Media/Anh-SP-06.2024/FINAL-Cascara-GB-1125.jpg"),

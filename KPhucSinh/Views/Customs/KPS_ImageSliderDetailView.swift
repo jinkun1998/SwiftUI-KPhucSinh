@@ -18,7 +18,7 @@ struct KPS_ImageSliderDetailView: View {
                 sliders: sliders,
                 aspectRatio: .fit,
                 indexDisplayMode: .never,
-                height: 400,
+                height: 300,
                 index: $index
             )
             

@@ -12,6 +12,9 @@ struct OrderDetailView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
     @State private var quantity = 1
+    @State private var pickerSelection: Int = 0
+    @State private var ratingText: String = ""
+    
     var product: ProductModel
     
     var body: some View {
@@ -86,7 +89,100 @@ struct OrderDetailView: View {
                         }
                         
                         // thong tin | dac tinh
+                        VStack {
+                            HStack(spacing: 20) {
+                                Text("THÔNG TIN")
+                                    .font(.title2)
+                                    .bold()
+                                    .foregroundColor(pickerSelection == 0 ? Color("ItemCartColor") : Color.secondary)
+                                    .onTapGesture {
+                                        pickerSelection = 0
+                                    }
+                                
+                                Divider()
+                                    .overlay(Color.accentColor)
+                                
+                                Text("ĐẶC TÍNH")
+                                    .font(.title2)
+                                    .bold()
+                                    .foregroundColor(pickerSelection == 1 ? Color("ItemCartColor") : Color.secondary)
+                                    .onTapGesture {
+                                        pickerSelection = 1
+                                    }
+                            }
+                            
+                            Text(pickerSelection == 0 ? product.description : product.specification)
+                                .foregroundStyle(.secondary)
+                                .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
+                        }
                         
+                        VStack(alignment: .leading) {
+                            Text("NHẬN XÉT VỀ SẢN PHẨM")
+                                .font(.title2)
+                                .bold()
+                            
+                            HStack {
+                                Text("MỨC ĐỘ HÀI LÒNG")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                
+                                Spacer()
+                                
+                                ForEach((1...5), id: \.self) { _ in
+                                    Image(systemName: "star")
+                                        .symbolRenderingMode(.multicolor)
+                                }
+                            }
+                            
+                            VStack(content: {
+                                TextField("Hãy cho KPhucSinh biết ý kiến của bạn",
+                                          text: $ratingText,
+                                          prompt: Text("Hãy cho KPhucSinh biết ý kiến của bạn"),
+                                          axis: .vertical)
+                                .font(.title3)
+                                .multilineTextAlignment(.leading)
+                                
+                                Spacer()
+                            })
+                            .padding()
+                            .background(content: {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(style: StrokeStyle(lineWidth: 2))
+                                    .opacity(0.3)
+                            })
+                            .frame(height: 150)
+                            
+                            HStack {
+                                Spacer()
+                                
+                                KPS_Button(title: "GỬI NHẬN XÉT", height: 50)
+                            }
+                        }
+                        
+                        Divider()
+                        
+                        VStack(alignment: .leading) {
+                            Text("Đánh giá của khách hàng")
+                                .font(.title2)
+                                .bold()
+                            
+                            ForEach(1...2, id: \.self) {index in
+                                HStack(spacing: 20) {
+                                    KPS_ImageView(
+                                        url: "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+                                        aspectRatio: .fill)
+                                        .frame(width: 50, height: 50)
+                                        .clipShape(.circle)
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text("Tên của khách hàng")
+                                            .bold()
+                                        
+                                        Text("Cà phê uống vừa, béo. Rất phù hợp với mình!")
+                                    }
+                                }
+                            }
+                        }
                     }
                     .padding()
                     .background(content: {
@@ -104,7 +200,7 @@ struct OrderDetailView: View {
             Button(action: {
                 print("added to cart")
             }, label: {
-                KPS_Button(title: "THÊM VÀO GIỎ HÀNG")
+                KPS_Button(title: "THÊM VÀO GIỎ HÀNG", style: .full)
             })
         }
     }

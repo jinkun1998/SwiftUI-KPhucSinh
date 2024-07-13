@@ -36,7 +36,7 @@ struct StandardToolbarStyle: ViewModifier {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    HStack(spacing: 10) {
+                    HStack {
                         Button {
                             print("added to cart")
                         } label: {
@@ -54,11 +54,12 @@ struct StandardToolbarStyle: ViewModifier {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 30, height: 30)
                         }
-                        .background(.yellow)
                         .overlay(alignment: .center) {
                             Text("5")
                                 .font(.callout)
-                                .offset(y: -15)
+                                .bold()
+                                .foregroundColor(Color("ItemCartColor"))
+                                .offset(x: 5, y: -20)
                         }
                     }
                 }
