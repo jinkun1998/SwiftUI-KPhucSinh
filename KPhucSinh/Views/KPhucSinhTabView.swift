@@ -13,55 +13,28 @@ struct KPhucSinhTabView: View {
     
     var body: some View {
         NavigationView {
-            if #available(iOS 18.0, *) {
-                TabView(selection: $selectebTabItem) {
-                    Group {
-                        StoreView()
-                            .tabItem {
-                                Label("Hệ thống K COFFEE", systemImage: "storefront")
-                            }
-                            .tag(0)
-                        
-                        OrderView()
-                            .tabItem {
-                                Label("Đặt hàng", systemImage: "box.truck")
-                            }
-                            .tag(1)
-                        
-                        PersonalView()
-                            .tabItem {
-                                Label("Cá nhân", systemImage: "person")
-                            }
-                            .tag(2)
-                    }
-                    .toolbarBackground(.background, for: .tabBar)
-                    .toolbarBackground(.visible, for: .tabBar)
+            TabView(selection: $selectebTabItem) {
+                Group {
+                    StoreView()
+                        .tabItem {
+                            Label("Hệ thống K COFFEE", systemImage: "storefront")
+                        }
+                        .tag(0)
+                    
+                    OrderView()
+                        .tabItem {
+                            Label("Đặt hàng", systemImage: "box.truck")
+                        }
+                        .tag(1)
+                    
+                    PersonalView()
+                        .tabItem {
+                            Label("Cá nhân", systemImage: "person")
+                        }
+                        .tag(2)
                 }
-                .tabViewStyle(.sidebarAdaptable)
-            } else {
-                TabView(selection: $selectebTabItem) {
-                    Group {
-                        StoreView()
-                            .tabItem {
-                                Label("Hệ thống K COFFEE", systemImage: "storefront")
-                            }
-                            .tag(0)
-                        
-                        OrderView()
-                            .tabItem {
-                                Label("Đặt hàng", systemImage: "box.truck")
-                            }
-                            .tag(1)
-                        
-                        PersonalView()
-                            .tabItem {
-                                Label("Cá nhân", systemImage: "person")
-                            }
-                            .tag(2)
-                    }
-                    .toolbarBackground(.background, for: .tabBar)
-                    .toolbarBackground(.visible, for: .tabBar)
-                }
+                .toolbarBackground(.background, for: .tabBar)
+                .toolbarBackground(.visible, for: .tabBar)
             }
         }
     }

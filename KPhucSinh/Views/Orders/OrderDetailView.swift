@@ -14,6 +14,7 @@ struct OrderDetailView: View {
     @State private var quantity = 1
     @State private var pickerSelection: Int = 0
     @State private var ratingText: String = ""
+    @State private var isShowAddedToCart = false
     
     var product: ProductModel
     
@@ -91,9 +92,11 @@ struct OrderDetailView: View {
                         // thong tin | dac tinh
                         VStack {
                             HStack(spacing: 20) {
+                                Spacer()
+                                
                                 Text("THÔNG TIN")
                                     .font(.title2)
-                                    .bold()
+                                    .fontWeight(pickerSelection == 0 ? .bold : .regular)
                                     .foregroundColor(pickerSelection == 0 ? Color("ItemCartColor") : Color.secondary)
                                     .onTapGesture {
                                         pickerSelection = 0
@@ -104,11 +107,13 @@ struct OrderDetailView: View {
                                 
                                 Text("ĐẶC TÍNH")
                                     .font(.title2)
-                                    .bold()
+                                    .fontWeight(pickerSelection == 1 ? .bold : .regular)
                                     .foregroundColor(pickerSelection == 1 ? Color("ItemCartColor") : Color.secondary)
                                     .onTapGesture {
                                         pickerSelection = 1
                                     }
+                                
+                                Spacer()
                             }
                             
                             Text(pickerSelection == 0 ? product.description : product.specification)
@@ -155,7 +160,12 @@ struct OrderDetailView: View {
                             HStack {
                                 Spacer()
                                 
-                                KPS_Button(title: "GỬI NHẬN XÉT", height: 50)
+                                Button {
+                                    print("rated")
+                                } label: {
+                                    KPS_Button(title: "GỬI NHẬN XÉT", height: 50)
+                                }
+                                
                             }
                         }
                         
@@ -171,8 +181,8 @@ struct OrderDetailView: View {
                                     KPS_ImageView(
                                         url: "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
                                         aspectRatio: .fill)
-                                        .frame(width: 50, height: 50)
-                                        .clipShape(.circle)
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(.circle)
                                     
                                     VStack(alignment: .leading) {
                                         Text("Tên của khách hàng")
@@ -198,11 +208,77 @@ struct OrderDetailView: View {
             .useStandardToolBarStyle()
             
             Button(action: {
-                print("added to cart")
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    isShowAddedToCart = true
+                    print("added to cart")
+                }
             }, label: {
                 KPS_Button(title: "THÊM VÀO GIỎ HÀNG", style: .full)
             })
         }
+        .blur(radius: isShowAddedToCart ? 10 : 0)
+        .overlay(alignment: .bottom) {
+            if (isShowAddedToCart) {
+                VStack(alignment: .leading) {
+                    Text("Sản phẩm đã được thêm vào giỏ hàng")
+                        .font(.title3)
+                        .foregroundColor(Color("ItemCartColor"))
+                    
+                    HStack(spacing: 25) {
+                        KPS_ImageView(url: product.images.first!.url, aspectRatio: .fill)
+                            .frame(width: 60, height: 60)
+                            .appearAfter(0.25)
+                        
+                        VStack(alignment: .leading) {
+                            Text(product.name)
+                                .font(.title3)
+                            
+                            HStack {
+                                Text("Số lượng:")
+                                    .font(.title3)
+                                    .foregroundColor(.secondary)
+                                
+                                Text("\(quantity)")
+                                    .font(.title3)
+                            }
+                            
+                            HStack {
+                                Text("Đơn giá:")
+                                    .font(.title3)
+                                    .foregroundColor(.secondary)
+                                
+                                Text("\(product.price, specifier: "%.0f").\(product.priceAfterDevide1000, specifier: product.priceAfterDevide1000 > 0 ? "%.0f": "000") VNĐ")
+                                    .font(.title3)
+                            }
+                        }
+                    }
+                    
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            isShowAddedToCart = false
+                            print("go to cart")
+                        }
+                    } label: {
+                        KPS_Button(title: "Xem giỏ hàng", style: .full)
+                    }
+                    
+                }
+                .padding()
+                .background(content: {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(.background)
+                        .frame(height: .infinity)
+                        .shadow(radius: 20)
+                })
+                .transition(AnyTransition.move(edge: .bottom))
+                .offset(y: 15)
+            }
+        }
+        .simultaneousGesture(
+            withAnimation(.easeInOut) {
+                isShowAddedToCart ? TapGesture().onEnded {isShowAddedToCart = false} : nil
+            }
+        )
     }
 }
 

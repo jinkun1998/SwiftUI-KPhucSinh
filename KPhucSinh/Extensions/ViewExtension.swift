@@ -14,4 +14,9 @@ extension View {
         self
             .modifier(StandardToolbarStyle())
     }
+    
+    func appearAfter(_ delay: Double) -> some View {
+        self
+            .modifier(DelayViewStyle(delay: delay))
+    }
 }
