@@ -9,8 +9,11 @@ import SwiftUI
 
 struct OrderView: View {
     
-    @State var searchText: String = ""
-    
+    @State private var searchText: String = ""
+    @State private var isShowProductQuickView: Bool = false
+    @State private var isShowAddedToCartPopup: Bool = false
+    @State private var quantity: Int = 1
+
     var body: some View {
         ZStack(alignment: .top) {
             VStack{
@@ -49,9 +52,44 @@ struct OrderView: View {
                     }
                 }
                 .blur(radius: !searchText.isEmpty ? 5 : 0)
+                
+                HStack{
+                    
+                    Text("1")
+                        .foregroundColor(.white)
+                        .background {
+                            Rectangle()
+                                .stroke(style: StrokeStyle(lineWidth: 2))
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.white)
+                        }
+                        .offset(x: 30)
+                    
+                    Spacer()
+                    
+                    Text("GIỎ HÀNG")
+                        .foregroundColor(.white)
+                        .bold()
+                    
+                    Spacer()
+                }
+                .background {
+                    UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(topLeading: 25, topTrailing: 25))
+                        .foregroundColor(.accentColor)
+                        .frame(height: 55)
+                }
+                .padding(EdgeInsets(top: 0, leading: 5, bottom: 15, trailing: 5))
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        isShowProductQuickView = true
+                        isShowAddedToCartPopup = false
+                    }
+                }
             }
             
             if (!searchText.isEmpty){
+                KPS_SearchBarView(searchText: $searchText)
+                
                 List{
                     ForEach(ProductModel.products){product in
                         Text(product.name)
@@ -64,6 +102,35 @@ struct OrderView: View {
                 .listStyle(.plain)
                 .offset(y: 55)
                 .padding(10)
+            }
+        }
+        .simultaneousGesture(TapGesture().onEnded() {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                searchText = ""
+                isShowProductQuickView = false
+                isShowAddedToCartPopup = false
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+        })
+        .blur(radius: isShowProductQuickView || isShowAddedToCartPopup ? 10 : 0)
+        .overlay(alignment: .bottom) {
+            if (isShowProductQuickView) {
+                ProductQuickView(
+                    product: ProductModel.product,
+                    quantity: $quantity,
+                    animationDuration: 0.2,
+                    isShow: $isShowProductQuickView,
+                    isShowAddedToCartPopup: $isShowAddedToCartPopup
+                )
+            }
+            
+            if (isShowAddedToCartPopup) {
+                AddedProductToCartPopupView(
+                    product: ProductModel.product,
+                    quantity: quantity,
+                    animationDuration: 0.2,
+                    isShow: $isShowAddedToCartPopup
+                )
             }
         }
     }

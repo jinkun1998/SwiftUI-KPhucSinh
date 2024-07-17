@@ -9,4 +9,5 @@ import Foundation
 
 enum SearchBarFocusState{
     case active
+    case inactive
     }

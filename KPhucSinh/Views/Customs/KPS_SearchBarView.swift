@@ -10,7 +10,6 @@ import SwiftUI
 struct KPS_SearchBarView: View {
     
     @Binding var searchText: String
-    @FocusState var searchBarFocusState: SearchBarFocusState?
     
     var body: some View {
         HStack(spacing: 15){
@@ -22,13 +21,12 @@ struct KPS_SearchBarView: View {
                     .italic()
             }
             .foregroundColor(.accentColor)
-            .focused($searchBarFocusState, equals: .active)
             .submitLabel(.search)
             .onSubmit {
                 searchText = ""
             }
             
-            if (searchBarFocusState == .active){
+            if (!searchText.isEmpty) {
                 Button("Tìm", action: {
                     searchText = ""
                     

@@ -18,6 +18,8 @@ struct OrderDetailView: View {
     
     var product: ProductModel
     
+    private let animationDuration: TimeInterval = 0.3
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -208,7 +210,7 @@ struct OrderDetailView: View {
             .useStandardToolBarStyle()
             
             Button(action: {
-                withAnimation(.easeInOut(duration: 0.3)) {
+                withAnimation(.easeInOut(duration: animationDuration)) {
                     isShowAddedToCart = true
                     print("added to cart")
                 }
@@ -219,65 +221,20 @@ struct OrderDetailView: View {
         .blur(radius: isShowAddedToCart ? 10 : 0)
         .overlay(alignment: .bottom) {
             if (isShowAddedToCart) {
-                VStack(alignment: .leading) {
-                    Text("Sản phẩm đã được thêm vào giỏ hàng")
-                        .font(.title3)
-                        .foregroundColor(Color("ItemCartColor"))
-                    
-                    HStack(spacing: 25) {
-                        KPS_ImageView(url: product.images.first!.url, aspectRatio: .fill)
-                            .frame(width: 60, height: 60)
-                            .appearAfter(0.25)
-                        
-                        VStack(alignment: .leading) {
-                            Text(product.name)
-                                .font(.title3)
-                            
-                            HStack {
-                                Text("Số lượng:")
-                                    .font(.title3)
-                                    .foregroundColor(.secondary)
-                                
-                                Text("\(quantity)")
-                                    .font(.title3)
-                            }
-                            
-                            HStack {
-                                Text("Đơn giá:")
-                                    .font(.title3)
-                                    .foregroundColor(.secondary)
-                                
-                                Text("\(product.price, specifier: "%.0f").\(product.priceAfterDevide1000, specifier: product.priceAfterDevide1000 > 0 ? "%.0f": "000") VNĐ")
-                                    .font(.title3)
-                            }
-                        }
-                    }
-                    
-                    Button {
-                        withAnimation(.easeInOut(duration: 0.2)) {
-                            isShowAddedToCart = false
-                            print("go to cart")
-                        }
-                    } label: {
-                        KPS_Button(title: "Xem giỏ hàng", style: .full)
-                    }
-                    
-                }
-                .padding()
-                .background(content: {
-                    RoundedRectangle(cornerRadius: 15)
-                        .fill(.background)
-                        .frame(height: .infinity)
-                        .shadow(radius: 20)
-                })
-                .transition(AnyTransition.move(edge: .bottom))
-                .offset(y: 15)
+                AddedProductToCartPopupView(
+                    product: ProductModel.product,
+                    quantity: quantity,
+                    animationDuration: 0.2,
+                    isShow: $isShowAddedToCart
+                )
             }
         }
         .simultaneousGesture(
-            withAnimation(.easeInOut) {
-                isShowAddedToCart ? TapGesture().onEnded {isShowAddedToCart = false} : nil
-            }
+            isShowAddedToCart ? TapGesture().onEnded {
+                withAnimation(.easeInOut(duration: animationDuration)) {
+                    isShowAddedToCart = false
+                }
+            } : nil
         )
     }
 }

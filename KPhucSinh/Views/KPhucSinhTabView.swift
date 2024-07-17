@@ -36,6 +36,7 @@ struct KPhucSinhTabView: View {
                 .toolbarBackground(.background, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
             }
+            .colorScheme(.light)
         }
     }
 }

@@ -24,7 +24,7 @@ struct HorizonalProductListView: View {
                     }
                 }
                 
-                HStack(alignment: .bottom) {
+                HStack {
                     ForEach(ProductModel.products) { product in
                         
                         if (ProductModel.products.firstIndex{$0.id == product.id} != 0){
@@ -36,7 +36,7 @@ struct HorizonalProductListView: View {
                                         .containerRelativeFrame(.horizontal,
                                                                 count: UIDevice.current.userInterfaceIdiom == .phone ? 2 : 4,
                                                                 spacing: 0)
-                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                        .offset(y: isFlashSale ? -15 : 0)
                                     
                                     Divider()
                                 }
@@ -44,7 +44,6 @@ struct HorizonalProductListView: View {
                         }
                     }
                 }
-                .frame(height: 290)
                 .overlay(alignment: .topLeading) {
                     if (isFlashSale){
                         Text("FLASH SALES")
@@ -64,5 +63,5 @@ struct HorizonalProductListView: View {
 }
 
 #Preview {
-    HorizonalProductListView(products: ProductModel.products, isFlashSale: true)
+    HorizonalProductListView(products: ProductModel.products, isFlashSale: false)
 }
