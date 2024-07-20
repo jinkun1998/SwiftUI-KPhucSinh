@@ -15,7 +15,7 @@ struct KPhucSinhTabView: View {
     @State private var quantity: Int = 1
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             TabView(selection: $selectebTabItem) {
                 Group {
                     StoreView()

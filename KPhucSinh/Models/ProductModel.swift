@@ -8,7 +8,7 @@
 import Foundation
 
 struct ProductModel: Identifiable {
-    let id: Int
+    let id = UUID()
     let name: String
     let weight: String
     let price: Double
@@ -18,7 +18,6 @@ struct ProductModel: Identifiable {
     let images: [ImageModel]
     
     static let flashSaleProduct = ProductModel(
-        id: 1,
         name: "CÀ PHÊ K DELIGHT 3 IN 1 - 612 G",
         weight: "612 Gram",
         price: 158,
@@ -81,7 +80,6 @@ Chat tư vấn trực tiếp trên FANPAGE K COFFEE https://www.facebook.com/Kco
     )
     
     static let product = ProductModel(
-        id: 2,
         name: "HỘP TRÀ CASCARA BLUE SƠN LA CAO CẤP - 112.5G (CÓ HỘP QUÀ ĐI KÈM)",
         weight: "112,5 Gram",
         price: 219,

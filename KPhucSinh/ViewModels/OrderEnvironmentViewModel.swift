@@ -10,7 +10,7 @@ import Foundation
 final class OrderEnvironmentViewModel: ObservableObject {
     
     @Published private var selectedProduct: ProductModel?
-    @Published private var cartItems: [CartModel] = []
+    @Published var cartItems: [CartModel] = []
     
     @Published var isShowProductQuickView: Bool = false
     @Published var isShowAddedToCartPopup: Bool = false
@@ -73,6 +73,14 @@ final class OrderEnvironmentViewModel: ObservableObject {
         }
         
         cartItems.remove(at: index)
+    }
+    
+    func clearCartItems() {
+        cartItems.removeAll()
+    }
+    
+    func getCarts() -> [CartModel] {
+        return cartItems
     }
 }
 

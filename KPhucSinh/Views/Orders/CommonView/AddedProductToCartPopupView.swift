@@ -1,5 +1,5 @@
 //
-//  ProductQuickView.swift
+//  AddedProductToCartPopupView.swift
 //  KPhucSinh
 //
 //  Created by Jin on 17/7/24.
@@ -7,18 +7,17 @@
 
 import SwiftUI
 
-struct ProductQuickView: View {
+struct AddedProductToCartPopupView: View {
     
     @EnvironmentObject var order: OrderEnvironmentViewModel
-    
     private let animationDuration: CGFloat = Consts.animationDuration
     
     var product: ProductModel
-    @Binding var quantity: Int
+    var quantity: Int
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Tuỳ chọn sản phẩm")
+            Text("Sản phẩm đã được thêm vào giỏ hàng")
                 .font(.title3)
                 .foregroundColor(Color("ItemCartColor"))
             
@@ -32,11 +31,12 @@ struct ProductQuickView: View {
                         .font(.title3)
                     
                     HStack {
-                        Text("Số lượng")
-                            .font(.title2)
-                            .bold()
+                        Text("Số lượng:")
+                            .font(.title3)
+                            .foregroundColor(.secondary)
                         
-                        KPS_MinusPlusView(quantity: $quantity)
+                        Text("\(quantity)")
+                            .font(.title3)
                     }
                     
                     HStack {
@@ -46,41 +46,15 @@ struct ProductQuickView: View {
                         
                         Text("\(product.price, specifier: "%.0f").\(product.priceAfterDevide1000, specifier: product.priceAfterDevide1000 > 0 ? "%.0f": "000") VNĐ")
                             .font(.title3)
-                            .bold()
                     }
                 }
             }
             
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Số lượng đề xuất")
-                    .font(.title2)
-                    .bold()
-                
-                ScrollView(.horizontal) {
-                    HStack(spacing: 20) {
-                        KPS_SuggestQuantityView(
-                            placeholder: "Thùng 12 Gói",
-                            suggestQuantity: 12,
-                            outQuantity: $quantity)
-                        
-                        KPS_SuggestQuantityView(
-                            placeholder: "Thùng 24 Gói",
-                            suggestQuantity: 24,
-                            outQuantity: $quantity)
-                    }
-                }
-            }
-            .padding()
-            
-            Button {
-                withAnimation(.easeInOut(duration: animationDuration)) {
-                    print("added to cart")
-                    order.addToCart(product: product, quantity: quantity, showPopup: .addedToCart)
-                }
+            NavigationLink {
+                OrderCartView()
             } label: {
-                KPS_Button(title: "Thêm Vào Giỏ Hàng", style: .full)
+                KPS_Button(title: "Xem giỏ hàng", style: .full)
             }
-            
         }
         .padding(EdgeInsets(top: 20, leading: 10, bottom: 40, trailing: 10))
         .background(content: {
@@ -95,8 +69,8 @@ struct ProductQuickView: View {
 }
 
 #Preview {
-    ProductQuickView(
+    AddedProductToCartPopupView(
         product: ProductModel.product,
-        quantity: .constant(2)
+        quantity: 2
     )
 }

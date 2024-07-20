@@ -12,10 +12,12 @@ struct OrderDetailView: View {
     @EnvironmentObject var order: OrderEnvironmentViewModel
     
     private let animationDuration: CGFloat = Consts.animationDuration
+    private let navigationTitle: String = "Chi Tiết Sản Phẩm"
     
     @State private var quantity = 1
     @State private var pickerSelection: Int = 0
     @State private var ratingText: String = ""
+    @State private var isShowCartEmptyAlert: Bool = false
     
     var product: ProductModel
     
@@ -66,7 +68,7 @@ struct OrderDetailView: View {
                                 .font(.title2)
                                 .bold()
                             
-                            KPS_MinusPlusView(quantity: $quantity)
+                            KPS_MinusPlusView(quantity: $quantity, width: 120, height: 50)
                         }
                         
                         // so luong de xuat
@@ -205,8 +207,34 @@ struct OrderDetailView: View {
                     .padding(5)
                 }
             }
-            .navigationBarBackButtonHidden(true)
-            .useStandardToolBarStyle()
+            .useStandardToolBarStyle(title: navigationTitle) {
+                HStack {
+                    Button {
+                        print("favorited")
+                    } label: {
+                        Image(systemName: "suit.heart")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                    }
+                    
+                    NavigationLink {
+                        OrderCartView()
+                    } label: {
+                        Image(systemName: "cart")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                            .overlay(alignment: .center) {
+                                Text("\(order.getCartCount())")
+                                    .font(Font.system(size: 12))
+                                    .bold()
+                                    .foregroundColor(Color("ItemCartColor"))
+                                    .offset(x: 5, y: -15)
+                            }
+                    }
+                }
+            }
             
             Button(action: {
                 withAnimation(.easeInOut(duration: animationDuration)) {
@@ -219,12 +247,25 @@ struct OrderDetailView: View {
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
         }
         .blur(radius: order.canShowPopup(.addedToCart) ? 10 : 0)
+        .disabled(isShowCartEmptyAlert)
         .overlay(alignment: .bottom) {
             if (order.canShowPopup(.addedToCart)) {
                 AddedProductToCartPopupView(
                     product: ProductModel.product,
                     quantity: quantity
                 )
+            }
+            
+            if (isShowCartEmptyAlert) {
+                KPS_AlertView(
+                    title: "Thông báo",
+                    message: "Giỏ hàng của bạn đang rỗng.",
+                    cancelTitle: "ĐÓNG",
+                    cancelAction: {
+                        withAnimation(.easeInOut(duration: animationDuration)) {
+                            isShowCartEmptyAlert = false
+                        }
+                    })
             }
         }
         .simultaneousGesture(

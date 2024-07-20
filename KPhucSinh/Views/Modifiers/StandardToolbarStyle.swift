@@ -8,10 +8,13 @@
 import Foundation
 import SwiftUI
 
-struct StandardToolbarStyle: ViewModifier {
+struct StandardToolbarStyle<V>: ViewModifier where V: View {
     
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var order: OrderEnvironmentViewModel
+    
+    var title: String
+    var trailingContent: V
     
     func body(content: Content) -> some View {
         content
@@ -32,37 +35,12 @@ struct StandardToolbarStyle: ViewModifier {
                 }
                 
                 ToolbarItem(placement: .principal) {
-                    Text("Chi Tiết Sản Phẩm")
+                    Text(title)
                         .font(.title3)
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
-                        Button {
-                            print("added to cart")
-                        } label: {
-                            Image(systemName: "suit.heart")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30, height: 30)
-                        }
-                        
-                        Button {
-                            print("added to cart")
-                        } label: {
-                            Image(systemName: "cart")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30, height: 30)
-                        }
-                        .overlay(alignment: .center) {
-                            Text("\(order.getCartCount())")
-                                .font(.callout)
-                                .bold()
-                                .foregroundColor(Color("ItemCartColor"))
-                                .offset(x: 5, y: -20)
-                        }
-                    }
+                    trailingContent
                 }
             }
     }

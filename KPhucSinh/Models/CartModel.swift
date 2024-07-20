@@ -1,13 +1,28 @@
 //
-//  CartModel.swift
+//  Product.swift
 //  KPhucSinh
 //
-//  Created by Jin on 20/7/24.
+//  Created by Jin on 7/7/24.
 //
 
 import Foundation
 
-struct CartModel {
-    let product: ProductModel
-    let quantity: Int
+struct CartModel: Identifiable {
+    let id: UUID
+    let name: String
+    let weight: String
+    let price: Double
+    let priceAfterDevide1000: Double
+    let images: [ImageModel]
+    var quantity: Int
+    
+    init(product: ProductModel, quantity: Int) {
+        id = product.id
+        name = product.name
+        images = product.images
+        weight = product.weight
+        price = product.price
+        priceAfterDevide1000 = product.priceAfterDevide1000
+        self.quantity = quantity
+    }
 }

@@ -12,6 +12,7 @@ struct OrderView: View {
     @EnvironmentObject private var order: OrderEnvironmentViewModel
     
     @State private var searchText: String = ""
+    @State private var index: Int = 0
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -26,7 +27,7 @@ struct OrderView: View {
                         aspectRatio: .fill,
                         indexDisplayMode: .automatic,
                         height: UIDevice.current.userInterfaceIdiom == .phone ? 185 : 285,
-                        index: .constant(0)
+                        index: $index
                     )
                     
                     // category
@@ -53,39 +54,37 @@ struct OrderView: View {
                 .blur(radius: !searchText.isEmpty ? 5 : 0)
                 
                 if (order.getCartCount() > 0) {
-                    HStack{
-                        
-                        Text("\(order.getCartCount())")
-                            .foregroundColor(.white)
-                            .background {
-                                Rectangle()
-                                    .stroke(style: StrokeStyle(lineWidth: 2))
-                                    .frame(width: 20, height: 20)
-                                    .foregroundColor(.white)
-                            }
-                            .offset(x: 30)
-                        
-                        Spacer()
-                        
-                        Text("GIỎ HÀNG")
-                            .foregroundColor(.white)
-                            .bold()
-                        
-                        Spacer()
-                    }
-                    .background {
-                        UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(topLeading: 25, topTrailing: 25))
-                            .foregroundColor(.accentColor)
-                            .frame(height: 55)
-                    }
-                    .padding(EdgeInsets(top: 0, leading: 5, bottom: 15, trailing: 5))
-                    .onTapGesture {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            // TODO: go to cart view
-                            order.isShowProductQuickView = true
-                            order.isShowAddedToCartPopup = false
+                    NavigationLink {
+                        OrderCartView()
+                    } label: {
+                        HStack{
+                            
+                            Text("\(order.getCartCount())")
+                                .foregroundColor(.white)
+                                .background {
+                                    Rectangle()
+                                        .stroke(style: StrokeStyle(lineWidth: 2))
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.white)
+                                }
+                                .offset(x: 30)
+                            
+                            Spacer()
+                            
+                            Text("GIỎ HÀNG")
+                                .foregroundColor(.white)
+                                .bold()
+                            
+                            Spacer()
                         }
+                        .background {
+                            UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(topLeading: 25, topTrailing: 25))
+                                .foregroundColor(.accentColor)
+                                .frame(height: 55)
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 5, bottom: 15, trailing: 5))
                     }
+
                 }
             }
             

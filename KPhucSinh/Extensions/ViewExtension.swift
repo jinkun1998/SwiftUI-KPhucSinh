@@ -10,9 +10,10 @@ import SwiftUI
 
 extension View {
     
-    func useStandardToolBarStyle() -> some View {
-        self
-            .modifier(StandardToolbarStyle())
+    func useStandardToolBarStyle<V>(title: String, @ViewBuilder trailingContent: @escaping () -> V) -> some View where V: View {
+        return self
+            .navigationBarBackButtonHidden(true)
+            .modifier(StandardToolbarStyle<V>(title: title, trailingContent: trailingContent()))
     }
     
     func appearAfter(_ delay: Double) -> some View {
