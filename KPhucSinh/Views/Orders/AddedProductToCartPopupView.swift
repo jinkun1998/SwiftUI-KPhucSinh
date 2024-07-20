@@ -9,10 +9,11 @@ import SwiftUI
 
 struct AddedProductToCartPopupView: View {
     
+    @EnvironmentObject var order: OrderEnvironmentViewModel
+    private let animationDuration: CGFloat = Consts.animationDuration
+    
     var product: ProductModel
     var quantity: Int
-    var animationDuration: CGFloat
-    @Binding var isShow: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -22,7 +23,7 @@ struct AddedProductToCartPopupView: View {
             
             HStack(spacing: 25) {
                 KPS_ImageView(url: product.images.first!.url, aspectRatio: .fill)
-                    .frame(width: 60, height: 60)
+                    .frame(width: 80, height: 80)
                     .appearAfter(0.25)
                 
                 VStack(alignment: .leading) {
@@ -51,15 +52,15 @@ struct AddedProductToCartPopupView: View {
             
             Button {
                 withAnimation(.easeInOut(duration: animationDuration)) {
-                    isShow = false
                     print("go to cart")
+                    order.isShowAddedToCartPopup = false
                 }
             } label: {
                 KPS_Button(title: "Xem giỏ hàng", style: .full)
             }
             
         }
-        .padding()
+        .padding(EdgeInsets(top: 20, leading: 10, bottom: 40, trailing: 10))
         .background(content: {
             UnevenRoundedRectangle(topLeadingRadius: 15, topTrailingRadius: 15)
                 .fill(.background)
@@ -74,8 +75,6 @@ struct AddedProductToCartPopupView: View {
 #Preview {
     AddedProductToCartPopupView(
         product: ProductModel.product,
-        quantity: 2,
-        animationDuration: 0.2,
-        isShow: .constant(true)
+        quantity: 2
     )
 }

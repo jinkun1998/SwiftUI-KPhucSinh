@@ -11,6 +11,7 @@ import SwiftUI
 struct StandardToolbarStyle: ViewModifier {
     
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var order: OrderEnvironmentViewModel
     
     func body(content: Content) -> some View {
         content
@@ -55,7 +56,7 @@ struct StandardToolbarStyle: ViewModifier {
                                 .frame(width: 30, height: 30)
                         }
                         .overlay(alignment: .center) {
-                            Text("5")
+                            Text("\(order.getCartCount())")
                                 .font(.callout)
                                 .bold()
                                 .foregroundColor(Color("ItemCartColor"))

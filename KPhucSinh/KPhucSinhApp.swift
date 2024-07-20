@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct KPhucSinhApp: App {
+    
+    @State private var order = OrderEnvironmentViewModel()
+    
     var body: some Scene {
         WindowGroup {
             KPhucSinhTabView()
+                .environmentObject(order)
+                .colorScheme(.light)
         }
     }
 }

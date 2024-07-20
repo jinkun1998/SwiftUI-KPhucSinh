@@ -9,6 +9,8 @@ import SwiftUI
 
 struct KPS_FlashSaleProductView: View {
     
+    @EnvironmentObject private var order: OrderEnvironmentViewModel
+    
     private let date = Date.fromTimeInterval(Date.getTimeInterval(component: .day) * 3)
     @State var product: ProductModel
     
@@ -20,7 +22,10 @@ struct KPS_FlashSaleProductView: View {
                 Spacer()
                 
                 Button {
-                    print("added to cart")
+                    withAnimation(.easeInOut(duration: Consts.animationDuration)) {
+                        print("show quick view")
+                        order.setSelectedProduct(product, .productQuickView)
+                    }
                 } label: {
                     Image(systemName: "cart")
                         .resizable()

@@ -9,7 +9,10 @@ import SwiftUI
 
 struct KPhucSinhTabView: View {
     
+    @EnvironmentObject var order: OrderEnvironmentViewModel
+    
     @State private var selectebTabItem = 1;
+    @State private var quantity: Int = 1
     
     var body: some View {
         NavigationView {
@@ -36,7 +39,22 @@ struct KPhucSinhTabView: View {
                 .toolbarBackground(.background, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
             }
-            .colorScheme(.light)
+            .overlay(alignment: .bottom) {
+                if (order.canShowPopup(.productQuickView)) {
+                    ProductQuickView(
+                        product: ProductModel.product,
+                        quantity: $quantity
+                    )
+                }
+                
+                if (order.canShowPopup(.addedToCart)) {
+                    AddedProductToCartPopupView(
+                        product: order.getSelectedProduct()!,
+                        quantity: quantity
+                    )
+                }
+            }
+            .ignoresSafeArea()
         }
     }
 }

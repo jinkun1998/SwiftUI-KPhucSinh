@@ -9,6 +9,8 @@ import SwiftUI
 
 struct KPS_ProductView: View {
     
+    @EnvironmentObject private var order: OrderEnvironmentViewModel
+    
     @State var product: ProductModel
     
     var body: some View {
@@ -39,7 +41,10 @@ struct KPS_ProductView: View {
                 
                 // add to cart
                 Button {
-                    print("added to cart")
+                    withAnimation(.easeInOut(duration: Consts.animationDuration)) {
+                        print("show quick view")
+                        order.setSelectedProduct(product, .productQuickView)
+                    }
                 } label: {
                     Image(systemName: "cart")
                         .resizable()

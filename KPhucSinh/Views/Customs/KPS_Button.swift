@@ -38,7 +38,7 @@ struct KPS_Button: View {
         .padding()
         .frame(width: width, height: height)
         .background(content: {
-            Rectangle()
+            RoundedRectangle(cornerRadius: 5)
                 .fill(Color.accentColor)
                 .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
         })

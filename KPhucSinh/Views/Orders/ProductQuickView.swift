@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ProductQuickView: View {
     
+    @EnvironmentObject var order: OrderEnvironmentViewModel
+    
+    private let animationDuration: CGFloat = Consts.animationDuration
+    
     var product: ProductModel
     @Binding var quantity: Int
-    var animationDuration: CGFloat
-    @Binding var isShow: Bool
-    @Binding var isShowAddedToCartPopup: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -23,7 +24,7 @@ struct ProductQuickView: View {
             
             HStack(spacing: 25) {
                 KPS_ImageView(url: product.images.first!.url, aspectRatio: .fill)
-                    .frame(width: 60, height: 60)
+                    .frame(width: 80, height: 80)
                     .appearAfter(0.25)
                 
                 VStack(alignment: .leading) {
@@ -73,16 +74,15 @@ struct ProductQuickView: View {
             
             Button {
                 withAnimation(.easeInOut(duration: animationDuration)) {
-                    isShow = false
-                    isShowAddedToCartPopup = true
                     print("added to cart")
+                    order.addToCart(product: product, quantity: quantity, showPopup: .addedToCart)
                 }
             } label: {
                 KPS_Button(title: "Thêm Vào Giỏ Hàng", style: .full)
             }
             
         }
-        .padding()
+        .padding(EdgeInsets(top: 20, leading: 10, bottom: 40, trailing: 10))
         .background(content: {
             UnevenRoundedRectangle(topLeadingRadius: 15, topTrailingRadius: 15)
                 .fill(.background)
@@ -97,9 +97,6 @@ struct ProductQuickView: View {
 #Preview {
     ProductQuickView(
         product: ProductModel.product,
-        quantity: .constant(2),
-        animationDuration: 0.2,
-        isShow: .constant(true),
-        isShowAddedToCartPopup: .constant(false)
+        quantity: .constant(2)
     )
 }

@@ -9,16 +9,15 @@ import SwiftUI
 
 struct OrderDetailView: View {
     
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var order: OrderEnvironmentViewModel
+    
+    private let animationDuration: CGFloat = Consts.animationDuration
     
     @State private var quantity = 1
     @State private var pickerSelection: Int = 0
     @State private var ratingText: String = ""
-    @State private var isShowAddedToCart = false
     
     var product: ProductModel
-    
-    private let animationDuration: TimeInterval = 0.3
     
     var body: some View {
         VStack {
@@ -211,31 +210,31 @@ struct OrderDetailView: View {
             
             Button(action: {
                 withAnimation(.easeInOut(duration: animationDuration)) {
-                    isShowAddedToCart = true
+                    order.addToCart(product: product, quantity: quantity, showPopup: .addedToCart)
                     print("added to cart")
                 }
             }, label: {
                 KPS_Button(title: "THÊM VÀO GIỎ HÀNG", style: .full)
             })
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
         }
-        .blur(radius: isShowAddedToCart ? 10 : 0)
+        .blur(radius: order.canShowPopup(.addedToCart) ? 10 : 0)
         .overlay(alignment: .bottom) {
-            if (isShowAddedToCart) {
+            if (order.canShowPopup(.addedToCart)) {
                 AddedProductToCartPopupView(
                     product: ProductModel.product,
-                    quantity: quantity,
-                    animationDuration: 0.2,
-                    isShow: $isShowAddedToCart
+                    quantity: quantity
                 )
             }
         }
         .simultaneousGesture(
-            isShowAddedToCart ? TapGesture().onEnded {
+            order.canShowPopup(.addedToCart) ? TapGesture().onEnded {
                 withAnimation(.easeInOut(duration: animationDuration)) {
-                    isShowAddedToCart = false
+                    order.resetSelectedProduct()
                 }
             } : nil
         )
+        .ignoresSafeArea(.all, edges: .bottom)
     }
 }
 
