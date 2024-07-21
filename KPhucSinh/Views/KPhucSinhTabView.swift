@@ -36,7 +36,7 @@ struct KPhucSinhTabView: View {
                         }
                         .tag(2)
                 }
-                .toolbarBackground(.background, for: .tabBar)
+                .toolbarBackground(.white, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
             }
             .overlay(alignment: .bottom) {
@@ -55,6 +55,7 @@ struct KPhucSinhTabView: View {
                 }
             }
             .ignoresSafeArea()
+            .toolbar(.hidden)
         }
     }
 }

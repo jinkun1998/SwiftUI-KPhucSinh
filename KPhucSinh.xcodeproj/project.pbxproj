@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9023D382C4CDCC2002124D6 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9023D372C4CDCC2002124D6 /* StoreModel.swift */; };
+		E9023D3A2C4CE07B002124D6 /* StoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9023D392C4CE07B002124D6 /* StoreCardView.swift */; };
 		E90835CA2C4BDCAB0095E727 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90835C92C4BDCAB0095E727 /* CartModel.swift */; };
 		E90835CC2C4BE2CF0095E727 /* OrderCartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90835CB2C4BE2CF0095E727 /* OrderCartItemView.swift */; };
 		E929D87E2C3A5A0E00ADBEF7 /* KPhucSinhApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929D87D2C3A5A0E00ADBEF7 /* KPhucSinhApp.swift */; };
@@ -55,6 +57,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E9023D372C4CDCC2002124D6 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
+		E9023D392C4CE07B002124D6 /* StoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCardView.swift; sourceTree = "<group>"; };
+		E9023D3B2C4CF6E9002124D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E90835C92C4BDCAB0095E727 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		E90835CB2C4BE2CF0095E727 /* OrderCartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCartItemView.swift; sourceTree = "<group>"; };
 		E929D87A2C3A5A0E00ADBEF7 /* KPhucSinh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KPhucSinh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +138,7 @@
 		E929D87C2C3A5A0E00ADBEF7 /* KPhucSinh */ = {
 			isa = PBXGroup;
 			children = (
+				E9023D3B2C4CF6E9002124D6 /* Info.plist */,
 				E929D88E2C3A5F0600ADBEF7 /* LaunchScreen.storyboard */,
 				E929D87D2C3A5A0E00ADBEF7 /* KPhucSinhApp.swift */,
 				E929D8812C3A5A1000ADBEF7 /* Assets.xcassets */,
@@ -164,6 +170,7 @@
 				E929D8BB2C3C1C0B00ADBEF7 /* CategoryModel.swift */,
 				E929D8C32C3C367700ADBEF7 /* SectionModel.swift */,
 				E9799B812C4B741A00685998 /* Consts.swift */,
+				E9023D372C4CDCC2002124D6 /* StoreModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				E929D8932C3A61BA00ADBEF7 /* StoreView.swift */,
+				E9023D392C4CE07B002124D6 /* StoreCardView.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -407,7 +415,9 @@
 				E9DB92972C4806A5000E923F /* AddedProductToCartPopupView.swift in Sources */,
 				E9DB929B2C4B61A4000E923F /* OrderEnvironmentViewModel.swift in Sources */,
 				E94C00BD2C416F2000C00106 /* KPS_MinusPlusView.swift in Sources */,
+				E9023D382C4CDCC2002124D6 /* StoreModel.swift in Sources */,
 				E94C00BF2C41748600C00106 /* KPS_SuggestQuantityView.swift in Sources */,
+				E9023D3A2C4CE07B002124D6 /* StoreCardView.swift in Sources */,
 				E9799B882C4B81E100685998 /* OrderCartView.swift in Sources */,
 				E929D8B72C3AE35200ADBEF7 /* KPS_CountdownTimerView.swift in Sources */,
 				E929D8A02C3A838E00ADBEF7 /* ProductModel.swift in Sources */,
@@ -551,6 +561,7 @@
 				DEVELOPMENT_TEAM = C366DWS54X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KPhucSinh/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -583,6 +594,7 @@
 				DEVELOPMENT_TEAM = C366DWS54X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KPhucSinh/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

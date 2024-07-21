@@ -109,7 +109,7 @@ final class OrderEnvironmentViewModel: ObservableObject {
     
     func getCartTotal() -> [Double] {
         let totalPrice = cartItems.reduce(0) { partialResult, cart in
-            return partialResult + cart.unitPrice
+            return partialResult + (cart.unitPrice * Double(cart.quantity))
         }
         
         return [totalPrice, totalPrice / Consts.dividedThousands, totalPrice.truncatingRemainder(dividingBy: Consts.dividedThousands)]
