@@ -27,6 +27,8 @@ struct OrderCartItemView: View {
                         .bold()
                         .lineLimit(1)
                     
+                    Spacer()
+                    
                     Button {
                         withAnimation {
                             print("deleted \(cart.id)")
