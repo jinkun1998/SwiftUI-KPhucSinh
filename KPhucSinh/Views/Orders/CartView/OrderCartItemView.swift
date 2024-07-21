@@ -28,9 +28,11 @@ struct OrderCartItemView: View {
                         .lineLimit(1)
                     
                     Button {
-                        print("deleted \(cart.id)")
-                        order.removeFromCart(order.cartItems.firstIndex(where: {$0.id == cart.id})!)
-                        dismissToPreviousView()
+                        withAnimation {
+                            print("deleted \(cart.id)")
+                            order.removeFromCart(order.cartItems.firstIndex(where: {$0.id == cart.id})!)
+                            dismissToPreviousView()
+                        }
                     } label: {
                         Image(systemName: "trash")
                             .resizable()
@@ -49,11 +51,15 @@ struct OrderCartItemView: View {
                         width: 120,
                         height: 30,
                         minusAction: {
-                            order.minusProductQuantity(cart: cart)
-                            dismissToPreviousView()
+                            withAnimation {
+                                order.minusProductQuantity(cart: cart)
+                                dismissToPreviousView()
+                            }
                         },
                         plusAction: {
-                            order.plusProductQuantity(cart: cart)
+                            withAnimation {
+                                order.plusProductQuantity(cart: cart)
+                            }
                         }
                     )
                     
