@@ -10,7 +10,7 @@ import SwiftUI
 
 struct StandardToolbarStyle<V>: ViewModifier where V: View {
     
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @Environment(\.dismiss) private var dismiss: DismissAction
     @EnvironmentObject var order: OrderEnvironmentViewModel
     
     var title: String
@@ -21,16 +21,12 @@ struct StandardToolbarStyle<V>: ViewModifier where V: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        presentationMode.wrappedValue.dismiss()
+                        dismiss.callAsFunction()
                     } label: {
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Image(systemName: "chevron.backward")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30, height: 30)
-                        }
+                        Image(systemName: "chevron.backward")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
                     }
                 }
                 

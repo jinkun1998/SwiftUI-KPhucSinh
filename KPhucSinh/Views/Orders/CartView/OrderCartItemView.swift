@@ -9,23 +9,28 @@ import SwiftUI
 
 struct OrderCartItemView: View {
     
-    var product: ProductModel
-    var quantity: Int = 1
+    @Environment(\.dismiss) private var dismiss: DismissAction
+    @EnvironmentObject var order: OrderEnvironmentViewModel
+    
+    var cart: CartModel
+    @State var quantity: Int
     
     var body: some View {
         HStack {
-            KPS_ImageView(url: product.images.first!.url, aspectRatio: .fit)
+            KPS_ImageView(url: cart.images.first!.url, aspectRatio: .fit)
                 .frame(width: 100, height: 100)
             
             VStack(alignment: .leading) {
                 HStack {
-                    Text(product.name)
+                    Text(cart.name)
                         .font(.title3)
                         .bold()
                         .lineLimit(1)
                     
                     Button {
-                        print("deleted \(product.id)")
+                        print("deleted \(cart.id)")
+                        order.removeFromCart(order.cartItems.firstIndex(where: {$0.id == cart.id})!)
+                        dismissToPreviousView()
                     } label: {
                         Image(systemName: "trash")
                             .resizable()
@@ -34,22 +39,39 @@ struct OrderCartItemView: View {
                     .frame(width: 30, height: 30)
                 }
                 
-                Text(product.weight)
+                Text(cart.weight)
                     .font(.callout)
                     .italic()
                 
                 HStack {
-                    KPS_MinusPlusView(quantity: $quantity, width: 120, height: 30)
+                    KPS_MinusPlusView(
+                        quantity: $quantity,
+                        width: 120,
+                        height: 30,
+                        minusAction: {
+                            order.minusProductQuantity(cart: cart)
+                            dismissToPreviousView()
+                        },
+                        plusAction: {
+                            order.plusProductQuantity(cart: cart)
+                        }
+                    )
                     
                     Spacer()
                     
-                    KPS_PriceView(price: product.price, priceAfterDevide100: product.priceAfterDevide1000)
+                    KPS_PriceView(price: cart.price, priceAfterDevide100: cart.priceAfterDevide1000)
                 }
             }
+        }
+    }
+    
+    func dismissToPreviousView() {
+        if (order.getCartCount() <= 0) {
+            dismiss.callAsFunction()
         }
     }
 }
 
 #Preview {
-    OrderCartItemView(product: ProductModel.product, quantity: .constant(2))
+    OrderCartItemView(cart: CartModel(product: ProductModel.product, quantity: 1), quantity: 2)
 }

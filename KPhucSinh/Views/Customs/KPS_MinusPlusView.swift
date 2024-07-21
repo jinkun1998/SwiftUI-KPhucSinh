@@ -12,16 +12,18 @@ struct KPS_MinusPlusView: View {
     @Binding var quantity: Int
     var width: CGFloat
     var height: CGFloat
+    @State var minusAction: () -> Void = {}
+    @State var plusAction: () -> Void = {}
     
     var body: some View {
         HStack {
             Button {
+                minusAction()
                 print("minus")
                 quantity = quantity > 1 ? quantity - 1 : 1
             } label: {
                 Image(systemName: "minus")
             }
-//            .frame(width: 30)
             
             TextField("", value: $quantity, formatter: NumberFormatter())
                 .textFieldStyle(.roundedBorder)
@@ -31,12 +33,12 @@ struct KPS_MinusPlusView: View {
                 .border(.black.opacity(0.3), width: 2)
             
             Button {
+                plusAction()
                 print("plus")
                 quantity = quantity + 1
             } label: {
                 Image(systemName: "plus")
             }
-//            .frame(width: 30)
         }
         .background(content: {
             RoundedRectangle(cornerRadius: 10)

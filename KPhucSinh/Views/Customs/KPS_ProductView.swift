@@ -11,7 +11,7 @@ struct KPS_ProductView: View {
     
     @EnvironmentObject private var order: OrderEnvironmentViewModel
     
-    @State var product: ProductModel
+    var product: ProductModel
     
     var body: some View {
         VStack(alignment: .center){

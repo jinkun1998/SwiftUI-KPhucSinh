@@ -11,6 +11,7 @@ struct CartModel: Identifiable {
     let id: UUID
     let name: String
     let weight: String
+    let unitPrice: Double
     let price: Double
     let priceAfterDevide1000: Double
     let images: [ImageModel]
@@ -21,6 +22,7 @@ struct CartModel: Identifiable {
         name = product.name
         images = product.images
         weight = product.weight
+        unitPrice = product.unitPrice
         price = product.price
         priceAfterDevide1000 = product.priceAfterDevide1000
         self.quantity = quantity

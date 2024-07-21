@@ -10,20 +10,29 @@ import SwiftUI
 struct KPS_Button: View {
     
     var title: String
-    var style: ButtonStyle = .normal
+    var buttonStyle: ButtonStyle = .compact
+    var iconSystemName: String = ""
     var width: CGFloat = .infinity
     var height: CGFloat = .infinity
     
     enum ButtonStyle {
-        case normal
+        case compact
         case full
     }
     
     var body: some View {
-        HStack {
+        HStack(spacing: 20) {
             
-            if style == .full {
+            if buttonStyle == .full {
                 Spacer()
+            }
+            
+            if (!iconSystemName.isEmpty) {
+                Image(systemName: iconSystemName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.white)
+                    .frame(height: 25)
             }
             
             Text(title)
@@ -31,7 +40,7 @@ struct KPS_Button: View {
                 .foregroundColor(.white)
                 .bold()
             
-            if style == .full {
+            if buttonStyle == .full {
                 Spacer()
             }
         }
@@ -46,5 +55,5 @@ struct KPS_Button: View {
 }
 
 #Preview {
-    KPS_Button(title: "THÊM VÀO GIỎ HÀNG")
+    KPS_Button(title: "THÊM VÀO GIỎ HÀNG", buttonStyle: .full, iconSystemName: "creditcard")
 }

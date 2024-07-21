@@ -12,7 +12,7 @@ struct KPS_FlashSaleProductView: View {
     @EnvironmentObject private var order: OrderEnvironmentViewModel
     
     private let date = Date.fromTimeInterval(Date.getTimeInterval(component: .day) * 3)
-    @State var product: ProductModel
+    var product: ProductModel
     
     var body: some View {
         VStack(alignment: .center){

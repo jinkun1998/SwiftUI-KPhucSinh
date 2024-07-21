@@ -36,7 +36,7 @@ struct ProductQuickView: View {
                             .font(.title2)
                             .bold()
                         
-                        KPS_MinusPlusView(quantity: $quantity, width: 100, height: 40)
+                        KPS_MinusPlusView(quantity: $quantity, width: 120, height: 30)
                     }
                     
                     HStack {
@@ -78,7 +78,7 @@ struct ProductQuickView: View {
                     order.addToCart(product: product, quantity: quantity, showPopup: .addedToCart)
                 }
             } label: {
-                KPS_Button(title: "Thêm Vào Giỏ Hàng", style: .full)
+                KPS_Button(title: "Thêm Vào Giỏ Hàng", buttonStyle: .full)
             }
             
         }
@@ -91,6 +91,9 @@ struct ProductQuickView: View {
         })
         .transition(AnyTransition.move(edge: .bottom))
         .offset(y: 15)
+        .onAppear() {
+            quantity = 1
+        }
     }
 }
 

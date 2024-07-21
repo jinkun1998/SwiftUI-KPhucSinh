@@ -61,6 +61,7 @@ struct OrderView: View {
                             
                             Text("\(order.getCartCount())")
                                 .foregroundColor(.white)
+                                .padding(2)
                                 .background {
                                     Rectangle()
                                         .stroke(style: StrokeStyle(lineWidth: 2))

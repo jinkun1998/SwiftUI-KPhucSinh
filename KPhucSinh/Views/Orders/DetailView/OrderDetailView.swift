@@ -68,7 +68,7 @@ struct OrderDetailView: View {
                                 .font(.title2)
                                 .bold()
                             
-                            KPS_MinusPlusView(quantity: $quantity, width: 120, height: 50)
+                            KPS_MinusPlusView(quantity: $quantity, width: 120, height: 40)
                         }
                         
                         // so luong de xuat
@@ -229,8 +229,13 @@ struct OrderDetailView: View {
                                 Text("\(order.getCartCount())")
                                     .font(Font.system(size: 12))
                                     .bold()
-                                    .foregroundColor(Color("ItemCartColor"))
-                                    .offset(x: 5, y: -15)
+                                    .foregroundColor(.white)
+                                    .background {
+                                        Circle()
+                                            .foregroundColor(.red)
+                                            .frame(width: 20, height: 20)
+                                    }
+                                    .offset(x: 10, y: -10)
                             }
                     }
                 }
@@ -242,7 +247,7 @@ struct OrderDetailView: View {
                     print("added to cart")
                 }
             }, label: {
-                KPS_Button(title: "THÊM VÀO GIỎ HÀNG", style: .full)
+                KPS_Button(title: "THÊM VÀO GIỎ HÀNG", buttonStyle: .full)
             })
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
         }
@@ -251,7 +256,7 @@ struct OrderDetailView: View {
         .overlay(alignment: .bottom) {
             if (order.canShowPopup(.addedToCart)) {
                 AddedProductToCartPopupView(
-                    product: ProductModel.product,
+                    product: product,
                     quantity: quantity
                 )
             }

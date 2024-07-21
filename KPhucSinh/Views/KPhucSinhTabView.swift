@@ -42,7 +42,7 @@ struct KPhucSinhTabView: View {
             .overlay(alignment: .bottom) {
                 if (order.canShowPopup(.productQuickView)) {
                     ProductQuickView(
-                        product: ProductModel.product,
+                        product: order.getSelectedProduct()!,
                         quantity: $quantity
                     )
                 }

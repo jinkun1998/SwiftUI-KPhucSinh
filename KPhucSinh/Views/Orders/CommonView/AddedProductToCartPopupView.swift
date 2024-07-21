@@ -10,6 +10,7 @@ import SwiftUI
 struct AddedProductToCartPopupView: View {
     
     @EnvironmentObject var order: OrderEnvironmentViewModel
+    
     private let animationDuration: CGFloat = Consts.animationDuration
     
     var product: ProductModel
@@ -53,7 +54,7 @@ struct AddedProductToCartPopupView: View {
             NavigationLink {
                 OrderCartView()
             } label: {
-                KPS_Button(title: "Xem giỏ hàng", style: .full)
+                KPS_Button(title: "Xem giỏ hàng", buttonStyle: .full)
             }
         }
         .padding(EdgeInsets(top: 20, leading: 10, bottom: 40, trailing: 10))

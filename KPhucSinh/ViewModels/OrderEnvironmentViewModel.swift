@@ -16,7 +16,9 @@ final class OrderEnvironmentViewModel: ObservableObject {
     @Published var isShowAddedToCartPopup: Bool = false
     
     func getCartCount() -> Int {
-        return cartItems.count
+        return cartItems.reduce(0) { result, cart in
+            return result + cart.quantity
+        }
     }
     
     func setSelectedProduct(_ product: ProductModel, _ popupType: PopupType) {
@@ -63,7 +65,15 @@ final class OrderEnvironmentViewModel: ObservableObject {
     
     func addToCart(product: ProductModel, quantity: Int, showPopup: PopupType) {
         setSelectedProduct(product, showPopup)
-        cartItems.append(CartModel(product: product, quantity: quantity))
+        
+        
+        if let cartItem = cartItems.first(where: {$0.id == product.id}) {
+            plusProductQuantity(cart: cartItem, quantity: quantity)
+        }
+        else {
+            let newCartItem = CartModel(product: product, quantity: quantity)
+            cartItems.append(newCartItem)
+        }
     }
     
     func removeFromCart(_ index: Int) {
@@ -79,8 +89,30 @@ final class OrderEnvironmentViewModel: ObservableObject {
         cartItems.removeAll()
     }
     
-    func getCarts() -> [CartModel] {
-        return cartItems
+    func minusProductQuantity(cart: CartModel, quantity: Int = 1) {
+        guard var existProduct = cartItems.first(where: {$0.id == cart.id}) else { return }
+        
+        existProduct.quantity -= quantity
+        if (existProduct.quantity == 0) {
+            removeFromCart(cartItems.firstIndex(where: {$0.id == existProduct.id})!)
+        }
+        
+        cartItems = cartItems.map({$0.id == existProduct.id ? existProduct : $0})
+    }
+    
+    func plusProductQuantity(cart: CartModel, quantity: Int = 1) {
+        guard var existProduct = cartItems.first(where: {$0.id == cart.id}) else { return }
+        
+        existProduct.quantity += quantity
+        cartItems = cartItems.map({$0.id == existProduct.id ? existProduct : $0})
+    }
+    
+    func getCartTotal() -> [Double] {
+        let totalPrice = cartItems.reduce(0) { partialResult, cart in
+            return partialResult + cart.unitPrice
+        }
+        
+        return [totalPrice, totalPrice / Consts.dividedThousands, totalPrice.truncatingRemainder(dividingBy: Consts.dividedThousands)]
     }
 }
 

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HorizonalProductListView: View {
     
+    @EnvironmentObject var order: OrderEnvironmentViewModel
+    
     var products: [ProductModel]
     var isFlashSale: Bool = false
     
@@ -55,6 +57,7 @@ struct HorizonalProductListView: View {
                 }
                 .scrollTargetLayout()
             }
+            .disabled(order.canShowPopup(.addedToCart) || order.canShowPopup(.productQuickView))
         }
         .frame(height: isFlashSale ? 290 : 250)
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
