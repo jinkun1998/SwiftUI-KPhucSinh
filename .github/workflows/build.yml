@@ -14,15 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-                  - name: SwiftBuild by SwiftActions
-                    # You may pin to the exact commit or the version.
-                    # uses: SwiftActions/SwiftBuild@40c05d952e75170475d74073985e7f2a9d0eadf8
-                    uses: SwiftActions/SwiftBuild@0.2
-                    with:
-                      # Build the specified target
-                      target: # optional, default is ""
-                      # Build the specified product
-                      product: # optional, default is ""
-                      # Increase verbosity to include informational output
-                      verbose: # optional
+      - name: SwiftBuild by SwiftActions
+        # You may pin to the exact commit or the version.
+        # uses: SwiftActions/SwiftBuild@40c05d952e75170475d74073985e7f2a9d0eadf8
+        uses: SwiftActions/SwiftBuild@0.2
                             
