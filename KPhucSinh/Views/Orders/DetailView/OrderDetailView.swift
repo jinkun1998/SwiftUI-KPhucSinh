@@ -100,7 +100,7 @@ struct OrderDetailView: View {
                                 Text("THÔNG TIN")
                                     .font(.title2)
                                     .fontWeight(pickerSelection == 0 ? .bold : .regular)
-                                    .foregroundColor(pickerSelection == 0 ? Color("ItemCartColor") : Color.secondary)
+                                    .foregroundColor(pickerSelection == 0 ? Consts.secondaryColor : Color.secondary)
                                     .onTapGesture {
                                         pickerSelection = 0
                                     }
@@ -111,7 +111,7 @@ struct OrderDetailView: View {
                                 Text("ĐẶC TÍNH")
                                     .font(.title2)
                                     .fontWeight(pickerSelection == 1 ? .bold : .regular)
-                                    .foregroundColor(pickerSelection == 1 ? Color("ItemCartColor") : Color.secondary)
+                                    .foregroundColor(pickerSelection == 1 ? Consts.secondaryColor : Color.secondary)
                                     .onTapGesture {
                                         pickerSelection = 1
                                     }
@@ -182,7 +182,7 @@ struct OrderDetailView: View {
                             ForEach(1...2, id: \.self) {index in
                                 HStack(spacing: 20) {
                                     KPS_ImageView(
-                                        url: "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+                                        url: Consts.avatar,
                                         aspectRatio: .fill)
                                     .frame(width: 50, height: 50)
                                     .clipShape(.circle)
