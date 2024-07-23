@@ -33,6 +33,7 @@ struct PersonalView: View {
             
             // MARK: ACCOUNT SECTION
             HStack {
+                Spacer()
                 
                 // TAI KHOAN
                 VStack(spacing: 10) {
@@ -50,6 +51,8 @@ struct PersonalView: View {
                 .frame(width: 135, height: 80)
                 .background(Consts.primaryColor)
                 .clipShape(.rect(cornerRadius: 5))
+                
+                Spacer()
                 
                 // LICH SU
                 VStack(spacing: 10) {
@@ -69,6 +72,8 @@ struct PersonalView: View {
                 .background(Consts.primaryColor)
                 .clipShape(.rect(cornerRadius: 5))
                 
+                Spacer()
+                
                 // MA GIAM GIA
                 VStack(spacing: 10) {
                     Image(systemName: "ticket")
@@ -86,6 +91,8 @@ struct PersonalView: View {
                 .frame(width: 135, height: 80)
                 .background(Consts.primaryColor)
                 .clipShape(.rect(cornerRadius: 5))
+                
+                Spacer()
             }
             .padding()
             
