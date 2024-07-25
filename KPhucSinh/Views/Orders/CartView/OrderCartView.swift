@@ -14,7 +14,7 @@ struct OrderCartView: View {
     
     private let navigationTitle: String = "Giỏ Hàng Của Bạn"
     private let carts: [CartModel] = [CartModel(product: ProductModel.product, quantity: 2)]
- 
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -41,16 +41,13 @@ struct OrderCartView: View {
                 }
                 .padding(5)
                 
-                Button {
-                    print("go to payment")
-                } label: {
+                NavigationLink(destination: OrderPaymentView()) {
                     KPS_Button(
                         title: "MUA HÀNG",
                         buttonStyle: .full,
                         iconSystemName: "creditcard"
                     )
                 }
-                
             }
             .background {
                 RoundedRectangle(cornerRadius: 5)

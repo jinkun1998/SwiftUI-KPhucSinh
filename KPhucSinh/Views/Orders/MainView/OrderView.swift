@@ -77,13 +77,20 @@ struct OrderView: View {
                                 .bold()
                             
                             Spacer()
+                            
+                            KPS_PriceView(
+                                price: order.getCartTotal()[1],
+                                priceAfterDevide100: order.getCartTotal()[2],
+                                foregroundColor: .white
+                            )
+                            .offset(x: -10)
                         }
                         .background {
                             UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(topLeading: 25, topTrailing: 25))
                                 .foregroundColor(.accentColor)
                                 .frame(height: 55)
                         }
-                        .padding(EdgeInsets(top: 0, leading: 5, bottom: 15, trailing: 5))
+                        .padding(.bottom, 15)
                     }
 
                 }

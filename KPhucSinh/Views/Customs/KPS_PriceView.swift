@@ -12,6 +12,7 @@ struct KPS_PriceView: View {
     var price: Double
     var priceAfterDevide100: Double
     var isOldPrice: Bool = false
+    var foregroundColor: Color = .accentColor
     
     var body: some View {
         HStack {
@@ -31,7 +32,7 @@ struct KPS_PriceView: View {
                 .offset(x: -5)
             }
         }
-        .foregroundColor(isOldPrice ? .gray : .accentColor)
+        .foregroundColor(isOldPrice ? .gray : foregroundColor)
         .strikethrough(isOldPrice)
     }
 }

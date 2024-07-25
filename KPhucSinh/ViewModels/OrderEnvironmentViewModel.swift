@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class OrderEnvironmentViewModel: ObservableObject {
     
@@ -14,6 +15,8 @@ final class OrderEnvironmentViewModel: ObservableObject {
     
     @Published var isShowProductQuickView: Bool = false
     @Published var isShowAddedToCartPopup: Bool = false
+    
+    @Published var path: NavigationPath = NavigationPath()
     
     func getCartCount() -> Int {
         return cartItems.reduce(0) { result, cart in
@@ -113,6 +116,10 @@ final class OrderEnvironmentViewModel: ObservableObject {
         }
         
         return [totalPrice, totalPrice / Consts.dividedThousands, totalPrice.truncatingRemainder(dividingBy: Consts.dividedThousands)]
+    }
+    
+    func popToRoot() {
+        path = NavigationPath()
     }
 }
 

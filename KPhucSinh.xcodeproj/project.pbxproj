@@ -51,6 +51,9 @@
 		E9799B882C4B81E100685998 /* OrderCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9799B872C4B81E100685998 /* OrderCartView.swift */; };
 		E9799B8A2C4B8ACE00685998 /* StandartAlertStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9799B892C4B8ACE00685998 /* StandartAlertStyle.swift */; };
 		E9799B8C2C4B9C5F00685998 /* KPS_AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9799B8B2C4B9C5F00685998 /* KPS_AlertView.swift */; };
+		E9BF203E2C528179002E908E /* OrderPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BF203D2C528179002E908E /* OrderPaymentView.swift */; };
+		E9BF20402C5296C0002E908E /* KPS_CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BF203F2C5296C0002E908E /* KPS_CheckboxView.swift */; };
+		E9BF20442C529BE0002E908E /* KPS_VerticalPlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BF20432C529BE0002E908E /* KPS_VerticalPlaceholderTextField.swift */; };
 		E9DB92952C480655000E923F /* ProductQuickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB92942C480655000E923F /* ProductQuickView.swift */; };
 		E9DB92972C4806A5000E923F /* AddedProductToCartPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB92962C4806A5000E923F /* AddedProductToCartPopupView.swift */; };
 		E9DB929B2C4B61A4000E923F /* OrderEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB929A2C4B61A4000E923F /* OrderEnvironmentViewModel.swift */; };
@@ -103,6 +106,9 @@
 		E9799B872C4B81E100685998 /* OrderCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCartView.swift; sourceTree = "<group>"; };
 		E9799B892C4B8ACE00685998 /* StandartAlertStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandartAlertStyle.swift; sourceTree = "<group>"; };
 		E9799B8B2C4B9C5F00685998 /* KPS_AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_AlertView.swift; sourceTree = "<group>"; };
+		E9BF203D2C528179002E908E /* OrderPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPaymentView.swift; sourceTree = "<group>"; };
+		E9BF203F2C5296C0002E908E /* KPS_CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_CheckboxView.swift; sourceTree = "<group>"; };
+		E9BF20432C529BE0002E908E /* KPS_VerticalPlaceholderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_VerticalPlaceholderTextField.swift; sourceTree = "<group>"; };
 		E9DB92942C480655000E923F /* ProductQuickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductQuickView.swift; sourceTree = "<group>"; };
 		E9DB92962C4806A5000E923F /* AddedProductToCartPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedProductToCartPopupView.swift; sourceTree = "<group>"; };
 		E9DB929A2C4B61A4000E923F /* OrderEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEnvironmentViewModel.swift; sourceTree = "<group>"; };
@@ -242,6 +248,8 @@
 				E94C00BE2C41748600C00106 /* KPS_SuggestQuantityView.swift */,
 				E94C00C02C417C4A00C00106 /* KPS_Button.swift */,
 				E9799B8B2C4B9C5F00685998 /* KPS_AlertView.swift */,
+				E9BF203F2C5296C0002E908E /* KPS_CheckboxView.swift */,
+				E9BF20432C529BE0002E908E /* KPS_VerticalPlaceholderTextField.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -296,6 +304,7 @@
 			children = (
 				E9799B872C4B81E100685998 /* OrderCartView.swift */,
 				E90835CB2C4BE2CF0095E727 /* OrderCartItemView.swift */,
+				E9BF203D2C528179002E908E /* OrderPaymentView.swift */,
 			);
 			path = CartView;
 			sourceTree = "<group>";
@@ -414,12 +423,15 @@
 				E95E91442C3ED10F00E1FC36 /* OrderDetailView.swift in Sources */,
 				E9DB92972C4806A5000E923F /* AddedProductToCartPopupView.swift in Sources */,
 				E9DB929B2C4B61A4000E923F /* OrderEnvironmentViewModel.swift in Sources */,
+				E9BF20442C529BE0002E908E /* KPS_VerticalPlaceholderTextField.swift in Sources */,
+				E9BF20402C5296C0002E908E /* KPS_CheckboxView.swift in Sources */,
 				E94C00BD2C416F2000C00106 /* KPS_MinusPlusView.swift in Sources */,
 				E9023D382C4CDCC2002124D6 /* StoreModel.swift in Sources */,
 				E94C00BF2C41748600C00106 /* KPS_SuggestQuantityView.swift in Sources */,
 				E9023D3A2C4CE07B002124D6 /* StoreCardView.swift in Sources */,
 				E9799B882C4B81E100685998 /* OrderCartView.swift in Sources */,
 				E929D8B72C3AE35200ADBEF7 /* KPS_CountdownTimerView.swift in Sources */,
+				E9BF203E2C528179002E908E /* OrderPaymentView.swift in Sources */,
 				E929D8A02C3A838E00ADBEF7 /* ProductModel.swift in Sources */,
 				E929D8B32C3AD23100ADBEF7 /* KPS_FlashSaleProductView.swift in Sources */,
 				E929D8A82C3AAAC800ADBEF7 /* HorizonalProductListView.swift in Sources */,

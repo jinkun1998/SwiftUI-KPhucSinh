@@ -26,7 +26,7 @@ struct KPS_MinusPlusView: View {
             }
             
             TextField("", value: $quantity, formatter: NumberFormatter())
-                .textFieldStyle(.roundedBorder)
+                .textFieldStyle(.plain)
                 .multilineTextAlignment(.center)
                 .keyboardType(.numberPad)
                 .frame(height: height + 1.5)
