@@ -40,27 +40,40 @@ struct KPS_AlertView: View {
                 
                 Divider()
                 
-                if (!submitTitle.isEmpty) {
-                    Button {
-                        print("ok")
-                        submitAction()
-                    } label: {
-                        Text(submitTitle)
+                HStack {
+                    Spacer()
+                    
+                    if (!submitTitle.isEmpty) {
+                        Button {
+                            print("ok")
+                            submitAction()
+                        } label: {
+                            Text(submitTitle)
+                                .bold()
+                        }
+                        .frame(height: .infinity)
                     }
-                    .frame(height: .infinity)
-                }
-                
-                if (!cancelTitle.isEmpty) {
-                    Button {
-                        print("cancel")
-                        cancelAction()
-                    } label: {
-                        Text(cancelTitle)
+                    
+                    if (!submitTitle.isEmpty && !cancelTitle.isEmpty) {
+                        Spacer()
                     }
-                    .frame(height: .infinity)
+                    
+                    if (!cancelTitle.isEmpty) {
+                        Button {
+                            print("cancel")
+                            cancelAction()
+                        } label: {
+                            Text(cancelTitle)
+                                .bold()
+                                .foregroundColor(.red)
+                        }
+                        .frame(height: .infinity)
+                    }
+                    
+                    Spacer()
                 }
             }
-            .padding(20 )
+            .padding(20)
             .frame(width: .infinity, height: .infinity)
             .background(content: {
                 RoundedRectangle(cornerRadius: 15)

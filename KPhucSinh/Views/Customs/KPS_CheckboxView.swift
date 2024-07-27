@@ -31,11 +31,6 @@ struct KPS_CheckboxView: View {
                                 .frame(width: 25, height: 25)
                         }
                     }
-                    .onTapGesture {
-                        withAnimation {
-                            isChecked.toggle()
-                        }
-                    }
             case .circle:
                 Circle()
                     .stroke(lineWidth: 1)
@@ -51,14 +46,14 @@ struct KPS_CheckboxView: View {
                                 .frame(width: 25, height: 25)
                         }
                     }
-                    .onTapGesture {
-                        withAnimation {
-                            isChecked.toggle()
-                        }
-                    }
             }
             
             Text(title)
+        }
+        .onTapGesture {
+            withAnimation {
+                isChecked.toggle()
+            }
         }
     }
 }

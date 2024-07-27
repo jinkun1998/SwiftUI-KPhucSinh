@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductModel: Identifiable {
+struct ProductModel: Identifiable, Hashable {
     let id = UUID()
     let name: String
     let weight: String

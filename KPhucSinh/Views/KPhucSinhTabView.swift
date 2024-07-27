@@ -56,10 +56,14 @@ struct KPhucSinhTabView: View {
             }
             .ignoresSafeArea()
             .toolbar(.hidden)
+            .navigationDestination(for: ProductModel.self) { product in
+                OrderDetailView(product: product)
+            }
         }
     }
 }
 
 #Preview {
     KPhucSinhTabView()
+        .environmentObject(OrderEnvironmentViewModel())
 }

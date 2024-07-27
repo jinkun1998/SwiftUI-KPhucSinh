@@ -19,9 +19,8 @@ struct HorizonalProductListView: View {
             HStack(spacing: 0) {
                 
                 if (isFlashSale) {
-                    NavigationLink {
-                        OrderDetailView(product: products.first!)
-                    } label: {
+                    
+                    NavigationLink(value: products.first!) {
                         KPS_FlashSaleProductView(product: products.first!)
                     }
                 }
@@ -30,18 +29,17 @@ struct HorizonalProductListView: View {
                     ForEach(ProductModel.products) { product in
                         
                         if (ProductModel.products.firstIndex{$0.id == product.id} != 0){
-                            NavigationLink {
-                                OrderDetailView(product: product)
-                            } label: {
-                                HStack(alignment: .bottom) {
+                            
+                            HStack {
+                                NavigationLink(value: product) {
                                     KPS_ProductView(product: product)
                                         .containerRelativeFrame(.horizontal,
                                                                 count: UIDevice.current.userInterfaceIdiom == .phone ? 2 : 4,
                                                                 spacing: 0)
-                                        .offset(y: isFlashSale ? -15 : 0)
                                     
                                     Divider()
                                 }
+                                .offset(y: isFlashSale ? 30 : 0)
                             }
                         }
                     }
@@ -66,5 +64,6 @@ struct HorizonalProductListView: View {
 }
 
 #Preview {
-    HorizonalProductListView(products: ProductModel.products, isFlashSale: false)
+    HorizonalProductListView(products: ProductModel.products, isFlashSale: true)
+        .environmentObject(OrderEnvironmentViewModel())
 }

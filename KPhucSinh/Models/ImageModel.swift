@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ImageModel : Identifiable{
+struct ImageModel : Identifiable, Hashable {
     
     let id:Int
     let url:String

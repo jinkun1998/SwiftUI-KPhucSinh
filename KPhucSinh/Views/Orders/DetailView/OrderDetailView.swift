@@ -104,9 +104,10 @@ struct OrderDetailView: View {
                                     .onTapGesture {
                                         pickerSelection = 0
                                     }
+                                    .fixedSize()
                                 
                                 Divider()
-                                    .overlay(Color.accentColor)
+                                    .foregroundColor(Consts.primaryColor)
                                 
                                 Text("ĐẶC TÍNH")
                                     .font(.title2)
@@ -115,6 +116,7 @@ struct OrderDetailView: View {
                                     .onTapGesture {
                                         pickerSelection = 1
                                     }
+                                    .fixedSize()
                                 
                                 Spacer()
                             }
@@ -142,7 +144,7 @@ struct OrderDetailView: View {
                                 }
                             }
                             
-                            VStack(content: {
+                            VStack{
                                 TextField("Hãy cho KPhucSinh biết ý kiến của bạn",
                                           text: $ratingText,
                                           prompt: Text("Hãy cho KPhucSinh biết ý kiến của bạn"),
@@ -151,7 +153,7 @@ struct OrderDetailView: View {
                                 .multilineTextAlignment(.leading)
                                 
                                 Spacer()
-                            })
+                            }
                             .padding()
                             .background(content: {
                                 RoundedRectangle(cornerRadius: 5)
@@ -286,4 +288,5 @@ struct OrderDetailView: View {
 
 #Preview {
     OrderDetailView(product: ProductModel.product)
+        .environmentObject(OrderEnvironmentViewModel())
 }

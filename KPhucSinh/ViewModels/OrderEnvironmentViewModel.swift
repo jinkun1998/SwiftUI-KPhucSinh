@@ -69,7 +69,6 @@ final class OrderEnvironmentViewModel: ObservableObject {
     func addToCart(product: ProductModel, quantity: Int, showPopup: PopupType) {
         setSelectedProduct(product, showPopup)
         
-        
         if let cartItem = cartItems.first(where: {$0.id == product.id}) {
             plusProductQuantity(cart: cartItem, quantity: quantity)
         }

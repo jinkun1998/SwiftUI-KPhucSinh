@@ -12,6 +12,8 @@ extension View {
     
     func useStandardToolBarStyle<V>(title: String, @ViewBuilder trailingContent: @escaping () -> V) -> some View where V: View {
         return self
+            .padding(.top, 10)
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .modifier(StandardToolbarStyle<V>(title: title, trailingContent: trailingContent()))
     }
