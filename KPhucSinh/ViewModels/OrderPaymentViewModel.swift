@@ -19,7 +19,12 @@ import Foundation
     // MARK: Shipping method
     var si_selectedAddress: AddressModel?
     var si_address: String = ""
-    var si_isReceiveAtStore: Bool = true
+    var si_shippingMethods = [
+        CheckboxModel(id: 1, title: "Nhận hàng tại K SHOP", isChecked: true),
+        CheckboxModel(id: 2, title: "Nhận hàng tận nơi", isChecked: false)
+    ]
+    var si_selectedShippingMethod: CheckboxModel?
+    var si_isReceiveAtStore: Bool = false
     var si_isShippingToCustomer: Bool = false
     var si_shippingNote: String = ""
     var si_isExpandShippingMethodSection: Bool = true
@@ -33,7 +38,15 @@ import Foundation
     }
     
     // MARK: Payment method
-    var pm_isCOD: Bool = true
+    var pm_paymentMethods = [
+        CheckboxModel(id: 1, title: "Thanh toán khi nhận hàng", isChecked: true),
+        CheckboxModel(id: 2, title: "Chuyển khoản ngân hàng", isChecked: false),
+        CheckboxModel(id: 3, title: "Thẻ ATM nội địa", isChecked: false),
+        CheckboxModel(id: 4, title: "Thẻ tín dụng/ ghi nợ (VISA, MASTER CARD,...)", isChecked: false),
+        CheckboxModel(id: 5, title: "Ví MoMo", isChecked: false, iconURL: Consts.momo)
+    ]
+    var selectedPaymentMethod: CheckboxModel?
+    var pm_isCOD: Bool = false
     var pm_isBankTransfer: Bool = false
     var pm_isNapas: Bool = false
     var pm_isVisa: Bool = false
