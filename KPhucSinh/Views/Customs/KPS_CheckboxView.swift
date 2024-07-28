@@ -19,7 +19,7 @@ struct KPS_CheckboxView: View {
             case .rect:
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(lineWidth: 1)
-                    .tint(.clear)
+                    .tint(.white)
                     .frame(width: 30, height: 30)
                     .overlay {
                         if (isChecked) {
@@ -30,11 +30,16 @@ struct KPS_CheckboxView: View {
                                 .transition(.scale.animation(.bouncy(duration: 0.2, extraBounce: 0.1)))
                                 .frame(width: 25, height: 25)
                         }
+                        else {
+                            Rectangle()
+                                .fill(.white)
+                                .frame(width: 25, height: 25)
+                        }
                     }
             case .circle:
                 Circle()
                     .stroke(lineWidth: 1)
-                    .tint(.clear)
+                    .tint(.white)
                     .frame(width: 30, height: 30)
                     .overlay {
                         if (isChecked) {
@@ -43,6 +48,11 @@ struct KPS_CheckboxView: View {
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(.white, Consts.primaryColor)
                                 .transition(.scale.animation(.bouncy(duration: 0.2, extraBounce: 0.1)))
+                                .frame(width: 25, height: 25)
+                        }
+                        else {
+                            Circle()
+                                .fill(.white)
                                 .frame(width: 25, height: 25)
                         }
                     }
@@ -60,4 +70,5 @@ struct KPS_CheckboxView: View {
 
 #Preview {
     KPS_CheckboxView(title: "Nhận hàng tại K SHOP", type: .circle, isChecked: .constant(true))
+    KPS_CheckboxView(title: "Nhận hàng tại K SHOP", type: .rect, isChecked: .constant(true))
 }

@@ -10,22 +10,22 @@ import SwiftUI
 struct OrderPaymentView: View {
     
     @EnvironmentObject var order: OrderEnvironmentViewModel
+
+    private let navigationTitle: String = "Giỏ Hàng Của Bạn"
     
-    @State var fullName: String = ""
-    @State var isExportVAT: Bool = true
-    @State var isExpand: Bool = true
+    @Bindable var vm = OrderPaymentViewModel()
     @State var isShowConfirmation: Bool = false
     
     var body: some View {
         VStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    Section(isExpanded: $isExpand) {
+                    Section(isExpanded: $vm.ri_isExpandReceiverInfoSection) {
                         VStack(alignment: .leading, spacing: 10) {
-                            KPS_VerticalPlaceholderTextField(placeholder: "Họ tên", text: $fullName)
-                            KPS_VerticalPlaceholderTextField(placeholder: "Số điện thoại", text: $fullName)
-                            KPS_VerticalPlaceholderTextField(placeholder: "Email", text: $fullName)
-                            KPS_CheckboxView(title: "THÔNG TIN XUẤT HOÁ ĐƠN", type: .circle, isChecked: $isExportVAT)
+                            KPS_VerticalPlaceholderTextField(placeholder: "Họ tên", text: $vm.ri_fullName)
+                            KPS_VerticalPlaceholderTextField(placeholder: "Số điện thoại", text: $vm.ri_phone)
+                            KPS_VerticalPlaceholderTextField(placeholder: "Email", text: $vm.ri_email)
+                            KPS_CheckboxView(title: "THÔNG TIN XUẤT HOÁ ĐƠN", type: .circle, isChecked: $vm.ri_isExportVAT)
                         }
                         .background {
                             RoundedRectangle(cornerRadius: 10)
@@ -43,7 +43,7 @@ struct OrderPaymentView: View {
                                 }
                                 .onTapGesture {
                                     withAnimation {
-                                        isExpand.toggle()
+                                        vm.ri_isExpandReceiverInfoSection.toggle()
                                     }
                                 }
                             
@@ -51,23 +51,26 @@ struct OrderPaymentView: View {
                         }
                     }
                     
-                    Section(isExpanded: $isExpand) {
+                    Section(isExpanded: $vm.si_isExpandShippingMethodSection) {
                         VStack(alignment: .leading) {
-                            KPS_CheckboxView(title: "Nhận hàng tại K SHOP", type: .rect, isChecked: $isExportVAT)
+                            KPS_CheckboxView(title: "Nhận hàng tại K SHOP", type: .rect, isChecked: $vm.si_isReceiveAtStore)
                             
-                            KPS_CheckboxView(title: "Nhận hàng tận nơi", type: .rect, isChecked: $isExportVAT)
+                            KPS_CheckboxView(title: "Nhận hàng tận nơi", type: .rect, isChecked: $vm.si_isShippingToCustomer)
                             
-                            HStack(alignment: .bottom) {
-                                KPS_VerticalPlaceholderTextField(placeholder: "Địa chỉ giao hàng", text: $fullName)
-                                
-                                Button {
-                                    print("change address")
-                                } label: {
-                                    KPS_Button(title: "THAY ĐỔI", height: 40)
+                            if (vm.si_isShippingToCustomer) {
+                                HStack(alignment: .bottom) {
+                                    KPS_VerticalPlaceholderTextField(placeholder: "Địa chỉ giao hàng", text: $vm.si_address)
+                                        .disabled(true)
+                                    
+                                    NavigationLink {
+                                        AddressView(selectedAddress: $vm.si_selectedAddress)
+                                    } label: {
+                                        KPS_Button(title: "THAY ĐỔI", height: 40)
+                                    }
                                 }
                             }
                             
-                            KPS_VerticalPlaceholderTextField(placeholder: "Ghi chú khi giao hàng", text: $fullName)
+                            KPS_VerticalPlaceholderTextField(placeholder: "Ghi chú khi giao hàng", text: $vm.si_shippingNote)
                         }
                         .background {
                             RoundedRectangle(cornerRadius: 10)
@@ -85,7 +88,7 @@ struct OrderPaymentView: View {
                                 }
                                 .onTapGesture {
                                     withAnimation {
-                                        isExpand.toggle()
+                                        vm.si_isExpandShippingMethodSection.toggle()
                                     }
                                 }
                             
@@ -93,18 +96,18 @@ struct OrderPaymentView: View {
                         }
                     }
                     
-                    Section(isExpanded: $isExpand) {
+                    Section(isExpanded: $vm.pm_isExpandPaymentMethodSection) {
                         VStack(alignment: .leading) {
-                            KPS_CheckboxView(title: "Thanh toán khi nhận hàng", type: .rect, isChecked: $isExportVAT)
+                            KPS_CheckboxView(title: "Thanh toán khi nhận hàng", type: .rect, isChecked: $vm.pm_isCOD)
                             
-                            KPS_CheckboxView(title: "Chuyển khoản ngân hàng", type: .rect, isChecked: $isExportVAT)
+                            KPS_CheckboxView(title: "Chuyển khoản ngân hàng", type: .rect, isChecked: $vm.pm_isBankTransfer)
                             
-                            KPS_CheckboxView(title: "Thẻ ATM nội địa", type: .rect, isChecked: $isExportVAT)
+                            KPS_CheckboxView(title: "Thẻ ATM nội địa", type: .rect, isChecked: $vm.pm_isNapas)
                             
-                            KPS_CheckboxView(title: "Thẻ tín dụng/ ghi nợ (VISA, MASTER CARD,...)", type: .rect, isChecked: $isExportVAT)
+                            KPS_CheckboxView(title: "Thẻ tín dụng/ ghi nợ (VISA, MASTER CARD,...)", type: .rect, isChecked: $vm.pm_isVisa)
                             
                             HStack {
-                                KPS_CheckboxView(title: "Ví MoMo", type: .rect, isChecked: $isExportVAT)
+                                KPS_CheckboxView(title: "Ví MoMo", type: .rect, isChecked: $vm.pm_isMoMo)
                                 
                                 KPS_ImageView(url: Consts.momo, aspectRatio: .fit)
                                     .frame(width: 30, height: 30)
@@ -126,7 +129,7 @@ struct OrderPaymentView: View {
                                 }
                                 .onTapGesture {
                                     withAnimation {
-                                        isExpand.toggle()
+                                        vm.pm_isExpandPaymentMethodSection.toggle()
                                     }
                                 }
                             
@@ -134,7 +137,7 @@ struct OrderPaymentView: View {
                         }
                     }
                     
-                    Section(isExpanded: $isExpand) {
+                    Section(isExpanded: $vm.oi_isExpandOrderItemInfoSection) {
                         VStack(alignment: .leading) {
                             HStack {
                                 Text(ProductModel.product.name)
@@ -171,7 +174,7 @@ struct OrderPaymentView: View {
                                 }
                                 .onTapGesture {
                                     withAnimation {
-                                        isExpand.toggle()
+                                        vm.oi_isExpandOrderItemInfoSection.toggle()
                                     }
                                 }
                             
@@ -179,7 +182,7 @@ struct OrderPaymentView: View {
                         }
                     }
                     
-                    Section(isExpanded: $isExpand) {
+                    Section(isExpanded: $vm.os_isExpandOrderSummarySection) {
                         VStack(alignment: .leading) {
                             HStack {
                                 Text("Giá tiền (tạm tính)")
@@ -230,7 +233,7 @@ struct OrderPaymentView: View {
                                 }
                                 .onTapGesture {
                                     withAnimation {
-                                        isExpand.toggle()
+                                        vm.os_isExpandOrderSummarySection.toggle()
                                     }
                                 }
                             
@@ -239,9 +242,6 @@ struct OrderPaymentView: View {
                     }
                 }
                 .padding()
-            }
-            .useStandardToolBarStyle(title: "Thanh toán") {
-                EmptyView()
             }
             
             VStack {
@@ -310,6 +310,16 @@ struct OrderPaymentView: View {
                         }
                 }
             })
+        .useStandardToolBarStyle(title: navigationTitle) {
+            EmptyView()
+        }
+        .onChange(of: vm.si_selectedAddress) { oldValue, newValue in
+            if (oldValue != newValue) {
+                withAnimation {
+                    vm.onAddressChange()
+                }
+            }
+        }
     }
 }
 

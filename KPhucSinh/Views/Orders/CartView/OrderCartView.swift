@@ -84,4 +84,5 @@ struct OrderCartView: View {
 
 #Preview {
     OrderCartView()
+        .environmentObject(OrderEnvironmentViewModel())
 }
