@@ -15,4 +15,5 @@ enum SearchBarFocusState{
 enum CheckboxType {
     case rect
     case circle
+    case capsule
 }

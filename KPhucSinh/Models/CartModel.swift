@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CartModel: Identifiable {
+struct CartModel: Identifiable, Hashable {
     let id: UUID
     let name: String
     let weight: String

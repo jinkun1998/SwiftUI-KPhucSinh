@@ -220,9 +220,7 @@ struct OrderDetailView: View {
                             .frame(width: 30, height: 30)
                     }
                     
-                    NavigationLink {
-                        OrderCartView()
-                    } label: {
+                    NavigationLink(value: "OrderCartView") {
                         Image(systemName: "cart")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -240,6 +238,27 @@ struct OrderDetailView: View {
                                     .offset(x: 10, y: -10)
                             }
                     }
+                    
+//                    NavigationLink {
+//                        OrderCartView()
+//                    } label: {
+//                        Image(systemName: "cart")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 30, height: 30)
+//                            .overlay(alignment: .center) {
+//                                Text("\(order.getCartCount())")
+//                                    .font(Font.system(size: 12))
+//                                    .bold()
+//                                    .foregroundColor(.white)
+//                                    .background {
+//                                        Circle()
+//                                            .foregroundColor(.red)
+//                                            .frame(width: 20, height: 20)
+//                                    }
+//                                    .offset(x: 10, y: -10)
+//                            }
+//                    }
                 }
             }
             

@@ -59,6 +59,14 @@ struct KPhucSinhTabView: View {
             .navigationDestination(for: ProductModel.self) { product in
                 OrderDetailView(product: product)
             }
+            .navigationDestination(for: String.self) { value in
+                switch value {
+                case "OrderCartView":
+                    OrderCartView()
+                default:
+                    EmptyView()
+                }
+            }
         }
     }
 }

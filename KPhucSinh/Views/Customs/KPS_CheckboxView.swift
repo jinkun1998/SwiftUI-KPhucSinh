@@ -36,6 +36,8 @@ struct KPS_CheckboxView: View {
                                 .frame(width: 25, height: 25)
                         }
                     }
+                
+                Text(title)
             case .circle:
                 Circle()
                     .stroke(lineWidth: 1)
@@ -56,9 +58,19 @@ struct KPS_CheckboxView: View {
                                 .frame(width: 25, height: 25)
                         }
                     }
+                
+                Text(title)
+            case .capsule:
+                Text(title)
+                    .foregroundColor(isChecked ? .white : .black)
+                    .padding()
+                    .background {
+                        Capsule(style: .circular)
+                            .strokeBorder(.clear, lineWidth: 0, antialiased: true)
+                            .background(isChecked ? Consts.primaryColor : .gray.opacity(0.4))
+                    }
+                    .clipShape(Capsule())
             }
-            
-            Text(title)
         }
         .onTapGesture {
             withAnimation {
@@ -71,4 +83,5 @@ struct KPS_CheckboxView: View {
 #Preview {
     KPS_CheckboxView(title: "Nhận hàng tại K SHOP", type: .circle, isChecked: .constant(true))
     KPS_CheckboxView(title: "Nhận hàng tại K SHOP", type: .rect, isChecked: .constant(true))
+    KPS_CheckboxView(title: "Nhận hàng tại K SHOP", type: .capsule, isChecked: .constant(true))
 }

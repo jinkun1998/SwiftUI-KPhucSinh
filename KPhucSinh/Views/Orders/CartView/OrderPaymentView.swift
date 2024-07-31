@@ -283,6 +283,7 @@ struct OrderPaymentView: View {
                         submitAction: {
                             withAnimation {
                                 print(order.path.count)
+                                order.clearCartItems()
                                 order.popToRoot()
                                 isShowConfirmation.toggle()
                             }

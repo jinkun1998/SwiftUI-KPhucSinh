@@ -51,6 +51,10 @@ struct AddedProductToCartPopupView: View {
                 }
             }
             
+            NavigationLink(value: "OrderCartView") {
+                KPS_Button(title: "Xem giỏ hàng", buttonStyle: .full)
+            }
+            
             NavigationLink {
                 OrderCartView()
             } label: {
@@ -74,4 +78,5 @@ struct AddedProductToCartPopupView: View {
         product: ProductModel.product,
         quantity: 2
     )
+    .environmentObject(OrderEnvironmentViewModel())
 }

@@ -36,21 +36,26 @@ struct PersonalView: View {
                 Spacer()
                 
                 // TAI KHOAN
-                VStack(spacing: 10) {
-                    Image(systemName: "person.text.rectangle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Consts.secondaryColor)
-                        .frame(width: 40, height: 40)
-                    
-                    Text("TÀI KHOẢN")
-                        .font(.callout)
-                        .foregroundColor(Consts.secondaryColor)
+                NavigationLink {
+                    PersonalAccountView()
+                } label: {
+                    VStack(spacing: 10) {
+                        Image(systemName: "person.text.rectangle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(Consts.secondaryColor)
+                            .frame(width: 40, height: 40)
+                        
+                        Text("TÀI KHOẢN")
+                            .font(.callout)
+                            .foregroundColor(Consts.secondaryColor)
+                    }
+                    .padding()
+                    .frame(width: 135, height: 80)
+                    .background(Consts.primaryColor)
+                    .clipShape(.rect(cornerRadius: 5))
                 }
-                .padding()
-                .frame(width: 135, height: 80)
-                .background(Consts.primaryColor)
-                .clipShape(.rect(cornerRadius: 5))
+
                 
                 Spacer()
                 
@@ -112,7 +117,7 @@ struct PersonalView: View {
                     
                     Spacer()
                     
-                    Image(systemName: "greaterthan")
+                    Image(systemName: "chevron.right")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Consts.primaryColor)
@@ -133,7 +138,7 @@ struct PersonalView: View {
                     
                     Spacer()
                     
-                    Image(systemName: "greaterthan")
+                    Image(systemName: "chevron.right")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Consts.primaryColor)
@@ -154,7 +159,7 @@ struct PersonalView: View {
                     
                     Spacer()
                     
-                    Image(systemName: "greaterthan")
+                    Image(systemName: "chevron.right")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Consts.primaryColor)
@@ -175,7 +180,7 @@ struct PersonalView: View {
                     
                     Spacer()
                     
-                    Image(systemName: "greaterthan")
+                    Image(systemName: "chevron.right")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Consts.primaryColor)
@@ -196,7 +201,7 @@ struct PersonalView: View {
                     
                     Spacer()
                     
-                    Image(systemName: "greaterthan")
+                    Image(systemName: "chevron.right")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Consts.primaryColor)
@@ -217,7 +222,7 @@ struct PersonalView: View {
                     
                     Spacer()
                     
-                    Image(systemName: "greaterthan")
+                    Image(systemName: "chevron.right")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Consts.primaryColor)
