@@ -37,6 +37,10 @@ import Foundation
         si_address = address.address
     }
     
+    func onShippingMethodChange() {
+        si_shippingMethods = si_shippingMethods.map({CheckboxModel(id: $0.id, title: $0.title, isChecked: $0.id == pm_selectedPaymentMethod?.id ? true : false, iconURL: $0.iconURL) })
+    }
+    
     // MARK: Payment method
     var pm_paymentMethods = [
         CheckboxModel(id: 1, title: "Thanh toán khi nhận hàng", isChecked: true),
@@ -45,7 +49,7 @@ import Foundation
         CheckboxModel(id: 4, title: "Thẻ tín dụng/ ghi nợ (VISA, MASTER CARD,...)", isChecked: false),
         CheckboxModel(id: 5, title: "Ví MoMo", isChecked: false, iconURL: Consts.momo)
     ]
-    var selectedPaymentMethod: CheckboxModel?
+    var pm_selectedPaymentMethod: CheckboxModel?
     var pm_isCOD: Bool = false
     var pm_isBankTransfer: Bool = false
     var pm_isNapas: Bool = false

@@ -53,11 +53,9 @@ struct OrderPaymentView: View {
                     
                     Section(isExpanded: $vm.si_isExpandShippingMethodSection) {
                         VStack(alignment: .leading) {
-                            KPS_CheckboxView(title: "Nhận hàng tại K SHOP", type: .rect, isChecked: $vm.si_isReceiveAtStore)
+                            KPS_CheckboxGroupView(type: .rect, values: $vm.si_shippingMethods)
                             
-                            KPS_CheckboxView(title: "Nhận hàng tận nơi", type: .rect, isChecked: $vm.si_isShippingToCustomer)
-                            
-                            if (vm.si_isShippingToCustomer) {
+                            if (vm.si_shippingMethods[1].isChecked) {
                                 HStack(alignment: .bottom) {
                                     KPS_VerticalPlaceholderTextField(placeholder: "Địa chỉ giao hàng", text: $vm.si_address)
                                         .disabled(true)
@@ -98,20 +96,7 @@ struct OrderPaymentView: View {
                     
                     Section(isExpanded: $vm.pm_isExpandPaymentMethodSection) {
                         VStack(alignment: .leading) {
-                            KPS_CheckboxView(title: "Thanh toán khi nhận hàng", type: .rect, isChecked: $vm.pm_isCOD)
-                            
-                            KPS_CheckboxView(title: "Chuyển khoản ngân hàng", type: .rect, isChecked: $vm.pm_isBankTransfer)
-                            
-                            KPS_CheckboxView(title: "Thẻ ATM nội địa", type: .rect, isChecked: $vm.pm_isNapas)
-                            
-                            KPS_CheckboxView(title: "Thẻ tín dụng/ ghi nợ (VISA, MASTER CARD,...)", type: .rect, isChecked: $vm.pm_isVisa)
-                            
-                            HStack {
-                                KPS_CheckboxView(title: "Ví MoMo", type: .rect, isChecked: $vm.pm_isMoMo)
-                                
-                                KPS_ImageView(url: Consts.momo, aspectRatio: .fit)
-                                    .frame(width: 30, height: 30)
-                            }
+                            KPS_CheckboxGroupView(type: .rect, values: $vm.pm_paymentMethods)
                         }
                         .background {
                             RoundedRectangle(cornerRadius: 10)

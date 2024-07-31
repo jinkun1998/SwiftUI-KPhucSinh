@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CheckboxModel: Identifiable {
+struct CheckboxModel: Identifiable, Hashable {
     let id: Int
     var title: String
     var isChecked: Bool
