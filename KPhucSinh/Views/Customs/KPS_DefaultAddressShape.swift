@@ -22,7 +22,7 @@ struct KPS_DefaultAddressShape: Shape {
         path.addLine(to: pointC)
         path.addLine(to: pointD)
         path.addLine(to: pointE)
-        path.addLine(to: pointA)
+        path.closeSubpath()
         
         return path
     }

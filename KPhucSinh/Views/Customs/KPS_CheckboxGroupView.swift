@@ -11,13 +11,15 @@ struct KPS_CheckboxGroupView: View {
     
     var axis: Axis.Set = .vertical
     var type: CheckboxType
+    var verticalAlignment: VerticalAlignment = .center
+    var horizontalAlignment: HorizontalAlignment = .center
     @Binding var values: [CheckboxModel]
     
     var body: some View {
         ScrollView(axis, showsIndicators: false) {
             switch axis {
             case .horizontal:
-                HStack {
+                HStack(alignment: verticalAlignment) {
                     ForEach(values) { value in
                         HStack {
                             switch type {
@@ -106,7 +108,7 @@ struct KPS_CheckboxGroupView: View {
                     }
                 }
             default:
-                VStack {
+                VStack(alignment: horizontalAlignment) {
                     ForEach(values) { value in
                         HStack {
                             switch type {

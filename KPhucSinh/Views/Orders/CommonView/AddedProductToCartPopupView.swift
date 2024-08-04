@@ -20,7 +20,7 @@ struct AddedProductToCartPopupView: View {
         VStack(alignment: .leading) {
             Text("Sản phẩm đã được thêm vào giỏ hàng")
                 .font(.title3)
-                .foregroundColor(Color("ItemCartColor"))
+                .foregroundColor(Consts.secondaryColor)
             
             HStack(spacing: 25) {
                 KPS_ImageView(url: product.images.first!.url, aspectRatio: .fill)
@@ -55,11 +55,11 @@ struct AddedProductToCartPopupView: View {
                 KPS_Button(title: "Xem giỏ hàng", buttonStyle: .full)
             }
             
-            NavigationLink {
-                OrderCartView()
-            } label: {
-                KPS_Button(title: "Xem giỏ hàng", buttonStyle: .full)
-            }
+//            NavigationLink {
+//                OrderCartView()
+//            } label: {
+//                KPS_Button(title: "Xem giỏ hàng", buttonStyle: .full)
+//            }
         }
         .padding(EdgeInsets(top: 20, leading: 10, bottom: 40, trailing: 10))
         .background(content: {
@@ -68,7 +68,7 @@ struct AddedProductToCartPopupView: View {
                 .frame(height: .infinity)
                 .shadow(radius: 20)
         })
-        .transition(AnyTransition.move(edge: .bottom))
+        .transition(.move(edge: .bottom))
         .offset(y: 15)
     }
 }

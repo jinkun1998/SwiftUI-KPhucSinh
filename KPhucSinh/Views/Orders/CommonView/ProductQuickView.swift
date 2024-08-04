@@ -20,7 +20,7 @@ struct ProductQuickView: View {
         VStack(alignment: .leading) {
             Text("Tuỳ chọn sản phẩm")
                 .font(.title3)
-                .foregroundColor(Color("ItemCartColor"))
+                .foregroundColor(Consts.secondaryColor)
             
             HStack(spacing: 25) {
                 KPS_ImageView(url: product.images.first!.url, aspectRatio: .fill)
@@ -89,7 +89,7 @@ struct ProductQuickView: View {
                 .frame(height: .infinity)
                 .shadow(radius: 20)
         })
-        .transition(AnyTransition.move(edge: .bottom))
+        .transition(.move(edge: .bottom))
         .offset(y: 15)
         .onAppear() {
             quantity = 1

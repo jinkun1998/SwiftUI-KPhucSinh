@@ -36,6 +36,7 @@ struct KPS_AlertView: View {
                 // message
                 Text(message)
                     .font(.body)
+                    .multilineTextAlignment(.center)
                     .foregroundColor(.accentColor)
                 
                 Divider()

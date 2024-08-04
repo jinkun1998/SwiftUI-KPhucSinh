@@ -53,7 +53,7 @@ struct OrderPaymentView: View {
                     
                     Section(isExpanded: $vm.si_isExpandShippingMethodSection) {
                         VStack(alignment: .leading) {
-                            KPS_CheckboxGroupView(type: .rect, values: $vm.si_shippingMethods)
+                            KPS_CheckboxGroupView(type: .rect, horizontalAlignment: .leading, values: $vm.si_shippingMethods)
                             
                             if (vm.si_shippingMethods[1].isChecked) {
                                 HStack(alignment: .bottom) {
@@ -96,7 +96,7 @@ struct OrderPaymentView: View {
                     
                     Section(isExpanded: $vm.pm_isExpandPaymentMethodSection) {
                         VStack(alignment: .leading) {
-                            KPS_CheckboxGroupView(type: .rect, values: $vm.pm_paymentMethods)
+                            KPS_CheckboxGroupView(type: .rect, horizontalAlignment: .leading, values: $vm.pm_paymentMethods)
                         }
                         .background {
                             RoundedRectangle(cornerRadius: 10)

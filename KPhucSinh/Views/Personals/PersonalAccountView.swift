@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PersonalAccountView: View {
     
+    @State private var selection: Int = 0
     private let itemHeight: CGFloat = 40
     @State private var isReceivePromotion: Bool = true
     @State private var fullName: String = "Quốc Thảo"
@@ -129,7 +130,16 @@ struct PersonalAccountView: View {
                         
                         KPS_MaterialTextField(placeHolder: "Địa chỉ", text: $fullName)
                         
-                        
+                        HStack {
+                            Picker(selection: $selection, content: {
+                                Text("1").tag(0)
+                                Text("2").tag(1)
+                                Text("3").tag(2)
+                            }, label: {
+                                Text("Tỉnh/Thành")
+                            })
+                            .pickerStyle(.menu)
+                        }
                     }
                 } header: {
                     HStack {

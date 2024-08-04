@@ -54,9 +54,8 @@ struct OrderView: View {
                 .blur(radius: !searchText.isEmpty ? 5 : 0)
                 
                 if (order.getCartCount() > 0) {
-                    NavigationLink {
-                        OrderCartView()
-                    } label: {
+                    
+                    NavigationLink(value: "OrderCartView") {
                         HStack{
                             
                             Text("\(order.getCartCount())")
@@ -92,7 +91,6 @@ struct OrderView: View {
                         }
                         .padding(.bottom, 15)
                     }
-
                 }
             }
             
@@ -126,4 +124,5 @@ struct OrderView: View {
 
 #Preview {
     OrderView()
+        .environmentObject(OrderEnvironmentViewModel())
 }
