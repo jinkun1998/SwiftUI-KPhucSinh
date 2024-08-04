@@ -18,11 +18,26 @@ struct PersonalAccountView: View {
         CheckboxModel(id: 2, title: "Nữ", isChecked: false),
         CheckboxModel(id: 3, title: "Khác", isChecked: false)
     ]
+    private let cities: [DropdownBoxModel] = [
+        DropdownBoxModel(
+            originalId: 1,
+            name: "Hồ Chí Minh"
+        ),
+        DropdownBoxModel(
+            originalId: 2,
+            name: "Hà Nội"
+        )
+    ]
+    @State private var city: DropdownBoxModel = DropdownBoxModel(
+        originalId: 1,
+        name: "Hồ Chí Minh"
+    )
     
     var body: some View {
         ScrollView {
-            /// THÔNG TIN TÀI KHOẢN
+            
             VStack(alignment: .leading, spacing: 10) {
+                // THÔNG TIN TÀI KHOẢN
                 Section {
                     VStack(alignment: .leading, spacing: 20) {
                         HStack {
@@ -83,16 +98,16 @@ struct PersonalAccountView: View {
                     }
                 }
                 
-                /// THÔNG TIN CÁ NHÂN
+                // THÔNG TIN CÁ NHÂN
                 Section {
                     VStack(alignment: .leading, spacing: 20) {
                         HStack {
                             KPS_MaterialTextField(placeHolder: "Họ tên", text: $fullName)
-                            KPS_MaterialTextField(placeHolder: "Số điện thoại", text: $fullName)
+                            KPS_MaterialTextField(placeHolder: "Số điện thoại", keyboardType: .numberPad, text: $fullName)
                         }
                         .frame(height: itemHeight)
                         
-                        KPS_MaterialTextField(placeHolder: "Số điện thoại", text: $fullName)
+                        KPS_MaterialTextField(placeHolder: "Email", keyboardType: .emailAddress, text: $fullName)
                         .frame(height: itemHeight)
                         
                         HStack {
@@ -100,18 +115,21 @@ struct PersonalAccountView: View {
                                 .font(.callout)
                             
                             TextField("", text: .constant("23"))
+                                .keyboardType(.numberPad)
                                 .multilineTextAlignment(.center)
                                 .textFieldStyle(.roundedBorder)
                                 .frame(width: itemHeight)
                             Text("/")
                                 .font(.callout)
                             TextField("", text: .constant("06"))
+                                .keyboardType(.numberPad)
                                 .multilineTextAlignment(.center)
                                 .textFieldStyle(.roundedBorder)
                                 .frame(width: itemHeight)
                             Text("/")
                                 .font(.callout)
                             TextField("", text: .constant("1998"))
+                                .keyboardType(.numberPad)
                                 .multilineTextAlignment(.center)
                                 .textFieldStyle(.roundedBorder)
                                 .frame(width: itemHeight * 2)
@@ -131,15 +149,11 @@ struct PersonalAccountView: View {
                         KPS_MaterialTextField(placeHolder: "Địa chỉ", text: $fullName)
                         
                         HStack {
-                            Picker(selection: $selection, content: {
-                                Text("1").tag(0)
-                                Text("2").tag(1)
-                                Text("3").tag(2)
-                            }, label: {
-                                Text("Tỉnh/Thành")
-                            })
-                            .pickerStyle(.menu)
+                            KPS_DropdownBox(placeholder: "Tỉnh/Thành", items: cities, selectedItem: $city)
+                            KPS_DropdownBox(placeholder: "Quận/Huyện", items: cities, selectedItem: $city)
                         }
+                        
+                        KPS_DropdownBox(placeholder: "Phường/Xã", items: cities, selectedItem: $city)
                     }
                 } header: {
                     HStack {
@@ -156,11 +170,18 @@ struct PersonalAccountView: View {
                     }
                 }
             }
-            .padding()
+            .padding(EdgeInsets(top: 0, leading: 5, bottom: 10, trailing: 5))
+            
+            Button {
+                print("saved")
+            } label: {
+                KPS_Button(title: "Lưu thông tin", buttonStyle: .full)
+            }
+        }
+        .padding()
             .useStandardToolBarStyle(title: "Tài khoản") {
                 EmptyView()
             }
-        }
     }
 }
 

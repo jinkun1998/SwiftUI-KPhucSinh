@@ -10,16 +10,21 @@ import SwiftUI
 struct KPS_MaterialTextField: View {
     
     var placeHolder: String
+    var keyboardType: UIKeyboardType = .default
     @Binding var text: String
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         Group {
             TextField("", text: $text)
+                .keyboardType(keyboardType)
+                .focused($isFocused)
+                .submitLabel(.done)
                 .padding(10)
                 .background {
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(style: StrokeStyle(lineWidth: 1.5))
-                        .fill(Consts.primaryColor)
+                        .fill(isFocused ? Consts.primaryColor : .gray)
                         .overlay(alignment: .topLeading) {
                             Text(placeHolder)
                                 .font(.footnote)
