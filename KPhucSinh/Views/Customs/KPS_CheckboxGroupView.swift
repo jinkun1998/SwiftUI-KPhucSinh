@@ -10,7 +10,7 @@ import SwiftUI
 struct KPS_CheckboxGroupView: View {
     
     var axis: Axis.Set = .vertical
-    var type: CheckboxType
+    var type: KPS_CheckboxType
     var verticalAlignment: VerticalAlignment = .center
     var horizontalAlignment: HorizontalAlignment = .center
     @Binding var values: [CheckboxModel]

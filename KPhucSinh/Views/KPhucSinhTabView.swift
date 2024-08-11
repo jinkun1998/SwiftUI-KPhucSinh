@@ -9,7 +9,7 @@ import SwiftUI
 
 struct KPhucSinhTabView: View {
     
-    @EnvironmentObject var order: OrderEnvironmentViewModel
+    @EnvironmentObject var order: AppDataEnvironmentViewModel
     
     @State private var selectebTabItem = 1;
     @State private var quantity: Int = 1
@@ -63,6 +63,12 @@ struct KPhucSinhTabView: View {
                 switch value {
                 case "OrderCartView":
                     OrderCartView()
+                case "LoginView":
+                    LoginView()
+                case "RegisterView":
+                   RegisterView()
+                case "ForgotPasswordView":
+                    ForgotPasswordView()
                 default:
                     EmptyView()
                 }
@@ -73,5 +79,5 @@ struct KPhucSinhTabView: View {
 
 #Preview {
     KPhucSinhTabView()
-        .environmentObject(OrderEnvironmentViewModel())
+        .environmentObject(AppDataEnvironmentViewModel())
 }

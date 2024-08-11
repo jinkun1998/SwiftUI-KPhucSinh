@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddedProductToCartPopupView: View {
     
-    @EnvironmentObject var order: OrderEnvironmentViewModel
+    @EnvironmentObject var appData: AppDataEnvironmentViewModel
     
     private let animationDuration: CGFloat = Consts.animationDuration
     
@@ -78,5 +78,5 @@ struct AddedProductToCartPopupView: View {
         product: ProductModel.product,
         quantity: 2
     )
-    .environmentObject(OrderEnvironmentViewModel())
+    .environmentObject(AppDataEnvironmentViewModel())
 }

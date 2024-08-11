@@ -10,7 +10,7 @@ import SwiftUI
 struct KPS_CheckboxView: View {
     
     var title: String
-    var type: CheckboxType
+    var type: KPS_CheckboxType
     @Binding var isChecked: Bool
     
     var body: some View {

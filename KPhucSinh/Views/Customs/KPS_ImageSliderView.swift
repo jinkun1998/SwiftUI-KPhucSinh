@@ -13,11 +13,31 @@ struct KPS_ImageSliderView: View {
     var sliders: [ImageModel] = []
     var aspectRatio: ContentMode
     var indexDisplayMode: PageTabViewStyle.IndexDisplayMode
-    var width: CGFloat = .infinity
-    var height: CGFloat = .infinity
+    var width: CGFloat = 0
+    var height: CGFloat = 0
     @Binding var index: Int
     
     var body: some View {
+        
+        if (width > 0 && height <= 0) {
+            _content()
+                .frame(width: width)
+        }
+        else if (width <= 0 && height > 0) {
+            _content()
+                .frame(height: height)
+        }
+        else if (width > 0 && height > 0) {
+            _content()
+                .frame(width: width, height: height)
+        }
+        else {
+            _content()
+        }
+    }
+    
+    @ViewBuilder
+    func _content() -> some View {
         TabView(selection: $index){
             ForEach(sliders) { sliderImage in
                 KPS_ImageView(url: sliderImage.url, aspectRatio: aspectRatio)
@@ -25,7 +45,7 @@ struct KPS_ImageSliderView: View {
             }
         }
         .tabViewStyle(.page(indexDisplayMode: indexDisplayMode))
-        .frame(width: width, height: height)
+        .frame(minWidth: width, minHeight: height)
         .onReceive(timer) { _ in
             withAnimation {
                 index = index < ImageModel.sliders.count ? index + 1 : 0

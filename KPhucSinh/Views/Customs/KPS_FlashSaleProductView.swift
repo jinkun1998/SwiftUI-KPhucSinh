@@ -9,7 +9,7 @@ import SwiftUI
 
 struct KPS_FlashSaleProductView: View {
     
-    @EnvironmentObject private var order: OrderEnvironmentViewModel
+    @EnvironmentObject private var order: AppDataEnvironmentViewModel
     
     private let date = Date.fromTimeInterval(Date.getTimeInterval(component: .day) * 3)
     var product: ProductModel

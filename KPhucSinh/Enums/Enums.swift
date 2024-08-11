@@ -7,13 +7,18 @@
 
 import Foundation
 
-enum SearchBarFocusState{
+enum KPS_SearchBarFocusState{
     case active
     case inactive
     }
 
-enum CheckboxType {
+enum KPS_CheckboxType {
     case rect
     case circle
     case capsule
 }
+
+enum KPS_ButtonStyle {
+    case compact
+    case full
+    }

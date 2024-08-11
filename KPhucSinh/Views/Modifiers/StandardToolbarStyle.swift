@@ -11,7 +11,7 @@ import SwiftUI
 struct StandardToolbarStyle<V>: ViewModifier where V: View {
     
     @Environment(\.dismiss) private var dismiss: DismissAction
-    @EnvironmentObject var order: OrderEnvironmentViewModel
+    @EnvironmentObject var order: AppDataEnvironmentViewModel
     
     var title: String
     var trailingContent: V

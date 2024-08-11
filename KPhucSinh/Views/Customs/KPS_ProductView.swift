@@ -9,7 +9,7 @@ import SwiftUI
 
 struct KPS_ProductView: View {
     
-    @EnvironmentObject private var order: OrderEnvironmentViewModel
+    @EnvironmentObject private var order: AppDataEnvironmentViewModel
     
     var product: ProductModel
     

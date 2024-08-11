@@ -7,8 +7,9 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAuth
 
-final class OrderEnvironmentViewModel: ObservableObject {
+final class AppDataEnvironmentViewModel: ObservableObject {
     
     @Published private var selectedProduct: ProductModel?
     @Published var cartItems: [CartModel] = []
@@ -17,6 +18,8 @@ final class OrderEnvironmentViewModel: ObservableObject {
     @Published var isShowAddedToCartPopup: Bool = false
     
     @Published var path: NavigationPath = NavigationPath()
+    
+    @Published var currentUser: UserModel?
     
     func getCartCount() -> Int {
         return cartItems.reduce(0) { result, cart in
@@ -119,6 +122,14 @@ final class OrderEnvironmentViewModel: ObservableObject {
     
     func popToRoot() {
         path = NavigationPath()
+    }
+    
+    func getUser() -> UserModel? {
+        return currentUser
+    }
+    
+    func setUser(user: UserModel) {
+        currentUser = user
     }
 }
 

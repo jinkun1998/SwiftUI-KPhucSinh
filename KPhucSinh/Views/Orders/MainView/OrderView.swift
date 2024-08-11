@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OrderView: View {
     
-    @EnvironmentObject private var order: OrderEnvironmentViewModel
+    @EnvironmentObject private var appData: AppDataEnvironmentViewModel
     
     @State private var searchText: String = ""
     @State private var index: Int = 0
@@ -53,12 +53,12 @@ struct OrderView: View {
                 }
                 .blur(radius: !searchText.isEmpty ? 5 : 0)
                 
-                if (order.getCartCount() > 0) {
+                if (appData.getCartCount() > 0) {
                     
                     NavigationLink(value: "OrderCartView") {
                         HStack{
                             
-                            Text("\(order.getCartCount())")
+                            Text("\(appData.getCartCount())")
                                 .foregroundColor(.white)
                                 .padding(2)
                                 .background {
@@ -78,8 +78,8 @@ struct OrderView: View {
                             Spacer()
                             
                             KPS_PriceView(
-                                price: order.getCartTotal()[1],
-                                priceAfterDevide100: order.getCartTotal()[2],
+                                price: appData.getCartTotal()[1],
+                                priceAfterDevide100: appData.getCartTotal()[2],
                                 foregroundColor: .white
                             )
                             .offset(x: -10)
@@ -111,11 +111,11 @@ struct OrderView: View {
                 .padding(10)
             }
         }
-        .blur(radius: order.canShowPopup(.addedToCart) || order.canShowPopup(.productQuickView) ? 10 : 0)
+        .blur(radius: appData.canShowPopup(.addedToCart) || appData.canShowPopup(.productQuickView) ? 10 : 0)
         .simultaneousGesture(TapGesture().onEnded() {
             withAnimation(.easeInOut(duration: Consts.animationDuration)) {
                 searchText = ""
-                order.resetSelectedProduct()
+                appData.resetSelectedProduct()
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
         })
@@ -124,5 +124,5 @@ struct OrderView: View {
 
 #Preview {
     OrderView()
-        .environmentObject(OrderEnvironmentViewModel())
+        .environmentObject(AppDataEnvironmentViewModel())
 }

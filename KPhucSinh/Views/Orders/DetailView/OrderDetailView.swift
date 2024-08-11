@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OrderDetailView: View {
     
-    @EnvironmentObject var order: OrderEnvironmentViewModel
+    @EnvironmentObject var appData: AppDataEnvironmentViewModel
     
     private let animationDuration: CGFloat = Consts.animationDuration
     private let navigationTitle: String = "Chi Tiết Sản Phẩm"
@@ -226,7 +226,7 @@ struct OrderDetailView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 30, height: 30)
                             .overlay(alignment: .center) {
-                                Text("\(order.getCartCount())")
+                                Text("\(appData.getCartCount())")
                                     .font(Font.system(size: 12))
                                     .bold()
                                     .foregroundColor(.white)
@@ -238,33 +238,12 @@ struct OrderDetailView: View {
                                     .offset(x: 10, y: -10)
                             }
                     }
-                    
-//                    NavigationLink {
-//                        OrderCartView()
-//                    } label: {
-//                        Image(systemName: "cart")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(width: 30, height: 30)
-//                            .overlay(alignment: .center) {
-//                                Text("\(order.getCartCount())")
-//                                    .font(Font.system(size: 12))
-//                                    .bold()
-//                                    .foregroundColor(.white)
-//                                    .background {
-//                                        Circle()
-//                                            .foregroundColor(.red)
-//                                            .frame(width: 20, height: 20)
-//                                    }
-//                                    .offset(x: 10, y: -10)
-//                            }
-//                    }
                 }
             }
             
             Button(action: {
                 withAnimation(.easeInOut(duration: animationDuration)) {
-                    order.addToCart(product: product, quantity: quantity, showPopup: .addedToCart)
+                    appData.addToCart(product: product, quantity: quantity, showPopup: .addedToCart)
                     print("added to cart")
                 }
             }, label: {
@@ -272,10 +251,10 @@ struct OrderDetailView: View {
             })
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
         }
-        .blur(radius: order.canShowPopup(.addedToCart) ? 10 : 0)
+        .blur(radius: appData.canShowPopup(.addedToCart) ? 10 : 0)
         .disabled(isShowCartEmptyAlert)
         .overlay(alignment: .bottom) {
-            if (order.canShowPopup(.addedToCart)) {
+            if (appData.canShowPopup(.addedToCart)) {
                 AddedProductToCartPopupView(
                     product: product,
                     quantity: quantity
@@ -295,9 +274,9 @@ struct OrderDetailView: View {
             }
         }
         .simultaneousGesture(
-            order.canShowPopup(.addedToCart) ? TapGesture().onEnded {
+            appData.canShowPopup(.addedToCart) ? TapGesture().onEnded {
                 withAnimation(.easeInOut(duration: animationDuration)) {
-                    order.resetSelectedProduct()
+                    appData.resetSelectedProduct()
                 }
             } : nil
         )
@@ -307,5 +286,5 @@ struct OrderDetailView: View {
 
 #Preview {
     OrderDetailView(product: ProductModel.product)
-        .environmentObject(OrderEnvironmentViewModel())
+        .environmentObject(AppDataEnvironmentViewModel())
 }

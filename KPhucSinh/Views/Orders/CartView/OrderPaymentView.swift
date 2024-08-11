@@ -9,12 +9,14 @@ import SwiftUI
 
 struct OrderPaymentView: View {
     
-    @EnvironmentObject var order: OrderEnvironmentViewModel
+    @EnvironmentObject var appData: AppDataEnvironmentViewModel
 
     private let navigationTitle: String = "Giỏ Hàng Của Bạn"
     
-    @Bindable var vm = OrderPaymentViewModel()
-    @State var isShowConfirmation: Bool = false
+    @Bindable private var vm = OrderPaymentViewModel()
+    @State private var isShowConfirmation: Bool = false
+    @State private var isShowCartSummary: Bool = false
+    @State private var selectCartItem: CartModel?
     
     var body: some View {
         VStack {
@@ -124,23 +126,31 @@ struct OrderPaymentView: View {
                     
                     Section(isExpanded: $vm.oi_isExpandOrderItemInfoSection) {
                         VStack(alignment: .leading) {
-                            HStack {
-                                Text(ProductModel.product.name)
-                                    .lineLimit(1)
-                                
-                                Spacer()
-                                
-                                Text("1")
-                                    .background {
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .stroke(lineWidth: 1)
-                                            .frame(width: 20, height: 20)
+                            ForEach(appData.cartItems) {cartItem in
+                                HStack {
+                                    Text(cartItem.name)
+                                        .lineLimit(1)
+                                    
+                                    Spacer()
+                                    
+                                    Text("\(cartItem.quantity)")
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 5)
+                                                .stroke(lineWidth: 1)
+                                                .frame(width: 20, height: 20)
+                                        }
+                                    
+                                    Spacer()
+                                    
+                                    Text("\(cartItem.unitPrice, specifier: "%.0f") VNĐ")
+                                        .foregroundColor(Consts.primaryColor)
+                                }
+                                .onTapGesture {
+                                    withAnimation(.easeInOut) {
+                                        selectCartItem = cartItem
+                                        isShowCartSummary.toggle()
                                     }
-                                
-                                Spacer()
-                                
-                                Text("\(ProductModel.product.unitPrice, specifier: "%.0f") VNĐ")
-                                    .foregroundColor(Consts.primaryColor)
+                                }
                             }
                         }
                         .background {
@@ -282,9 +292,9 @@ struct OrderPaymentView: View {
                         submitTitle: "Xác nhận",
                         submitAction: {
                             withAnimation {
-                                print(order.path.count)
-                                order.clearCartItems()
-                                order.popToRoot()
+                                print(appData.path.count)
+                                appData.clearCartItems()
+                                appData.popToRoot()
                                 isShowConfirmation.toggle()
                             }
                             print("go to root")
@@ -294,6 +304,16 @@ struct OrderPaymentView: View {
                                 isShowConfirmation.toggle()
                             }
                         }
+                }
+                
+                if (isShowCartSummary) {
+                    OrderCartItemSummaryView(
+                        cartItem: selectCartItem ?? CartModel(
+                            product: ProductModel.product,
+                            quantity: 0
+                        ),
+                        isShow: $isShowCartSummary
+                    )
                 }
             })
         .useStandardToolBarStyle(title: navigationTitle) {
@@ -311,5 +331,5 @@ struct OrderPaymentView: View {
 
 #Preview {
     OrderPaymentView()
-        .environmentObject(OrderEnvironmentViewModel())
+        .environmentObject(AppDataEnvironmentViewModel())
 }

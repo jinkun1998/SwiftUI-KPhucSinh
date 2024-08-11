@@ -9,8 +9,12 @@
 /* Begin PBXBuildFile section */
 		E9023D382C4CDCC2002124D6 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9023D372C4CDCC2002124D6 /* StoreModel.swift */; };
 		E9023D3A2C4CE07B002124D6 /* StoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9023D392C4CE07B002124D6 /* StoreCardView.swift */; };
+		E9031A362C67295E008857FF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A352C67295E008857FF /* LoginView.swift */; };
+		E9031A3B2C672C36008857FF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A3A2C672C36008857FF /* LoginViewModel.swift */; };
+		E9031A3D2C67313C008857FF /* KPS_IconTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A3C2C67313C008857FF /* KPS_IconTextField.swift */; };
 		E90835CA2C4BDCAB0095E727 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90835C92C4BDCAB0095E727 /* CartModel.swift */; };
 		E90835CC2C4BE2CF0095E727 /* OrderCartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90835CB2C4BE2CF0095E727 /* OrderCartItemView.swift */; };
+		E91A6B182C610B2500A6014B /* OrderCartItemSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A6B172C610B2500A6014B /* OrderCartItemSummaryView.swift */; };
 		E929D87E2C3A5A0E00ADBEF7 /* KPhucSinhApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929D87D2C3A5A0E00ADBEF7 /* KPhucSinhApp.swift */; };
 		E929D8802C3A5A0E00ADBEF7 /* KPhucSinhTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929D87F2C3A5A0E00ADBEF7 /* KPhucSinhTabView.swift */; };
 		E929D8822C3A5A1000ADBEF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E929D8812C3A5A1000ADBEF7 /* Assets.xcassets */; };
@@ -44,6 +48,8 @@
 		E94C00BD2C416F2000C00106 /* KPS_MinusPlusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C00BC2C416F2000C00106 /* KPS_MinusPlusView.swift */; };
 		E94C00BF2C41748600C00106 /* KPS_SuggestQuantityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C00BE2C41748600C00106 /* KPS_SuggestQuantityView.swift */; };
 		E94C00C12C417C4A00C00106 /* KPS_Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C00C02C417C4A00C00106 /* KPS_Button.swift */; };
+		E95043D32C5A6CE4003D99B2 /* PersonalAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95043D22C5A6CE4003D99B2 /* PersonalAccountView.swift */; };
+		E95043D52C5A766D003D99B2 /* KPS_MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95043D42C5A766D003D99B2 /* KPS_MaterialTextField.swift */; };
 		E95E91442C3ED10F00E1FC36 /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E91432C3ED10F00E1FC36 /* OrderDetailView.swift */; };
 		E95E91462C3ED5BF00E1FC36 /* KPS_BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E91452C3ED5BF00E1FC36 /* KPS_BadgeView.swift */; };
 		E9678B622C3EC0FE0015D34C /* KPS_ImageSliderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9678B612C3EC0FE0015D34C /* KPS_ImageSliderDetailView.swift */; };
@@ -51,20 +57,45 @@
 		E9799B882C4B81E100685998 /* OrderCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9799B872C4B81E100685998 /* OrderCartView.swift */; };
 		E9799B8A2C4B8ACE00685998 /* StandartAlertStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9799B892C4B8ACE00685998 /* StandartAlertStyle.swift */; };
 		E9799B8C2C4B9C5F00685998 /* KPS_AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9799B8B2C4B9C5F00685998 /* KPS_AlertView.swift */; };
+		E9A2294F2C5F972300910F46 /* KPS_DropdownBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2294E2C5F972300910F46 /* KPS_DropdownBox.swift */; };
+		E9A229512C5FABD400910F46 /* DropdownBoxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A229502C5FABD400910F46 /* DropdownBoxModel.swift */; };
 		E9BF203E2C528179002E908E /* OrderPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BF203D2C528179002E908E /* OrderPaymentView.swift */; };
 		E9BF20402C5296C0002E908E /* KPS_CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BF203F2C5296C0002E908E /* KPS_CheckboxView.swift */; };
 		E9BF20442C529BE0002E908E /* KPS_VerticalPlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BF20432C529BE0002E908E /* KPS_VerticalPlaceholderTextField.swift */; };
+		E9C90BE42C55F3140077ED53 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C90BE32C55F3140077ED53 /* AddressView.swift */; };
+		E9C90BE62C55F9400077ED53 /* KPS_DefaultAddressShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C90BE52C55F9400077ED53 /* KPS_DefaultAddressShape.swift */; };
+		E9C90BE82C5600280077ED53 /* AddressDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C90BE72C5600280077ED53 /* AddressDetailView.swift */; };
+		E9C90BEA2C5600730077ED53 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C90BE92C5600730077ED53 /* AddressModel.swift */; };
+		E9C90BEC2C5604710077ED53 /* OrderPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C90BEB2C5604710077ED53 /* OrderPaymentViewModel.swift */; };
+		E9C90BF02C5615CB0077ED53 /* CheckboxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C90BEF2C5615CB0077ED53 /* CheckboxModel.swift */; };
+		E9C90BF22C5615F90077ED53 /* KPS_CheckboxGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C90BF12C5615F90077ED53 /* KPS_CheckboxGroupView.swift */; };
 		E9DB92952C480655000E923F /* ProductQuickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB92942C480655000E923F /* ProductQuickView.swift */; };
 		E9DB92972C4806A5000E923F /* AddedProductToCartPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB92962C4806A5000E923F /* AddedProductToCartPopupView.swift */; };
-		E9DB929B2C4B61A4000E923F /* OrderEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB929A2C4B61A4000E923F /* OrderEnvironmentViewModel.swift */; };
+		E9DB929B2C4B61A4000E923F /* AppDataEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB929A2C4B61A4000E923F /* AppDataEnvironmentViewModel.swift */; };
+		E9FC0FA12C673D92005C6F16 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FC0FA02C673D92005C6F16 /* RegisterView.swift */; };
+		E9FC0FA32C673DAE005C6F16 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FC0FA22C673DAE005C6F16 /* ForgotPasswordView.swift */; };
+		E9FC0FA52C673DDA005C6F16 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FC0FA42C673DDA005C6F16 /* RegisterViewModel.swift */; };
+		E9FC0FA72C674233005C6F16 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FC0FA62C674233005C6F16 /* ForgotPasswordViewModel.swift */; };
+		E9FC0FAA2C67497F005C6F16 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FC0FA92C67497F005C6F16 /* FirebaseService.swift */; };
+		E9FC0FAC2C675821005C6F16 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FC0FAB2C675821005C6F16 /* UserModel.swift */; };
+		E9FC0FAE2C675931005C6F16 /* CodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FC0FAD2C675931005C6F16 /* CodableExtension.swift */; };
+		E9FC0FB02C676885005C6F16 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9FC0FAF2C676885005C6F16 /* GoogleService-Info.plist */; };
+		E9FC0FB32C676DF4005C6F16 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E9FC0FB22C676DF4005C6F16 /* FirebaseAuth */; };
+		E9FC0FB52C676DF4005C6F16 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E9FC0FB42C676DF4005C6F16 /* FirebaseFirestore */; };
+		E9FC0FB72C676DF4005C6F16 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E9FC0FB62C676DF4005C6F16 /* FirebaseFirestoreSwift */; };
+		E9FC0FB92C687BE0005C6F16 /* PersonalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FC0FB82C687BE0005C6F16 /* PersonalViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E9023D372C4CDCC2002124D6 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		E9023D392C4CE07B002124D6 /* StoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCardView.swift; sourceTree = "<group>"; };
 		E9023D3B2C4CF6E9002124D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E9031A352C67295E008857FF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E9031A3A2C672C36008857FF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E9031A3C2C67313C008857FF /* KPS_IconTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_IconTextField.swift; sourceTree = "<group>"; };
 		E90835C92C4BDCAB0095E727 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		E90835CB2C4BE2CF0095E727 /* OrderCartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCartItemView.swift; sourceTree = "<group>"; };
+		E91A6B172C610B2500A6014B /* OrderCartItemSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCartItemSummaryView.swift; sourceTree = "<group>"; };
 		E929D87A2C3A5A0E00ADBEF7 /* KPhucSinh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KPhucSinh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E929D87D2C3A5A0E00ADBEF7 /* KPhucSinhApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPhucSinhApp.swift; sourceTree = "<group>"; };
 		E929D87F2C3A5A0E00ADBEF7 /* KPhucSinhTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPhucSinhTabView.swift; sourceTree = "<group>"; };
@@ -99,6 +130,8 @@
 		E94C00BC2C416F2000C00106 /* KPS_MinusPlusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_MinusPlusView.swift; sourceTree = "<group>"; };
 		E94C00BE2C41748600C00106 /* KPS_SuggestQuantityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_SuggestQuantityView.swift; sourceTree = "<group>"; };
 		E94C00C02C417C4A00C00106 /* KPS_Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_Button.swift; sourceTree = "<group>"; };
+		E95043D22C5A6CE4003D99B2 /* PersonalAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalAccountView.swift; sourceTree = "<group>"; };
+		E95043D42C5A766D003D99B2 /* KPS_MaterialTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_MaterialTextField.swift; sourceTree = "<group>"; };
 		E95E91432C3ED10F00E1FC36 /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
 		E95E91452C3ED5BF00E1FC36 /* KPS_BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_BadgeView.swift; sourceTree = "<group>"; };
 		E9678B612C3EC0FE0015D34C /* KPS_ImageSliderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_ImageSliderDetailView.swift; sourceTree = "<group>"; };
@@ -106,12 +139,30 @@
 		E9799B872C4B81E100685998 /* OrderCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCartView.swift; sourceTree = "<group>"; };
 		E9799B892C4B8ACE00685998 /* StandartAlertStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandartAlertStyle.swift; sourceTree = "<group>"; };
 		E9799B8B2C4B9C5F00685998 /* KPS_AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_AlertView.swift; sourceTree = "<group>"; };
+		E9A2294E2C5F972300910F46 /* KPS_DropdownBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_DropdownBox.swift; sourceTree = "<group>"; };
+		E9A229502C5FABD400910F46 /* DropdownBoxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownBoxModel.swift; sourceTree = "<group>"; };
 		E9BF203D2C528179002E908E /* OrderPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPaymentView.swift; sourceTree = "<group>"; };
 		E9BF203F2C5296C0002E908E /* KPS_CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_CheckboxView.swift; sourceTree = "<group>"; };
 		E9BF20432C529BE0002E908E /* KPS_VerticalPlaceholderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_VerticalPlaceholderTextField.swift; sourceTree = "<group>"; };
+		E9C90BE32C55F3140077ED53 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		E9C90BE52C55F9400077ED53 /* KPS_DefaultAddressShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_DefaultAddressShape.swift; sourceTree = "<group>"; };
+		E9C90BE72C5600280077ED53 /* AddressDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailView.swift; sourceTree = "<group>"; };
+		E9C90BE92C5600730077ED53 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
+		E9C90BEB2C5604710077ED53 /* OrderPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPaymentViewModel.swift; sourceTree = "<group>"; };
+		E9C90BEF2C5615CB0077ED53 /* CheckboxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxModel.swift; sourceTree = "<group>"; };
+		E9C90BF12C5615F90077ED53 /* KPS_CheckboxGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_CheckboxGroupView.swift; sourceTree = "<group>"; };
 		E9DB92942C480655000E923F /* ProductQuickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductQuickView.swift; sourceTree = "<group>"; };
 		E9DB92962C4806A5000E923F /* AddedProductToCartPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedProductToCartPopupView.swift; sourceTree = "<group>"; };
-		E9DB929A2C4B61A4000E923F /* OrderEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEnvironmentViewModel.swift; sourceTree = "<group>"; };
+		E9DB929A2C4B61A4000E923F /* AppDataEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataEnvironmentViewModel.swift; sourceTree = "<group>"; };
+		E9FC0FA02C673D92005C6F16 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		E9FC0FA22C673DAE005C6F16 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		E9FC0FA42C673DDA005C6F16 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		E9FC0FA62C674233005C6F16 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		E9FC0FA92C67497F005C6F16 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		E9FC0FAB2C675821005C6F16 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		E9FC0FAD2C675931005C6F16 /* CodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtension.swift; sourceTree = "<group>"; };
+		E9FC0FAF2C676885005C6F16 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E9FC0FB82C687BE0005C6F16 /* PersonalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,12 +170,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FC0FB32C676DF4005C6F16 /* FirebaseAuth in Frameworks */,
+				E9FC0FB52C676DF4005C6F16 /* FirebaseFirestore in Frameworks */,
+				E9FC0FB72C676DF4005C6F16 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E9031A372C672C0C008857FF /* Personals */ = {
+			isa = PBXGroup;
+			children = (
+				E9031A3A2C672C36008857FF /* LoginViewModel.swift */,
+				E9FC0FA42C673DDA005C6F16 /* RegisterViewModel.swift */,
+				E9FC0FA62C674233005C6F16 /* ForgotPasswordViewModel.swift */,
+				E9FC0FB82C687BE0005C6F16 /* PersonalViewModel.swift */,
+			);
+			path = Personals;
+			sourceTree = "<group>";
+		};
+		E9031A382C672C15008857FF /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				E9C90BEB2C5604710077ED53 /* OrderPaymentViewModel.swift */,
+			);
+			path = Orders;
+			sourceTree = "<group>";
+		};
+		E9031A392C672C1F008857FF /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
 		E929D8712C3A5A0E00ADBEF7 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +224,8 @@
 		E929D87C2C3A5A0E00ADBEF7 /* KPhucSinh */ = {
 			isa = PBXGroup;
 			children = (
+				E9FC0FAF2C676885005C6F16 /* GoogleService-Info.plist */,
+				E9FC0FA82C67496F005C6F16 /* Services */,
 				E9023D3B2C4CF6E9002124D6 /* Info.plist */,
 				E929D88E2C3A5F0600ADBEF7 /* LaunchScreen.storyboard */,
 				E929D87D2C3A5A0E00ADBEF7 /* KPhucSinhApp.swift */,
@@ -177,6 +259,10 @@
 				E929D8C32C3C367700ADBEF7 /* SectionModel.swift */,
 				E9799B812C4B741A00685998 /* Consts.swift */,
 				E9023D372C4CDCC2002124D6 /* StoreModel.swift */,
+				E9C90BE92C5600730077ED53 /* AddressModel.swift */,
+				E9C90BEF2C5615CB0077ED53 /* CheckboxModel.swift */,
+				E9A229502C5FABD400910F46 /* DropdownBoxModel.swift */,
+				E9FC0FAB2C675821005C6F16 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,7 +270,10 @@
 		E929D88C2C3A5E9B00ADBEF7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				E9DB929A2C4B61A4000E923F /* OrderEnvironmentViewModel.swift */,
+				E9031A392C672C1F008857FF /* Stores */,
+				E9031A382C672C15008857FF /* Orders */,
+				E9031A372C672C0C008857FF /* Personals */,
+				E9DB929A2C4B61A4000E923F /* AppDataEnvironmentViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -226,6 +315,10 @@
 			isa = PBXGroup;
 			children = (
 				E929D8982C3A620D00ADBEF7 /* PersonalView.swift */,
+				E95043D22C5A6CE4003D99B2 /* PersonalAccountView.swift */,
+				E9031A352C67295E008857FF /* LoginView.swift */,
+				E9FC0FA02C673D92005C6F16 /* RegisterView.swift */,
+				E9FC0FA22C673DAE005C6F16 /* ForgotPasswordView.swift */,
 			);
 			path = Personals;
 			sourceTree = "<group>";
@@ -249,7 +342,12 @@
 				E94C00C02C417C4A00C00106 /* KPS_Button.swift */,
 				E9799B8B2C4B9C5F00685998 /* KPS_AlertView.swift */,
 				E9BF203F2C5296C0002E908E /* KPS_CheckboxView.swift */,
+				E9C90BF12C5615F90077ED53 /* KPS_CheckboxGroupView.swift */,
 				E9BF20432C529BE0002E908E /* KPS_VerticalPlaceholderTextField.swift */,
+				E9C90BE52C55F9400077ED53 /* KPS_DefaultAddressShape.swift */,
+				E95043D42C5A766D003D99B2 /* KPS_MaterialTextField.swift */,
+				E9A2294E2C5F972300910F46 /* KPS_DropdownBox.swift */,
+				E9031A3C2C67313C008857FF /* KPS_IconTextField.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -267,6 +365,7 @@
 			children = (
 				E929D8B92C3C0F8B00ADBEF7 /* DateExtension.swift */,
 				E94C00BA2C41630800C00106 /* ViewExtension.swift */,
+				E9FC0FAD2C675931005C6F16 /* CodableExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,6 +404,7 @@
 				E9799B872C4B81E100685998 /* OrderCartView.swift */,
 				E90835CB2C4BE2CF0095E727 /* OrderCartItemView.swift */,
 				E9BF203D2C528179002E908E /* OrderPaymentView.swift */,
+				E91A6B172C610B2500A6014B /* OrderCartItemSummaryView.swift */,
 			);
 			path = CartView;
 			sourceTree = "<group>";
@@ -315,8 +415,18 @@
 				E929D8AB2C3AAC6500ADBEF7 /* ProductBadgeView.swift */,
 				E9DB92942C480655000E923F /* ProductQuickView.swift */,
 				E9DB92962C4806A5000E923F /* AddedProductToCartPopupView.swift */,
+				E9C90BE32C55F3140077ED53 /* AddressView.swift */,
+				E9C90BE72C5600280077ED53 /* AddressDetailView.swift */,
 			);
 			path = CommonView;
+			sourceTree = "<group>";
+		};
+		E9FC0FA82C67496F005C6F16 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E9FC0FA92C67497F005C6F16 /* FirebaseService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +473,9 @@
 				Base,
 			);
 			mainGroup = E929D8712C3A5A0E00ADBEF7;
+			packageReferences = (
+				E9FC0FB12C676DF4005C6F16 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = E929D87B2C3A5A0E00ADBEF7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -378,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E929D88F2C3A5F0600ADBEF7 /* LaunchScreen.storyboard in Resources */,
+				E9FC0FB02C676885005C6F16 /* GoogleService-Info.plist in Resources */,
 				E929D8852C3A5A1000ADBEF7 /* Preview Assets.xcassets in Resources */,
 				E929D8822C3A5A1000ADBEF7 /* Assets.xcassets in Resources */,
 			);
@@ -390,48 +504,71 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C90BF02C5615CB0077ED53 /* CheckboxModel.swift in Sources */,
 				E929D8AC2C3AAC6500ADBEF7 /* ProductBadgeView.swift in Sources */,
 				E929D8A62C3AAA3300ADBEF7 /* KPS_ImageBannerView.swift in Sources */,
+				E9FC0FAA2C67497F005C6F16 /* FirebaseService.swift in Sources */,
 				E9799B8C2C4B9C5F00685998 /* KPS_AlertView.swift in Sources */,
 				E929D8942C3A61BA00ADBEF7 /* StoreView.swift in Sources */,
 				E929D8962C3A61F200ADBEF7 /* OrderView.swift in Sources */,
+				E9FC0FA72C674233005C6F16 /* ForgotPasswordViewModel.swift in Sources */,
 				E929D8BE2C3C1DA000ADBEF7 /* CategoryGridView.swift in Sources */,
 				E9799B8A2C4B8ACE00685998 /* StandartAlertStyle.swift in Sources */,
 				E929D8A42C3AA91100ADBEF7 /* KPS_ImageSliderView.swift in Sources */,
 				E929D8BA2C3C0F8B00ADBEF7 /* DateExtension.swift in Sources */,
 				E93DF75B2C455D5C00228677 /* DelayViewStyle.swift in Sources */,
+				E9C90BE62C55F9400077ED53 /* KPS_DefaultAddressShape.swift in Sources */,
 				E929D8AA2C3AAB8200ADBEF7 /* KPS_ProductView.swift in Sources */,
 				E929D8B52C3AD32100ADBEF7 /* KPS_PriceView.swift in Sources */,
 				E929D8C02C3C1EE500ADBEF7 /* KPS_ImageView.swift in Sources */,
+				E9C90BEA2C5600730077ED53 /* AddressModel.swift in Sources */,
 				E9678B622C3EC0FE0015D34C /* KPS_ImageSliderDetailView.swift in Sources */,
 				E929D89E2C3A769400ADBEF7 /* ImageModel.swift in Sources */,
+				E9FC0FA32C673DAE005C6F16 /* ForgotPasswordView.swift in Sources */,
+				E9031A362C67295E008857FF /* LoginView.swift in Sources */,
+				E9C90BE82C5600280077ED53 /* AddressDetailView.swift in Sources */,
+				E9FC0FA52C673DDA005C6F16 /* RegisterViewModel.swift in Sources */,
+				E9A2294F2C5F972300910F46 /* KPS_DropdownBox.swift in Sources */,
 				E94C00B92C41620800C00106 /* StandardToolbarStyle.swift in Sources */,
 				E9DB92952C480655000E923F /* ProductQuickView.swift in Sources */,
 				E929D8C42C3C367700ADBEF7 /* SectionModel.swift in Sources */,
 				E90835CC2C4BE2CF0095E727 /* OrderCartItemView.swift in Sources */,
+				E95043D32C5A6CE4003D99B2 /* PersonalAccountView.swift in Sources */,
 				E929D8C22C3C336C00ADBEF7 /* KPS_CategoryScrollView.swift in Sources */,
 				E929D8B12C3AC9D800ADBEF7 /* Enums.swift in Sources */,
 				E929D8992C3A620D00ADBEF7 /* PersonalView.swift in Sources */,
+				E9C90BF22C5615F90077ED53 /* KPS_CheckboxGroupView.swift in Sources */,
 				E95E91462C3ED5BF00E1FC36 /* KPS_BadgeView.swift in Sources */,
 				E929D8802C3A5A0E00ADBEF7 /* KPhucSinhTabView.swift in Sources */,
 				E94C00BB2C41630800C00106 /* ViewExtension.swift in Sources */,
+				E95043D52C5A766D003D99B2 /* KPS_MaterialTextField.swift in Sources */,
 				E94C00C12C417C4A00C00106 /* KPS_Button.swift in Sources */,
 				E929D8A22C3AA88B00ADBEF7 /* KPS_SearchBarView.swift in Sources */,
 				E929D8BC2C3C1C0B00ADBEF7 /* CategoryModel.swift in Sources */,
 				E929D87E2C3A5A0E00ADBEF7 /* KPhucSinhApp.swift in Sources */,
+				E9FC0FB92C687BE0005C6F16 /* PersonalViewModel.swift in Sources */,
+				E9FC0FAC2C675821005C6F16 /* UserModel.swift in Sources */,
+				E9C90BE42C55F3140077ED53 /* AddressView.swift in Sources */,
 				E90835CA2C4BDCAB0095E727 /* CartModel.swift in Sources */,
 				E95E91442C3ED10F00E1FC36 /* OrderDetailView.swift in Sources */,
 				E9DB92972C4806A5000E923F /* AddedProductToCartPopupView.swift in Sources */,
-				E9DB929B2C4B61A4000E923F /* OrderEnvironmentViewModel.swift in Sources */,
+				E9FC0FAE2C675931005C6F16 /* CodableExtension.swift in Sources */,
+				E9DB929B2C4B61A4000E923F /* AppDataEnvironmentViewModel.swift in Sources */,
 				E9BF20442C529BE0002E908E /* KPS_VerticalPlaceholderTextField.swift in Sources */,
 				E9BF20402C5296C0002E908E /* KPS_CheckboxView.swift in Sources */,
+				E9FC0FA12C673D92005C6F16 /* RegisterView.swift in Sources */,
+				E9031A3B2C672C36008857FF /* LoginViewModel.swift in Sources */,
 				E94C00BD2C416F2000C00106 /* KPS_MinusPlusView.swift in Sources */,
 				E9023D382C4CDCC2002124D6 /* StoreModel.swift in Sources */,
 				E94C00BF2C41748600C00106 /* KPS_SuggestQuantityView.swift in Sources */,
 				E9023D3A2C4CE07B002124D6 /* StoreCardView.swift in Sources */,
 				E9799B882C4B81E100685998 /* OrderCartView.swift in Sources */,
+				E9031A3D2C67313C008857FF /* KPS_IconTextField.swift in Sources */,
+				E9C90BEC2C5604710077ED53 /* OrderPaymentViewModel.swift in Sources */,
+				E9A229512C5FABD400910F46 /* DropdownBoxModel.swift in Sources */,
 				E929D8B72C3AE35200ADBEF7 /* KPS_CountdownTimerView.swift in Sources */,
 				E9BF203E2C528179002E908E /* OrderPaymentView.swift in Sources */,
+				E91A6B182C610B2500A6014B /* OrderCartItemSummaryView.swift in Sources */,
 				E929D8A02C3A838E00ADBEF7 /* ProductModel.swift in Sources */,
 				E929D8B32C3AD23100ADBEF7 /* KPS_FlashSaleProductView.swift in Sources */,
 				E929D8A82C3AAAC800ADBEF7 /* HorizonalProductListView.swift in Sources */,
@@ -650,6 +787,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E9FC0FB12C676DF4005C6F16 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.26.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E9FC0FB22C676DF4005C6F16 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9FC0FB12C676DF4005C6F16 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E9FC0FB42C676DF4005C6F16 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9FC0FB12C676DF4005C6F16 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		E9FC0FB62C676DF4005C6F16 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9FC0FB12C676DF4005C6F16 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E929D8722C3A5A0E00ADBEF7 /* Project object */;
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductQuickView: View {
     
-    @EnvironmentObject var order: OrderEnvironmentViewModel
+    @EnvironmentObject var appData: AppDataEnvironmentViewModel
     
     private let animationDuration: CGFloat = Consts.animationDuration
     
@@ -75,7 +75,7 @@ struct ProductQuickView: View {
             Button {
                 withAnimation(.easeInOut(duration: animationDuration)) {
                     print("added to cart")
-                    order.addToCart(product: product, quantity: quantity, showPopup: .addedToCart)
+                    appData.addToCart(product: product, quantity: quantity, showPopup: .addedToCart)
                 }
             } label: {
                 KPS_Button(title: "Thêm Vào Giỏ Hàng", buttonStyle: .full)

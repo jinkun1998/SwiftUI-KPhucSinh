@@ -9,8 +9,8 @@ import SwiftUI
 
 struct OrderCartItemView: View {
     
+    @EnvironmentObject var appData: AppDataEnvironmentViewModel
     @Environment(\.dismiss) private var dismiss: DismissAction
-    @EnvironmentObject var order: OrderEnvironmentViewModel
     
     var cart: CartModel
     @State var quantity: Int
@@ -32,7 +32,7 @@ struct OrderCartItemView: View {
                     Button {
                         withAnimation {
                             print("deleted \(cart.id)")
-                            order.removeFromCart(order.cartItems.firstIndex(where: {$0.id == cart.id})!)
+                            appData.removeFromCart(appData.cartItems.firstIndex(where: {$0.id == cart.id})!)
                             dismissToPreviousView()
                         }
                     } label: {
@@ -54,13 +54,13 @@ struct OrderCartItemView: View {
                         height: 30,
                         minusAction: {
                             withAnimation {
-                                order.minusProductQuantity(cart: cart)
+                                appData.minusProductQuantity(cart: cart)
                                 dismissToPreviousView()
                             }
                         },
                         plusAction: {
                             withAnimation {
-                                order.plusProductQuantity(cart: cart)
+                                appData.plusProductQuantity(cart: cart)
                             }
                         }
                     )
@@ -74,7 +74,7 @@ struct OrderCartItemView: View {
     }
     
     func dismissToPreviousView() {
-        if (order.getCartCount() <= 0) {
+        if (appData.getCartCount() <= 0) {
             dismiss.callAsFunction()
         }
     }

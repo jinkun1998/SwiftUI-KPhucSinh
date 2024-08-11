@@ -10,17 +10,31 @@ import SwiftUI
 struct KPS_Button: View {
     
     var title: String
-    var buttonStyle: ButtonStyle = .compact
+    var buttonStyle: KPS_ButtonStyle = .compact
     var iconSystemName: String = ""
-    var width: CGFloat = .infinity
-    var height: CGFloat = .infinity
-    
-    enum ButtonStyle {
-        case compact
-        case full
-    }
+    var width: CGFloat = 0
+    var height: CGFloat = 0
     
     var body: some View {
+        if (width > 0 && height <= 0) {
+            _content()
+                .frame(width: width)
+        }
+        else if (width <= 0 && height > 0) {
+            _content()
+                .frame(height: height)
+        }
+        else if (width > 0 && height > 0) {
+            _content()
+                .frame(width: width, height: height)
+        }
+        else {
+            _content()
+        }
+    }
+    
+    @ViewBuilder
+    func _content() -> some View {
         HStack(spacing: 20) {
             
             if buttonStyle == .full {
@@ -45,7 +59,6 @@ struct KPS_Button: View {
             }
         }
         .padding()
-        .frame(width: width, height: height)
         .background(content: {
             RoundedRectangle(cornerRadius: 5)
                 .fill(Color.accentColor)

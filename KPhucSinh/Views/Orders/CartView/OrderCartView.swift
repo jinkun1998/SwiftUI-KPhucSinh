@@ -9,8 +9,8 @@ import SwiftUI
 
 struct OrderCartView: View {
     
+    @EnvironmentObject var appData: AppDataEnvironmentViewModel
     @Environment(\.dismiss) private var dismiss: DismissAction
-    @EnvironmentObject var order: OrderEnvironmentViewModel
     
     private let navigationTitle: String = "Giỏ Hàng Của Bạn"
     private let carts: [CartModel] = [CartModel(product: ProductModel.product, quantity: 2)]
@@ -19,7 +19,7 @@ struct OrderCartView: View {
         VStack {
             ScrollView {
                 VStack {
-                    ForEach(order.cartItems) { cart in
+                    ForEach(appData.cartItems) { cart in
                         OrderCartItemView(
                             cart: cart,
                             quantity: cart.quantity
@@ -37,7 +37,7 @@ struct OrderCartView: View {
                     
                     Spacer()
                     
-                    KPS_PriceView(price: order.getCartTotal()[1], priceAfterDevide100: order.getCartTotal()[2])
+                    KPS_PriceView(price: appData.getCartTotal()[1], priceAfterDevide100: appData.getCartTotal()[2])
                 }
                 .padding(5)
                 
@@ -59,7 +59,7 @@ struct OrderCartView: View {
         }
         .useStandardToolBarStyle(title: navigationTitle) {
             Button {
-                order.clearCartItems()
+                appData.clearCartItems()
                 dismissToPreviousView()
                 print("deleled all")
             } label: {
@@ -70,13 +70,13 @@ struct OrderCartView: View {
             }
         }
         .onAppear {
-            order.resetSelectedProduct()
+            appData.resetSelectedProduct()
             dismissToPreviousView()
         }
     }
     
     func dismissToPreviousView() {
-        if (order.getCartCount() <= 0) {
+        if (appData.getCartCount() <= 0) {
             dismiss.callAsFunction()
         }
     }
@@ -84,5 +84,5 @@ struct OrderCartView: View {
 
 #Preview {
     OrderCartView()
-        .environmentObject(OrderEnvironmentViewModel())
+        .environmentObject(AppDataEnvironmentViewModel())
 }
