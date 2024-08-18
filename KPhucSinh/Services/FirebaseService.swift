@@ -27,8 +27,7 @@ final class FirebaseService {
     @MainActor
     func login(email: String, password: String) async throws {
         do {
-            let result = try await Auth.auth().signIn(withEmail: email, password: password)
-//            self.currentUserUid = result.user.uid
+            _ = try await Auth.auth().signIn(withEmail: email, password: password)
         }
         catch let error {
             print("Error: \(error.localizedDescription)")
@@ -39,7 +38,8 @@ final class FirebaseService {
     func register(email: String, password: String, data: UserModel) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            self.currentUserUid = result.user.uid
+            
+            try await createUser(uid: result.user.uid, userData: data)
         } catch let error {
             print("Error: \(error.localizedDescription)")
         }
@@ -53,12 +53,12 @@ final class FirebaseService {
         }
     }
     
-    func createUser(uid: String?, userData: UserModel) {
+    func createUser(uid: String?, userData: UserModel) async throws {
         let firestore = Firestore.firestore()
         let collection = firestore.collection("users")
         let document = collection.document(uid!)
         let data = userData.toDictionary()
-        document.setData(data)
+        try await document.setData(data)
     }
     
     func getUser() async throws -> UserModel? {
@@ -74,6 +74,13 @@ final class FirebaseService {
                 phone: data["phone"] as? String ?? "",
                 email: data["email"] as? String ?? "",
                 avatar: data["avatar"] as? String ?? "",
+                isReceivePromotion: data["isReceivePromotion"] as? Bool ?? false,
+                birthDate: data["birthDate"] as? TimeInterval ?? 0,
+                gender: data["gender"] as? Int ?? 0,
+                city: data["city"] as? Int ?? 0,
+                district: data["district"] as? Int ?? 0,
+                ward: data["ward"] as? Int ?? 0,
+                address: data["address"] as? String ?? "",
                 createdDate: data["createdDate"] as? TimeInterval ?? 0
             )
         }

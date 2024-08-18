@@ -21,6 +21,9 @@ final class AppDataEnvironmentViewModel: ObservableObject {
     
     @Published var currentUser: UserModel?
     
+    var handler: AuthStateDidChangeListenerHandle?
+    @Published var currentUserUid: String?
+    
     func getCartCount() -> Int {
         return cartItems.reduce(0) { result, cart in
             return result + cart.quantity

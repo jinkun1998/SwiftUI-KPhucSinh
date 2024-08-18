@@ -33,7 +33,21 @@ import Foundation
         
         guard validate() else { return nil }
         
-        let user = UserModel(fullName: fullName, phone: phone, email: email, avatar: Consts.avatar, createdDate: Date().timeIntervalSince1970)
+        let user = UserModel(
+            fullName: fullName,
+            phone: phone,
+            email: email,
+            avatar: Consts.avatar,
+            isReceivePromotion: true,
+            birthDate: Date.getPochTimeInterval(),
+            gender: 0,
+            city: 0,
+            district: 0,
+            ward: 0,
+            address: "",
+            createdDate: Date().timeIntervalSince1970
+        )
+        
         try await FirebaseService.shared.register(email: email, password: password, data: user)
         
         return user

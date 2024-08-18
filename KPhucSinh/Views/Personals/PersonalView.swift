@@ -18,7 +18,7 @@ struct PersonalView: View {
             
             // MARK: INFO
             HStack {
-                KPS_ImageView(url: vm.currentUserUid != nil ? Consts.avatar : "", aspectRatio: .fill)
+                KPS_ImageView(url: appData.currentUserUid != nil ? Consts.avatar : "", aspectRatio: .fill)
                     .frame(width: 80, height: 80)
                     .background {
                         Capsule()
@@ -27,7 +27,7 @@ struct PersonalView: View {
                     }
                     .clipShape(.circle)
                 
-                if (vm.currentUserUid != nil) {
+                if (appData.currentUserUid != nil) {
                     VStack(alignment: .leading) {
                         Text("Quốc Thảo")
                             .font(.title2)
@@ -130,7 +130,7 @@ struct PersonalView: View {
             
             // MARK: MEMBERSHIP
             VStack(alignment: .leading, spacing: 30) {
-                if (vm.currentUserUid != nil) {
+                if (appData.currentUserUid != nil) {
                     HStack {
                         Image(systemName: "crown")
                             .resizable()
@@ -216,7 +216,7 @@ struct PersonalView: View {
                         .frame(width: 15, height: 15)
                 }
                 
-                if (vm.currentUserUid != nil) {
+                if (appData.currentUserUid != nil) {
                     HStack {
                         Image(systemName: "person.badge.minus")
                             .resizable()
@@ -273,6 +273,14 @@ struct PersonalView: View {
             
             Spacer()
         }
+//        .onAppear {
+//            Task {
+//                let userData = try await vm.getCurrentUser()
+//                if (userData != nil) {
+//                    appData.setUser(user: userData!)
+//                }
+//            }
+//        }
     }
 }
 

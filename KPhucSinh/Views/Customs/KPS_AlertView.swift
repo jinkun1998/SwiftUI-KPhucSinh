@@ -68,14 +68,14 @@ struct KPS_AlertView: View {
                                 .bold()
                                 .foregroundColor(.red)
                         }
-                        .frame(height: .infinity)
+//                        .frame(height: .infinity)
                     }
                     
                     Spacer()
                 }
             }
             .padding(20)
-            .frame(width: .infinity, height: .infinity)
+//            .frame(width: .infinity, height: .infinity)
             .background(content: {
                 RoundedRectangle(cornerRadius: 15)
                     .fill(.white)

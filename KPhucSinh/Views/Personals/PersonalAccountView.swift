@@ -9,29 +9,12 @@ import SwiftUI
 
 struct PersonalAccountView: View {
     
+    @EnvironmentObject var appData: AppDataEnvironmentViewModel
+    
+    @Bindable var vm = PersonalAccountViewModel()
+    
     @State private var selection: Int = 0
     private let itemHeight: CGFloat = 40
-    @State private var isReceivePromotion: Bool = true
-    @State private var fullName: String = "Quốc Thảo"
-    @State private var genders: [CheckboxModel] = [
-        CheckboxModel(id: 1, title: "Nam", isChecked: true),
-        CheckboxModel(id: 2, title: "Nữ", isChecked: false),
-        CheckboxModel(id: 3, title: "Khác", isChecked: false)
-    ]
-    private let cities: [DropdownBoxModel] = [
-        DropdownBoxModel(
-            originalId: 1,
-            name: "Hồ Chí Minh"
-        ),
-        DropdownBoxModel(
-            originalId: 2,
-            name: "Hà Nội"
-        )
-    ]
-    @State private var city: DropdownBoxModel = DropdownBoxModel(
-        originalId: 1,
-        name: "Hồ Chí Minh"
-    )
     
     var body: some View {
         ScrollView {
@@ -79,7 +62,7 @@ struct PersonalAccountView: View {
                         KPS_CheckboxView(
                             title: "Gửi cho tôi các thông tin khuyến mãi",
                             type: .circle,
-                            isChecked: $isReceivePromotion
+                            isChecked: $vm.isReceivePromotion
                         )
                         .frame(height: itemHeight)
                     }
@@ -102,33 +85,33 @@ struct PersonalAccountView: View {
                 Section {
                     VStack(alignment: .leading, spacing: 20) {
                         HStack {
-                            KPS_MaterialTextField(placeHolder: "Họ tên", text: $fullName)
-                            KPS_MaterialTextField(placeHolder: "Số điện thoại", keyboardType: .numberPad, text: $fullName)
+                            KPS_MaterialTextField(placeHolder: "Họ tên", text: $vm.fullName)
+                            KPS_MaterialTextField(placeHolder: "Số điện thoại", keyboardType: .numberPad, text: $vm.phone)
                         }
                         .frame(height: itemHeight)
                         
-                        KPS_MaterialTextField(placeHolder: "Email", keyboardType: .emailAddress, text: $fullName)
-                        .frame(height: itemHeight)
+                        KPS_MaterialTextField(placeHolder: "Email", keyboardType: .emailAddress, text: $vm.email)
+                            .frame(height: itemHeight)
                         
                         HStack {
                             Text("Ngày sinh")
                                 .font(.callout)
                             
-                            TextField("", text: .constant("23"))
+                            TextField("", text: $vm.dayOfBirth)
                                 .keyboardType(.numberPad)
                                 .multilineTextAlignment(.center)
                                 .textFieldStyle(.roundedBorder)
                                 .frame(width: itemHeight)
                             Text("/")
                                 .font(.callout)
-                            TextField("", text: .constant("06"))
+                            TextField("", text: $vm.monthOfBirth)
                                 .keyboardType(.numberPad)
                                 .multilineTextAlignment(.center)
                                 .textFieldStyle(.roundedBorder)
                                 .frame(width: itemHeight)
                             Text("/")
                                 .font(.callout)
-                            TextField("", text: .constant("1998"))
+                            TextField("", text: $vm.yearOfBirth)
                                 .keyboardType(.numberPad)
                                 .multilineTextAlignment(.center)
                                 .textFieldStyle(.roundedBorder)
@@ -142,18 +125,20 @@ struct PersonalAccountView: View {
                             Text("Giới tính")
                                 .font(.callout)
                             
-                            KPS_CheckboxGroupView(axis: .horizontal, type: .capsule, values: $genders)
+                            KPS_CheckboxGroupView(axis: .horizontal, type: .capsule, values: $vm.genders)
                                 .frame(height: itemHeight)
                         }
                         
-                        KPS_MaterialTextField(placeHolder: "Địa chỉ", text: $fullName)
+                        KPS_MaterialTextField(placeHolder: "Địa chỉ", text: $vm.address)
                         
                         HStack {
-                            KPS_DropdownBox(placeholder: "Tỉnh/Thành", items: cities, selectedItem: $city)
-                            KPS_DropdownBox(placeholder: "Quận/Huyện", items: cities, selectedItem: $city)
+                            KPS_DropdownBox(placeholder: "Tỉnh/Thành", items: vm.cities, selectedItem: $vm.city)
+                            KPS_DropdownBox(placeholder: "Quận/Huyện", items: vm.districts, selectedItem: $vm.district)
                         }
+                        .frame(height: itemHeight + 20)
                         
-                        KPS_DropdownBox(placeholder: "Phường/Xã", items: cities, selectedItem: $city)
+                        KPS_DropdownBox(placeholder: "Phường/Xã", items: vm.wards, selectedItem: $vm.ward)
+                            .frame(height: itemHeight + 40)
                     }
                 } header: {
                     HStack {
@@ -178,13 +163,20 @@ struct PersonalAccountView: View {
                 KPS_Button(title: "Lưu thông tin", buttonStyle: .full)
             }
         }
+        .scrollIndicators(.hidden)
         .padding()
-            .useStandardToolBarStyle(title: "Tài khoản") {
-                EmptyView()
+        .useStandardToolBarStyle(title: "Tài khoản") {
+            EmptyView()
+        }
+        .onAppear() {
+            Task {
+                try await vm.fetchData()
             }
+        }
     }
 }
 
 #Preview {
     PersonalAccountView()
+        .environmentObject(AppDataEnvironmentViewModel())
 }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseAuth
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -22,13 +23,18 @@ struct KPhucSinhApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    @State private var order = AppDataEnvironmentViewModel()
-
+    @State private var appData = AppDataEnvironmentViewModel()
+    
     var body: some Scene {
         WindowGroup {
             KPhucSinhTabView()
-                .environmentObject(order)
+                .environmentObject(appData)
                 .colorScheme(.light)
+                .onAppear {
+                    appData.handler = Auth.auth().addStateDidChangeListener { _, user in
+                        appData.currentUserUid = user?.uid
+                    }
+                }
         }
     }
 }

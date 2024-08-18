@@ -11,7 +11,7 @@ struct KPS_DropdownBox: View {
     
     var placeholder: String
     var items: [DropdownBoxModel]
-    @Binding var selectedItem: DropdownBoxModel
+    @Binding var selectedItem: DropdownBoxModel?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,7 +27,7 @@ struct KPS_DropdownBox: View {
                 }
             } label: {
                 HStack {
-                    Text("\(selectedItem.name)")
+                    Text(selectedItem?.name ?? "Chọn \(placeholder)")
                     
                     Spacer()
                     
