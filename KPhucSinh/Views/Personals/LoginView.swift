@@ -37,13 +37,20 @@ struct LoginView: View {
                 
                 Button {
                     Task {
+                        withAnimation {
+                            vm.isShowLoadingView = true
+                        }
+                        
                         let userData = try await vm.login()
                         if (userData != nil) {
                             appData.setUser(user: userData!)
                             appData.popToRoot()
                         }
+                        
+                        withAnimation {
+                            vm.isShowLoadingView = false
+                        }
                     }
-                    
                     print("login")
                 } label: {
                     KPS_Button(title: "ĐĂNG NHẬP", buttonStyle: .full, height: 50)
@@ -78,6 +85,10 @@ struct LoginView: View {
                         vm.error = ""
                     }
                 })
+            }
+            
+            if (vm.isShowLoadingView){
+                KPS_LoadingView()
             }
         }
     }

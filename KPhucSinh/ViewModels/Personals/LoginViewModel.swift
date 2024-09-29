@@ -12,6 +12,7 @@ import FirebaseAuth
     var email: String = "quocthao23061998.tg@gmail.com"
     var password: String = "123456"
     var error: String = ""
+    var isShowLoadingView: Bool = false
     
     func validate() -> Bool {
         guard !email.isEmpty else {

@@ -46,10 +46,18 @@ struct RegisterView: View {
                 
                 Button {
                     Task {
+                        withAnimation {
+                            vm.isShowLoadingView = true
+                        }
+                        
                         let userData = try await vm.register()
                         if (userData != nil) {
                             appData.setUser(user: userData!)
                             appData.popToRoot()
+                        }
+                        
+                        withAnimation {
+                            vm.isShowLoadingView = false
                         }
                     }
                     
@@ -82,6 +90,10 @@ struct RegisterView: View {
                         vm.error = ""
                     }
                 })
+            }
+            
+            if (vm.isShowLoadingView) {
+                KPS_LoadingView()
             }
         }
     }

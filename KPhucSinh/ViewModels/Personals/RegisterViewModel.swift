@@ -15,6 +15,7 @@ import Foundation
     var confirmPassword: String = ""
     var isAgreeTermAndCondition: Bool = false
     var error: String = ""
+    var isShowLoadingView: Bool = false
     
     func validate() -> Bool {
         guard !fullName.isEmpty

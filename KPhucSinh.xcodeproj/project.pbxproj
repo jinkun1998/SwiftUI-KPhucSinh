@@ -73,6 +73,7 @@
 		E9DB92952C480655000E923F /* ProductQuickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB92942C480655000E923F /* ProductQuickView.swift */; };
 		E9DB92972C4806A5000E923F /* AddedProductToCartPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB92962C4806A5000E923F /* AddedProductToCartPopupView.swift */; };
 		E9DB929B2C4B61A4000E923F /* AppDataEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DB929A2C4B61A4000E923F /* AppDataEnvironmentViewModel.swift */; };
+		E9E41C092CA93625001733D7 /* KPS_LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E41C082CA93625001733D7 /* KPS_LoadingView.swift */; };
 		E9FC0FA12C673D92005C6F16 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FC0FA02C673D92005C6F16 /* RegisterView.swift */; };
 		E9FC0FA32C673DAE005C6F16 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FC0FA22C673DAE005C6F16 /* ForgotPasswordView.swift */; };
 		E9FC0FA52C673DDA005C6F16 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FC0FA42C673DDA005C6F16 /* RegisterViewModel.swift */; };
@@ -156,6 +157,7 @@
 		E9DB92942C480655000E923F /* ProductQuickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductQuickView.swift; sourceTree = "<group>"; };
 		E9DB92962C4806A5000E923F /* AddedProductToCartPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedProductToCartPopupView.swift; sourceTree = "<group>"; };
 		E9DB929A2C4B61A4000E923F /* AppDataEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataEnvironmentViewModel.swift; sourceTree = "<group>"; };
+		E9E41C082CA93625001733D7 /* KPS_LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_LoadingView.swift; sourceTree = "<group>"; };
 		E9FC0FA02C673D92005C6F16 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		E9FC0FA22C673DAE005C6F16 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		E9FC0FA42C673DDA005C6F16 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				E95043D42C5A766D003D99B2 /* KPS_MaterialTextField.swift */,
 				E9A2294E2C5F972300910F46 /* KPS_DropdownBox.swift */,
 				E9031A3C2C67313C008857FF /* KPS_IconTextField.swift */,
+				E9E41C082CA93625001733D7 /* KPS_LoadingView.swift */,
 			);
 			path = Customs;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				E929D8A82C3AAAC800ADBEF7 /* HorizonalProductListView.swift in Sources */,
 				E929D8AE2C3AAD7100ADBEF7 /* BadgeModel.swift in Sources */,
 				E9799B822C4B741A00685998 /* Consts.swift in Sources */,
+				E9E41C092CA93625001733D7 /* KPS_LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
