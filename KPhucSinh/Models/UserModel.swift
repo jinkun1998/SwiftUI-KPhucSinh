@@ -8,16 +8,16 @@
 import Foundation
 
 struct UserModel: Codable {
-    let fullName: String
-    let phone: String
-    let email: String
-    let avatar: String
-    let isReceivePromotion: Bool
-    let birthDate: TimeInterval
-    let gender: Int
-    let city: Int
-    let district: Int
-    let ward: Int
-    let address: String
+    var fullName: String
+    var phone: String
+    var email: String
+    var avatar: String
+    var isReceivePromotion: Bool
+    var birthDate: TimeInterval
+    var gender: Int
+    var city: Int?
+    var district: Int?
+    var ward: Int?
+    var address: String
     let createdDate: TimeInterval
 }

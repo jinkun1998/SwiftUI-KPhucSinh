@@ -22,11 +22,11 @@ import Foundation
     var address: String = ""
     
     func fetchData() async throws {
-        try await getCurrentUser()
-        getCities()
-        getDistricts()
-        getWards()
+        try await getCities()
+        try await getDistricts(provinceId: city?.originalId ?? 0)
+        try await getWards(districtId: district?.originalId ?? 0)
         getGenders()
+        try await getCurrentUser()
     }
     
     func getCurrentUser() async throws {
@@ -46,34 +46,85 @@ import Foundation
         self.genders = self.genders.map { gender in
             return CheckboxModel(id: gender.id, title: gender.title, isChecked: gender.id == userData.gender ? true: false)
         }
-        self.city = self.cities.first {$0.originalId == userData.city}
-        self.district = self.districts.first {$0.originalId == userData.district}
-        self.ward = self.wards.first {$0.originalId == userData.ward}
+        
         self.address = userData.address
     }
     
+    func updateCurrentUser() async throws {
+        guard var userData = try await FirebaseService.shared.getUser() else {
+            return
+        }
+        
+        userData.fullName = self.fullName
+        userData.phone = self.phone
+        userData.email = self.email
+        userData.isReceivePromotion = self.isReceivePromotion
+        
+        let components = DateComponents(year: Int(self.yearOfBirth), month: Int(self.monthOfBirth), day: Int(self.dayOfBirth))
+        
+        userData.birthDate = Calendar(identifier: .gregorian).date(from: components)!.timeIntervalSince1970
+        
+        userData.gender = self.genders.first { $0.isChecked }!.id
+        userData.city = self.city?.originalId
+        userData.district = self.district?.originalId
+        userData.ward = self.ward?.originalId
+        userData.address = self.address
+        
+        try await FirebaseService.shared.updateUser(user: userData)
+    }
+    
     var cities: [DropdownBoxModel] = []
-    func getCities() {
-        self.cities = [
-            DropdownBoxModel(
-                originalId: 1,
-                name: "Hồ Chí Minh"
-            ),
-            DropdownBoxModel(
-                originalId: 2,
-                name: "Hà Nội"
-            )
-        ]
+    func getCities() async throws {
+        
+        guard let userData = try await FirebaseService.shared.getUser() else {
+            return
+        }
+        
+        let response: BaseLocationResponse<ProvinceInfoResponse> = try await HttpService
+            .shared
+            .fetchData(url: "https://open.oapi.vn/location/provinces?page=0&size=1000&query=", httpMethod: "GET")
+        
+        self.cities = response.data.map({ province in
+            return DropdownBoxModel(originalId: Int(province.id) ?? 0, name: province.name)
+        })
+        
+        self.city = self.cities.first {$0.originalId == userData.city}
     }
     
     var districts: [DropdownBoxModel] = []
-    func getDistricts() {
-        self.districts = cities
+    func getDistricts(provinceId: Int) async throws {
+        
+        guard let userData = try await FirebaseService.shared.getUser() else {
+            return
+        }
+        
+        let response: BaseLocationResponse<DistrictInfoResponse> = try await HttpService
+            .shared
+            .fetchData(url: "https://open.oapi.vn/location/districts/\(provinceId)?page=0&size=1000&query=", httpMethod: "GET")
+        
+        self.districts = response.data.map({ district in
+            return DropdownBoxModel(originalId: Int(district.id) ?? 0, name: district.name)
+        })
+        
+        self.district = self.districts.first {$0.originalId == userData.district}
     }
     
     var wards: [DropdownBoxModel] = []
-    func getWards() {
-        self.wards = cities
+    func getWards(districtId: Int) async throws {
+        
+        guard let userData = try await FirebaseService.shared.getUser() else {
+            return
+        }
+        
+        let response: BaseLocationResponse<WardInfoResponse> = try await HttpService
+            .shared
+            .fetchData(url: "https://open.oapi.vn/location/wards/\(districtId)?page=0&size=1000&query=", httpMethod: "GET")
+        
+        self.wards = response.data.map({ ward in
+            return DropdownBoxModel(originalId: Int(ward.id) ?? 0, name: ward.name)
+        })
+        
+        self.ward = self.wards.first {$0.originalId == userData.ward}
     }
     
     func getGenders(){

@@ -43,6 +43,8 @@
 		E929D8C02C3C1EE500ADBEF7 /* KPS_ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929D8BF2C3C1EE500ADBEF7 /* KPS_ImageView.swift */; };
 		E929D8C22C3C336C00ADBEF7 /* KPS_CategoryScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929D8C12C3C336C00ADBEF7 /* KPS_CategoryScrollView.swift */; };
 		E929D8C42C3C367700ADBEF7 /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E929D8C32C3C367700ADBEF7 /* SectionModel.swift */; };
+		E92ECC632CD5BD2E00BD0CBA /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92ECC622CD5BD2E00BD0CBA /* HttpService.swift */; };
+		E92ECC662CD5C7A800BD0CBA /* LocationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92ECC652CD5C7A800BD0CBA /* LocationModels.swift */; };
 		E93DF75B2C455D5C00228677 /* DelayViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93DF75A2C455D5C00228677 /* DelayViewStyle.swift */; };
 		E94C00B92C41620800C00106 /* StandardToolbarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C00B82C41620800C00106 /* StandardToolbarStyle.swift */; };
 		E94C00BB2C41630800C00106 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C00BA2C41630800C00106 /* ViewExtension.swift */; };
@@ -127,6 +129,8 @@
 		E929D8BF2C3C1EE500ADBEF7 /* KPS_ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_ImageView.swift; sourceTree = "<group>"; };
 		E929D8C12C3C336C00ADBEF7 /* KPS_CategoryScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPS_CategoryScrollView.swift; sourceTree = "<group>"; };
 		E929D8C32C3C367700ADBEF7 /* SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModel.swift; sourceTree = "<group>"; };
+		E92ECC622CD5BD2E00BD0CBA /* HttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
+		E92ECC652CD5C7A800BD0CBA /* LocationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModels.swift; sourceTree = "<group>"; };
 		E93DF75A2C455D5C00228677 /* DelayViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayViewStyle.swift; sourceTree = "<group>"; };
 		E94C00B82C41620800C00106 /* StandardToolbarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardToolbarStyle.swift; sourceTree = "<group>"; };
 		E94C00BA2C41630800C00106 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 		E929D88B2C3A5E9700ADBEF7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E92ECC642CD5C78700BD0CBA /* Apis */,
 				E929D89D2C3A769400ADBEF7 /* ImageModel.swift */,
 				E929D89F2C3A838E00ADBEF7 /* ProductModel.swift */,
 				E90835C92C4BDCAB0095E727 /* CartModel.swift */,
@@ -376,6 +381,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E92ECC642CD5C78700BD0CBA /* Apis */ = {
+			isa = PBXGroup;
+			children = (
+				E92ECC652CD5C7A800BD0CBA /* LocationModels.swift */,
+			);
+			path = Apis;
+			sourceTree = "<group>";
+		};
 		E94C00B72C4161D600C00106 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				E9FC0FA92C67497F005C6F16 /* FirebaseService.swift */,
+				E92ECC622CD5BD2E00BD0CBA /* HttpService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -549,6 +563,7 @@
 				E929D8802C3A5A0E00ADBEF7 /* KPhucSinhTabView.swift in Sources */,
 				E94C00BB2C41630800C00106 /* ViewExtension.swift in Sources */,
 				E95043D52C5A766D003D99B2 /* KPS_MaterialTextField.swift in Sources */,
+				E92ECC632CD5BD2E00BD0CBA /* HttpService.swift in Sources */,
 				E94C00C12C417C4A00C00106 /* KPS_Button.swift in Sources */,
 				E929D8A22C3AA88B00ADBEF7 /* KPS_SearchBarView.swift in Sources */,
 				E929D8BC2C3C1C0B00ADBEF7 /* CategoryModel.swift in Sources */,
@@ -581,6 +596,7 @@
 				E929D8A82C3AAAC800ADBEF7 /* HorizonalProductListView.swift in Sources */,
 				E929D8AE2C3AAD7100ADBEF7 /* BadgeModel.swift in Sources */,
 				E9799B822C4B741A00685998 /* Consts.swift in Sources */,
+				E92ECC662CD5C7A800BD0CBA /* LocationModels.swift in Sources */,
 				E9E41C092CA93625001733D7 /* KPS_LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

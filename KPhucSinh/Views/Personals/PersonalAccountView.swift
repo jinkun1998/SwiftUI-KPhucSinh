@@ -133,12 +133,15 @@ struct PersonalAccountView: View {
                         
                         HStack {
                             KPS_DropdownBox(placeholder: "Tỉnh/Thành", items: vm.cities, selectedItem: $vm.city)
+                               
                             KPS_DropdownBox(placeholder: "Quận/Huyện", items: vm.districts, selectedItem: $vm.district)
+                                .disabled(vm.city == nil)
                         }
                         .frame(height: itemHeight + 20)
                         
                         KPS_DropdownBox(placeholder: "Phường/Xã", items: vm.wards, selectedItem: $vm.ward)
                             .frame(height: itemHeight + 40)
+                            .disabled(vm.district == nil)
                     }
                 } header: {
                     HStack {
@@ -159,6 +162,11 @@ struct PersonalAccountView: View {
             
             Button {
                 print("saved")
+                
+                Task {
+                    try await vm.updateCurrentUser()
+                }
+                
             } label: {
                 KPS_Button(title: "Lưu thông tin", buttonStyle: .full)
             }
@@ -171,6 +179,22 @@ struct PersonalAccountView: View {
         .onAppear() {
             Task {
                 try await vm.fetchData()
+            }
+        }
+        .onChange(of: vm.city) {
+            vm.district = nil
+            if (vm.city != nil) {
+                Task {
+                    try await vm.getDistricts(provinceId: vm.city!.originalId)
+                }
+            }
+        }
+        .onChange(of: vm.district) {
+            vm.ward = nil
+            if (vm.district != nil) {
+                Task {
+                    try await vm.getWards(districtId: vm.district!.originalId)
+                }
             }
         }
     }

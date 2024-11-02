@@ -87,4 +87,23 @@ final class FirebaseService {
         
         return userData
     }
+    
+    func updateUser(user: UserModel) async throws {
+
+        let firestore = Firestore.firestore()
+        let collection = firestore.collection("users")
+        let document = collection.document(currentUserUid!)
+        
+        try await document.updateData(["fullName": user.fullName])
+        try await document.updateData(["phone": user.phone])
+        try await document.updateData(["email": user.email])
+        try await document.updateData(["avatar": user.avatar])
+        try await document.updateData(["isReceivePromotion": user.isReceivePromotion])
+        try await document.updateData(["birthDate": user.birthDate])
+        try await document.updateData(["gender": user.gender])
+        try await document.updateData(["city": user.city])
+        try await document.updateData(["district": user.district])
+        try await document.updateData(["ward": user.ward])
+        try await document.updateData(["address": user.address])
+    }
 }
